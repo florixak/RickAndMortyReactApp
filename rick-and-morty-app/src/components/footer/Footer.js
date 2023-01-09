@@ -2,7 +2,8 @@ const Footer = () => {
 
     return (
         <div className="footer">
-            <h1>Rick & Morty</h1>
+            <p>Using <a href="https://rickandmortyapi.com/">Rick and Morty API</a></p>
+            <p>Created by <a href="www.florixak.tk">FloriX</a></p>
         </div>
     )
 }

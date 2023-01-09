@@ -4,8 +4,7 @@ const Header = () => {
 
     return (
         <div className="header">
-            <img className="header-img" src="https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_.jpg" alt="" />
-            <h1>Rick & Morty</h1>
+            <img className="header-img" src="https://media.cdn.adultswim.com/uploads/20220904/2294143541-RAMMobileHero.png" alt="" />
         </div>
     )
 }

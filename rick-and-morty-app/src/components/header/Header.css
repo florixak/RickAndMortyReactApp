@@ -6,8 +6,21 @@
 }
 
 .header-img {
-    border-radius: 25%;
+    width: 600px;
+    height: 400px;
 
-    width: 210px;
-    height: 280px;
+    animation: zoom-in-zoom-out 5s ease infinite;
+}
+
+@keyframes zoom-in-zoom-out {
+    0% {
+      transform: scale(1, 1);
+    }
+    50% {
+      transform: scale(1.1, 1.1);
+    }
+
+    100% {
+      transform: scale(1, 1);
+    }
 }
