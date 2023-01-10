@@ -1,25 +1,11 @@
-.nav-list {
+.nav {
     display: flex;
     justify-content: center;
 
-    list-style-type: none;
-
+    margin: 25px;;
 }
 
-.nav-list-item {
-
-    border: black solid 1px;
-    border-radius: 5px;
-
-    background-color: white;
-
-    margin: 25px;
-    padding: 10px;
-
-    transition: all 0.4s linear;
-}
-
-
-.nav-list-item:hover {
-    transform: scale(1.05);
+.nav p {
+    color: white;
+    font-size: 20px;
 }

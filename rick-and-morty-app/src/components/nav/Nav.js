@@ -4,11 +4,7 @@ const Nav = () => {
 
     return (
         <div className="nav">
-            <ul className="nav-list">
-                <li className="nav-list-item">Characters</li>
-                <li className="nav-list-item">Locations</li>
-                <li className="nav-list-item">Episodes</li>
-            </ul>
+            <p>This page contains information about Rick and Morty</p>
         </div>
     )
 }
