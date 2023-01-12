@@ -6,8 +6,8 @@
 }
 
 .header-img {
-    width: 600px;
-    height: 400px;
+    width: 620px;
+    height: 420px;
 
     animation: zoom-in-zoom-out 5s ease infinite;
 }
@@ -17,7 +17,7 @@
       transform: scale(1, 1);
     }
     50% {
-      transform: scale(1.1, 1.1);
+      transform: scale(1.08, 1.08);
     }
 
     100% {
@@ -29,5 +29,6 @@
   .header-img {
     width: 400px;
     height: 300px;
+
   }
 }

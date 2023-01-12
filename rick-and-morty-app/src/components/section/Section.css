@@ -1,5 +1,6 @@
 :root {
-    --color: white;
+    --text-color: white;
+    --background-color: #28273f;
 }
 
 .list {
@@ -8,28 +9,26 @@
     flex-direction: row;
 
     list-style-type: none;
+
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
 
 .list-item {
-    border-radius: 5px;
-    background: #28273f;
+    border-radius: 12px;
+    background: var(--background-color);
 
-    margin: 25px;
-    padding: 10px 25px;
+    margin: 20px;
+    padding: 20px 20px;
 
-    transition: all 0.4s linear;
     cursor: pointer;
+    transition: all 0.4s;
 
     width: 15%;
 }
 
-.list-item:nth-child(3) img {
-    width: 100%;
-    height: auto;
-}
-
 .list-item:hover {
-    transform: scale(1.05);
+    transform: translateY(-10px);
 }
 
 .list h2 {
@@ -37,20 +36,21 @@
     justify-content: center;
     margin-bottom: 10px;
 
-    color: var(--color);
-    background: #28273f;
-
+    color: var(--text-color);
+    background: var(--background-color);
 }
 
 .list img {
     width: 100%;
     height: auto;
-    background: #28273f;
+    background: var(--background-color);
+    border-radius: 12px;
 }
 
-@media (min-width: 1280px) {
+
+@media (min-width: 769px) and (max-width: 1280px) {
     .list-item {
-        width: 15%;
+        width: 50%;
     }
 }
 
@@ -62,6 +62,10 @@
     
     }
     .list-item {
-        width: 45%;
+        width: 60%;
+    }
+
+    .list-item:hover {
+        transform: none;
     }
 }
