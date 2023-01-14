@@ -1,11 +1,15 @@
 import "./Nav.css"
 
+import npm_api_logo from "../../images/ram-api-logo.png";
+import florix_logo from "../../images/florix-logo.jpg";
+
+
 const Nav = () => {
 
     return (
         <div className="nav">
-            <img onClick={() => {window.open("https://rickandmortyapi.com/")}} src="https://repository-images.githubusercontent.com/120371205/b6740400-92d4-11ea-8a13-d5f6e0558e9b" alt="" />
-            <img src="https://cdnb.artstation.com/p/assets/images/images/039/019/641/large/trinh-minh-duc-dame.jpg?1624719508" alt="" />
+            <img src={npm_api_logo} alt="" title="Rick and Morty API" onClick={() => {window.open("https://rickandmortyapi.com/")}} />
+            <img src={florix_logo} alt="" title="FloriX" onClick={() => {window.open("https://florixak.tk/")}} />
         </div>
     )
 }

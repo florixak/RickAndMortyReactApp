@@ -31,20 +31,31 @@
     transform: translateY(-10px);
 }
 
-.list h2 {
+.list-item h2 {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
 
     color: var(--text-color);
     background: var(--background-color);
+
+    transition: all ease 0.5s;
+
+    opacity: 0.6;
 }
 
-.list img {
+.list-item img {
     width: 100%;
     height: auto;
     background: var(--background-color);
     border-radius: 12px;
+    transition: all ease 0.5s;
+
+    opacity: 0.6;
+}
+
+.list-item:hover img, .list-item:hover h2 {
+    opacity: 1;
 }
 
 
@@ -58,14 +69,17 @@
     .list {
         justify-content: center;
         align-items: center;
-        flex-direction: column;
-    
+        flex-direction: column;    
     }
     .list-item {
-        width: 60%;
+        width: 80%;
     }
 
     .list-item:hover {
         transform: none;
+    }
+
+    .list img {
+        opacity: 1;
     }
 }
