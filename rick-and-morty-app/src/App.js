@@ -13,7 +13,6 @@ const App = () => {
       <Section />
       <Footer />
     </div>
-    
   )
 }
 
