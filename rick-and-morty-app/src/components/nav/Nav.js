@@ -9,7 +9,7 @@ const Nav = () => {
     return (
         <div className="nav">
             <img src={npm_api_logo} alt="" title="Rick and Morty API" onClick={() => {window.open("https://rickandmortyapi.com/")}} />
-            <img src={florix_logo} alt="" title="FloriX" onClick={() => {window.open("https://florixak.tk/")}} />
+            <img src={florix_logo} alt="" title="Creator" onClick={() => {window.open("https://www.florixak.tk/")}} />
         </div>
     )
 }

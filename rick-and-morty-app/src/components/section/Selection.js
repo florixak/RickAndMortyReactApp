@@ -1,9 +1,9 @@
-import "./Section.css"
+import "./Selection.css"
 
 const Section = () => {
 
     return (
-        <div className="section">
+        <div className="selection">
             <ul className="list">
                 <li className="list-item" onClick={() => console.log("Selected Characters")}>
                     <h2>Characters</h2>

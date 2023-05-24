@@ -1,7 +1,4 @@
-:root {
-    --text-color: white;
-    --background-color: #28273f;
-}
+
 
 .list {
     display: flex;
@@ -24,11 +21,9 @@
     cursor: pointer;
     transition: all 0.4s;
 
-    width: 15%;
-}
+    width: 20%;
 
-.list-item:hover {
-    transform: translateY(-10px);
+    animation: slide-right 1s linear forwards;
 }
 
 .list-item h2 {
@@ -56,10 +51,11 @@
 
 .list-item:hover img, .list-item:hover h2 {
     opacity: 1;
+    transform: translateY(-5px) scale(1.03);
 }
 
 
-@media (min-width: 769px) and (max-width: 1280px) {
+@media (max-width: 1280px) {
     .list-item {
         width: 50%;
     }
@@ -72,10 +68,10 @@
         flex-direction: column;    
     }
     .list-item {
-        width: 80%;
+        width: 60%;
     }
 
-    .list-item:hover {
+    .list-item:hover img, .list-item:hover h2 {
         transform: none;
     }
 
