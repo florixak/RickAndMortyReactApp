@@ -4,6 +4,7 @@ const url = "https://rickandmortyapi.com/api/character/"
 
 const Character = (idCh) => {
 
+    const [ id, setId ] = useState(0)
     const [ img, setImg ] = useState("")
     const [ name, setName] = useState("Loading...")
     const [ status, setStatus] = useState("Unknown")
@@ -15,6 +16,7 @@ const Character = (idCh) => {
         fetch(url + idCh)
         .then( (response) => response.json() )
         .then( (data) => {
+            setId(data.id)
             setImg(data.image)
             setName(data.name)
             setStatus(data.status)
@@ -25,7 +27,7 @@ const Character = (idCh) => {
     }, [idCh])
 
     return (
-        <div className="character">
+        <div key={id} className="character">
             <img src={img} alt=""/>
             <ul>
                 <li><span className="character-info">{name}</span></li>

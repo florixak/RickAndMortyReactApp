@@ -4,6 +4,7 @@ const url = "https://rickandmortyapi.com/api/episode/"
 
 const Episode = (idEp) => {
 
+    const [ id, setId ] = useState(0)
     const [ name, setName] = useState("Unknown")
     const [ airDate, setAirDate] = useState("Unknown")
     const [ episode, setEpisode] = useState("Unknown")
@@ -12,6 +13,7 @@ const Episode = (idEp) => {
         fetch(url + idEp)
         .then( (response) => response.json() )
         .then( (data) => {
+            setId(data.id)
             setName(data.name)
             setAirDate(data.air_date)
             setEpisode(data.episode)
@@ -19,7 +21,7 @@ const Episode = (idEp) => {
     }, [idEp])
 
     return (
-        <div className="episode">
+        <div key={id} className="episode">
             <ul>
                 <li><span className="character-info">{name}</span></li>
                 <li><span className="character-info">Episode:</span> {episode}</li>

@@ -4,6 +4,7 @@ const url = "https://rickandmortyapi.com/api/location/"
 
 const Location = (idLoc) => {
 
+    const [ id, setId ] = useState(0)
     const [ name, setName] = useState("Unknown")
     const [ type, setType] = useState("Unknown")
     const [ dimension, setDimension] = useState("Unknown")
@@ -12,6 +13,7 @@ const Location = (idLoc) => {
         fetch(url + idLoc)
         .then( (response) => response.json() )
         .then( (data) => {
+            setId(data.id)
             setName(data.name)
             setType(data.type)
             setDimension(data.dimension)
@@ -19,7 +21,7 @@ const Location = (idLoc) => {
     }, [idLoc])
 
     return (
-        <div className="character">
+        <div key={id} className="character">
             <ul>
                 <li><span className="location-info">{name}</span></li>
                 <li><span className="location-info">Type:</span> {type}</li>
