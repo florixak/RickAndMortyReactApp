@@ -14,7 +14,7 @@ const Nav = () => {
                 <p><Link to="/">Home</Link></p>
             </div>
             <div className="nav-right">
-                <img src={npm_api_logo} alt="" title="Rick and Morty API" onClick={() => {window.open("https://rickandmortyapi.com/")}} />
+                <img src={npm_api_logo} alt="" title="Rick and Morty API" onClick={() => {window.open("https://www.rickandmortyapi.com/")}} />
                 <img src={florix_logo} alt="" title="Creator" onClick={() => {window.open("https://www.florixak.tk/")}} />
             </div>
             

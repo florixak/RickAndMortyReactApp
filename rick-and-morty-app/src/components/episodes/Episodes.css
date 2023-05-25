@@ -1,4 +1,4 @@
-.characters {
+.episodes {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,7 +8,7 @@
     text-align: center;
 }
 
-.character {
+.episode {
     border-radius: 12px;
     background: var(--background-color);
 
@@ -24,26 +24,18 @@
     animation: slide-right 1.5s linear forwards;
 }
 
-.character ul {
+.episode ul {
     list-style-type: none;
 }
 
-.character ul li:nth-child(1), .character img {
+.episode ul li:nth-child(1) {
     text-align: center;
-    margin-bottom: 10px;
 }
 
-.character li {
+.episode li {
     text-align: left;
 }
 
-.character-info {
+.episode-info {
     font-weight: bold;
-}
-
-.character img {
-    width: 256px;
-    border-radius: 50%;
-
-    animation: blend-in 3s linear forwards;
 }

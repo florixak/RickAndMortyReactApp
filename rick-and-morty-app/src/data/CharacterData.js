@@ -1,7 +1,0 @@
-
-const CharacterData = () => {
-
-    function getCharacters() {
-
-    }
-}

@@ -22,14 +22,20 @@
     opacity: 1;
 }
 
-@media (min-width: 769px) and (max-width: 1280px) {
+.nav-right {
+    display: flex;
+}
+
+@media (max-width: 1280px) {
     .nav {
         flex-direction: column;
     }
 }
 
 @media (max-width: 768px) {
-    .nav {
-        display: none;
+    .nav, .nav-left, .nav-right {
+        flex-direction: column;
+        z-index: 1;
+        text-align: center;
     }
 }
