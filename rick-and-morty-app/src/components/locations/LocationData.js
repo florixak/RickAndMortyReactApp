@@ -5,7 +5,7 @@ const url = "https://rickandmortyapi.com/api/location/"
 const LocationData = (idLoc) => {
 
     const [ id, setID] = useState(-1)
-    const [ name, setName] = useState("Unknown")
+    const [ name, setName] = useState("Loading...")
     const [ type, setType] = useState("Unknown")
     const [ dimension, setDimension] = useState("Unknown")
 
@@ -21,7 +21,7 @@ const LocationData = (idLoc) => {
     }, [idLoc])
 
     return (
-        <div className="location">
+        <div key={id} className="location">
             <ul>
                 <li><span className="location-info">{name}</span></li>
                 <li><span className="location-info">Type:</span> {type}</li>
