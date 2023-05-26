@@ -11,7 +11,7 @@ const Nav = () => {
     return (
         <div className="nav">
             <div className="nav-left">
-                <p><Link to="/">Home</Link></p>
+                <p><Link to="/"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="" /></Link></p>
             </div>
             <div className="nav-right">
                 <img src={npm_api_logo} alt="" title="Rick and Morty API" onClick={() => {window.open("https://www.rickandmortyapi.com/")}} />

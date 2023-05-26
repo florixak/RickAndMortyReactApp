@@ -2,6 +2,10 @@ import { useState, useEffect } from "react"
 
 const url = "https://rickandmortyapi.com/api/character/"
 
+const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 const CharacterData = (idCh) => {
 
     const [ id, setID ] = useState(idCh)
@@ -30,8 +34,8 @@ const CharacterData = (idCh) => {
         <div key={id} className="character">
             <img src={img} alt=""/>
             <ul>
-                <li><span className="character-info">{name}</span> </li>
-                <li><span className="character-info">Status:</span> {status}</li>
+                <li><span className="character-info">{name}</span></li>
+                <li><span className="character-info">Status:</span> <span className={status === "Alive" || status === "Dead" ? (status === "Alive" ? "status-alive" : "status-dead") : "status-unknown"}>{capitalizeFirstLetter(status)}</span></li>
                 <li><span className="character-info">Species:</span> {species}</li>
                 <li><span className="character-info">Gender:</span> {gender}</li>
                 <li><span className="character-info">From:</span> {location}</li>

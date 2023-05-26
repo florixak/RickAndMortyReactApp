@@ -1,6 +1,7 @@
 .nav {
     display: flex;
-    position: absolute;
+    position: sticky;
+    justify-content: space-between;
 
     top: 0;
     right: 0;
@@ -22,20 +23,22 @@
     opacity: 1;
 }
 
-.nav-right {
+.nav-left, .nav-right {
     display: flex;
 }
 
-@media (max-width: 1280px) {
-    .nav {
-        flex-direction: column;
-    }
-}
-
 @media (max-width: 768px) {
-    .nav, .nav-left, .nav-right {
-        flex-direction: column;
+    .nav  {
         z-index: 1;
-        text-align: center;
     }
+    .nav-left, .nav-right {
+        flex-direction: column;
+    }
+    .nav-left {
+        justify-content: flex-start;
+    }
+    .nav-right {
+        justify-content: flex-end;
+    }
+
 }
