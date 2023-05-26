@@ -1,11 +1,11 @@
 import "./Characters.css"
 import { useEffect } from "react"
-import Character from "./Character"
+import CharacterData from "./CharacterData"
 
 const loadCharacters = () => {
     let list = []
     for (let id = 1; id <= 826; id++) {
-        list.push(Character(id));
+        list.push(CharacterData(id));
     }
     return list
 }
