@@ -1,6 +1,6 @@
+import LocationData from "./LocationData"
 import "./Locations.css"
 import { useEffect } from "react"
-import LocationData from "./LocationData"
 
 const loadLocations = () => {
     let list = []

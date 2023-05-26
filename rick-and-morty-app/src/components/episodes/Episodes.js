@@ -1,6 +1,6 @@
+import EpisodeData from "./EpisodeData"
 import "./Episodes.css"
 import { useEffect } from "react"
-import EpisodeData from "./EpisodeData"
 
 const loadEpisodes = () => {
     let list = []

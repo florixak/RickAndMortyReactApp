@@ -4,7 +4,7 @@ const url = "https://rickandmortyapi.com/api/location/"
 
 const LocationData = (idLoc) => {
 
-    const [ id, setID] = useState(-1)
+    const [ id, setID] = useState(idLoc)
     const [ name, setName] = useState("Loading...")
     const [ type, setType] = useState("Unknown")
     const [ dimension, setDimension] = useState("Unknown")

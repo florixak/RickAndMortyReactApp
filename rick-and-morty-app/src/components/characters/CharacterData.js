@@ -4,7 +4,7 @@ const url = "https://rickandmortyapi.com/api/character/"
 
 const CharacterData = (idCh) => {
 
-    const [ id, setID ] = useState(-1)
+    const [ id, setID ] = useState(idCh)
     const [ img, setImg ] = useState("")
     const [ name, setName] = useState("Loading...")
     const [ status, setStatus] = useState("Unknown")

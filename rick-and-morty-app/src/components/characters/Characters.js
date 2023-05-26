@@ -1,6 +1,6 @@
+import CharacterData from "./CharacterData";
 import "./Characters.css"
 import { useEffect } from "react"
-import CharacterData from "./CharacterData"
 
 const loadCharacters = () => {
     let list = []
