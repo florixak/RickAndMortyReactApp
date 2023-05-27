@@ -3,7 +3,7 @@ import "./Characters.css"
 import { useEffect } from "react"
 
 const loadCharacters = (idCh) => {
-    if (idCh !== null && idCh && undefined && idCh <= 0) {
+    if (idCh !== null && idCh > 0) {
         return CharacterData(idCh);
     }
     let list = []
