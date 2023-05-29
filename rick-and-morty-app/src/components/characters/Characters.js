@@ -1,6 +1,6 @@
 import CharacterData from "./CharacterData";
 import "./Characters.css"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 const loadCharacters = (idCh) => {
     if (idCh !== null && idCh > 0) {
@@ -16,19 +16,28 @@ const loadCharacters = (idCh) => {
 
 const Characters = () => {
 
+    const [character, setCharacter ] = useState(0);
+
     useEffect(() => {
         document.title = "Rick and Morty | Characters"
     }, [])
 
+    const handleChange = (event) => {
+        setCharacter(event.target.value);
+        alert(event.target.value);
+    }
+
     return (
         <section className="characters-section">
-        
-            <label htmlFor="character-id">ID: </label>
-            <input type="number" name="char-name" id="char-id" placeholder="Character ID"/>
+            <form action="">
+                <label htmlFor="char-id">ID: </label>
+                <input type="number" id="char-id" placeholder="Character ID" onChange={handleChange}/>
+            </form>
+            
             
             <div className="characters">
                 {
-                    loadCharacters(0)
+                    loadCharacters(character)
                 }
             </div>
         </section>

@@ -17,6 +17,7 @@
 
     margin: 20px;
     padding: 20px 20px;
+    text-align: center;
 
     cursor: pointer;
     transition: all 0.4s;
@@ -40,7 +41,7 @@
 }
 
 .list-item img {
-    width: 100%;
+    width: 80%;
     height: auto;
     background: var(--background-color);
     border-radius: 12px;
@@ -75,7 +76,8 @@
         transform: none;
     }
 
-    .list img {
+    .list-item img {
         opacity: 1;
+        width: 100%;
     }
 }

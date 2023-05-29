@@ -1,6 +1,6 @@
 import Header from "./components/header/Header"
 import Nav from "./components/nav/Nav"
-import Selection from "./components/section/Selection"
+import Selection from "./components/selection/Selection"
 import Footer from "./components/footer/Footer"
 import Error from "./components/error/Error"
 import Characters from "./components/characters/Characters"
