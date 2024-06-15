@@ -18,7 +18,7 @@ export default function Nav() {
         </li>
         <li>
           <NavLink
-            to="/characters"
+            to="/characters/1"
             className={({ isActive, isPending }) =>
               isPending ? null : isActive ? activeColor : ""
             }

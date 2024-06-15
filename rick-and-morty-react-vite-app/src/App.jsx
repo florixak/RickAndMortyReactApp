@@ -14,11 +14,11 @@ const App = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route index element={<Home />}/>
-        <Route path="/characters" element={<Characters />}/>
-        <Route path="/locations" element={<Locations />}/>
-        <Route path="/planets" element={<Planets />}/>
-        <Route path="/*" element={<PageNotFoundError />}/>
+        <Route path="/" exact index element={<Home />} />
+        <Route path="/characters/:id" element={<Characters />} />
+        <Route path="/locations" element={<Locations />} />
+        <Route path="/planets" element={<Planets />} />
+        <Route path="/*" element={<PageNotFoundError />} />
       </Routes>
       <Footer />
     </BrowserRouter>
