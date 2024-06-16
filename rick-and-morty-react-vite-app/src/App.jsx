@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -10,9 +10,8 @@ import Footer from "./components/Footer";
 import PageNotFoundError from "./components/PageNotFoundError";
 
 const App = () => {
-
   return (
-    <BrowserRouter>
+    <div className="bg-slate-800 text-white">
       <Header />
       <Routes>
         <Route path="/" exact index element={<Home />} />
@@ -22,7 +21,7 @@ const App = () => {
         <Route path="*" element={<PageNotFoundError />} />
       </Routes>
       <Footer />
-    </BrowserRouter>
+    </div>
   );
 };
 
