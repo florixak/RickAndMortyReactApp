@@ -36,7 +36,15 @@ export default function Characters() {
       </div>
       <div className="flex justify-center items-center gap-10 mt-4">
         <button className="border-b-4 p-2">
-          <NavLink to={info.prev ? `/characters/${getPreviousPage()}` : `/characters/${info.pages}`}>Previous</NavLink>
+          <NavLink
+            to={
+              info.prev
+                ? `/characters/${getPreviousPage()}`
+                : `/characters/${info.pages}`
+            }
+          >
+            Previous
+          </NavLink>
         </button>
 
         <button className="border-b-4 p-2">

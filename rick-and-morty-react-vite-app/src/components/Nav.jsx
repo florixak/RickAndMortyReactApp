@@ -3,46 +3,29 @@ import { NavLink } from "react-router-dom";
 const activeColor = "text-emerald-200";
 
 export default function Nav() {
+  const NavLinkStyle = ({ isActive, isPending }) =>
+    isPending ? null : isActive ? activeColor : "";
+
   return (
     <nav>
       <ul className="w-full flex gap-4">
         <li>
-          <NavLink
-            to="/"
-            className={({ isActive, isPending }) =>
-              isPending ? null : isActive ? activeColor : ""
-            }
-          >
+          <NavLink to="/" className={NavLinkStyle}>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/characters/1"
-            className={({ isActive, isPending }) =>
-              isPending ? null : isActive ? activeColor : ""
-            }
-          >
+          <NavLink to="/characters/1" className={NavLinkStyle}>
             Characters
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/locations"
-            className={({ isActive, isPending }) =>
-              isPending ? null : isActive ? activeColor : ""
-            }
-          >
+          <NavLink to="/locations" className={NavLinkStyle}>
             Locations
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/planets"
-            className={({ isActive, isPending }) =>
-              isPending ? null : isActive ? activeColor : ""
-            }
-          >
+          <NavLink to="/planets" className={NavLinkStyle}>
             Planets
           </NavLink>
         </li>
