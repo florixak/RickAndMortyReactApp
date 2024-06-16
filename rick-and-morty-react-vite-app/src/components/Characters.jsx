@@ -15,6 +15,8 @@ export default function Characters() {
     axios.get(`${baseURL}?page=${page}`).then((response) => {
       setData(response.data.results.slice(0, itemsPerPage)); // Oříznout výsledky na 10 postav
       setInfo(response.data.info);
+      console.log(response.data.results)
+      console.log(response.data.info)
     });
   }, [page]);
 
@@ -29,7 +31,7 @@ export default function Characters() {
   return (
     <div className="w-full flex justify-center items-center flex-col">
       <h1>Characters</h1>
-      <div className="grid grid-cols-4 grid-rows-2 gap-10">
+      <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
         {data.map((character) => (
           <Character key={character.id} data={character} />
         ))}
