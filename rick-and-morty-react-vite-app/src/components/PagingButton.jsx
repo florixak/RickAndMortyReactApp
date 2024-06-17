@@ -1,10 +1,7 @@
-import { useNavigate } from "react-router-dom";
-
-export default function PagingButton({ children, url }) {
-  const navigate = useNavigate();
+export default function PagingButton({ children, handleClick }) {
 
   return (
-    <button className="border p-2" onClick={() => navigate(url)}>
+    <button className="border p-2" onClick={handleClick}>
       {children}
     </button>
   );

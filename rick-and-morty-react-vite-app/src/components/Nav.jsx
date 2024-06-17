@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const activeColor = "text-emerald-200";
+const activeColor = "text-[#97ce4c]";
 
 export default function Nav() {
   const NavLinkStyle = ({ isActive, isPending }) =>
