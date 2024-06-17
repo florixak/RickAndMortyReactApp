@@ -25,8 +25,8 @@ export default function Nav() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/planets" className={NavLinkStyle}>
-            Planets
+          <NavLink to="/episodes" className={NavLinkStyle}>
+            Episodes
           </NavLink>
         </li>
       </ul>
