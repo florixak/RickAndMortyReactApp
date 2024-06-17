@@ -1,14 +1,14 @@
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Character from "./Character";
+import MoveButton from "./PagingButton";
 
 const baseURL = "https://rickandmortyapi.com/api/character";
 const itemsPerPage = 12;
 
 export default function Characters() {
   const { page } = useParams(); // Získání aktuální stránky z URL parametrů
-  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [info, setInfo] = useState({});
 
@@ -40,31 +40,23 @@ export default function Characters() {
         ))}
       </div>
       <div className="flex justify-center items-center gap-10">
-        <button
-          className="border-b-4 p-2"
-          onClick={() =>
-            navigate(
-              info.prev
-                ? `/characters/${getPreviousPage()}`
-                : `/characters/${info.pages}`,
-              { replace: true }
-            )
+        <MoveButton
+          url={
+            info.prev
+              ? `/characters/${getPreviousPage()}`
+              : `/characters/${info.pages}`
           }
         >
           Previous
-        </button>
-
-        <button
-          className="border-b-4 p-2"
-          onClick={() =>
-            navigate(
-              info.next ? `/characters/${getNextPage()}` : `/characters/1`,
-              { replace: true }
-            )
-          }
+        </MoveButton>
+        <p>
+          {page} / {info.pages}
+        </p>
+        <MoveButton
+          url={info.next ? `/characters/${getNextPage()}` : `/characters/1`}
         >
           Next
-        </button>
+        </MoveButton>
       </div>
     </div>
   );
