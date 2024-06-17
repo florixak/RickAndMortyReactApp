@@ -15,7 +15,7 @@ export default function Nav() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/characters/1" className={NavLinkStyle}>
+          <NavLink to="/characters" className={NavLinkStyle}>
             Characters
           </NavLink>
         </li>

@@ -15,6 +15,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" exact index element={<Home />} />
+        <Route path="characters" element={<Characters />} />
         <Route path="characters/:page" element={<Characters />} />
         <Route path="locations/:page" element={<Locations />} />
         <Route path="planets/:page" element={<Planets />} />

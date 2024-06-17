@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Character from "./Character";
 
@@ -8,6 +8,7 @@ const itemsPerPage = 12;
 
 export default function Characters() {
   const { page } = useParams(); // Získání aktuální stránky z URL parametrů
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [info, setInfo] = useState({});
 
@@ -21,10 +22,12 @@ export default function Characters() {
   }, [page]);
 
   const getNextPage = () => {
+    if (page === undefined || page === "NaN") return 2;
     return parseInt(page) + 1;
   };
 
   const getPreviousPage = () => {
+    if (page === undefined || page === "NaN") return info.pages;
     return parseInt(page) - 1;
   };
 
@@ -37,24 +40,30 @@ export default function Characters() {
         ))}
       </div>
       <div className="flex justify-center items-center gap-10">
-        <button className="border-b-4 p-2">
-          <NavLink
-            to={
+        <button
+          className="border-b-4 p-2"
+          onClick={() =>
+            navigate(
               info.prev
                 ? `/characters/${getPreviousPage()}`
-                : `/characters/${info.pages}`
-            }
-          >
-            Previous
-          </NavLink>
+                : `/characters/${info.pages}`,
+              { replace: true }
+            )
+          }
+        >
+          Previous
         </button>
 
-        <button className="border-b-4 p-2">
-          <NavLink
-            to={info.next ? `/characters/${getNextPage()}` : `/characters/1`}
-          >
-            Next
-          </NavLink>
+        <button
+          className="border-b-4 p-2"
+          onClick={() =>
+            navigate(
+              info.next ? `/characters/${getNextPage()}` : `/characters/1`,
+              { replace: true }
+            )
+          }
+        >
+          Next
         </button>
       </div>
     </div>
