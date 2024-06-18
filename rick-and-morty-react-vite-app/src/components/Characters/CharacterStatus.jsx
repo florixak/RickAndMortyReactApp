@@ -5,5 +5,5 @@ export default function CharacterStatus({ status }) {
     else return "text-orange-400";
   };
 
-  return <span className={`${statusStyle()} text-xl items-center justify-center`}>•</span>;
+  return <span className={`${statusStyle()} font-bold text-xl items-center justify-center`}>•</span>;
 }
