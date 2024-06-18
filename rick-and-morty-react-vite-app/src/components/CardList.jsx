@@ -61,7 +61,6 @@ export default function CardList({ children, title, handleData, url }) {
           Search
         </button>
       </form>
-
       <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
         {children}
       </div>

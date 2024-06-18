@@ -1,6 +1,6 @@
 import Card from "../Card";
 
-export default function Character({ data }) {
+export default function CharacterCard({ data }) {
 
   const { image, name, id, status, species, gender, origin, location } = data;
 
