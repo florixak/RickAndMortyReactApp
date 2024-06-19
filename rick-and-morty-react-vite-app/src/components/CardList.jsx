@@ -36,7 +36,7 @@ export default function CardList({ title, url, type }) {
         console.log(response.data.info);
       });
     }
-  }, [page, url, id]); // přidání `id` do závislostí useEffect
+  }, [page, url, id]);
 
   const handleInputValue = (e) => {
     setInputValue(e.target.value);
