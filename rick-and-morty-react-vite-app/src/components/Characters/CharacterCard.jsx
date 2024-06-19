@@ -7,7 +7,7 @@ export default function CharacterCard({ data }) {
 
   return (
     <Card>
-      <img className="rounded-3xl" src={image} alt="image" />
+      <img className="rounded-3xl shadow-black shadow-md" src={image} alt="image" />
       <h1 className="text-xl font-bold flex flex-row">{name} <span className="flex justify-center items-center"><CharacterGender gender={gender} /></span></h1>
       <div className="flex flex-col items-start justify-start">
         <p>ID: {id}</p>

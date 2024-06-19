@@ -6,7 +6,7 @@ export default function Episode({ data }) {
 
   return (
     <Card>
-      <h1 className="text-xl">{name}</h1>
+      <h1 className="text-xl font-bold">{name}</h1>
       <div className="flex flex-col items-start justify-start">
         <p>ID: {id}</p>
         <p>Air Date: {air_date}</p>

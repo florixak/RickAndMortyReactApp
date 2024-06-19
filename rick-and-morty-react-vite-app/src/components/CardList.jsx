@@ -80,9 +80,21 @@ export default function CardList({ title, url, type }) {
     ? data.filter((character) => character.id === parseInt(id))
     : data;
 
+  const PagingButtons = () => {
+    return (!id && (
+      <div className="flex justify-center items-center gap-5">
+        <PagingButton handleClick={setPreviousPage}>Previous</PagingButton>
+        <p>
+          {page} / {info.pages}
+        </p>
+        <PagingButton handleClick={setNextPage}>Next</PagingButton>
+      </div>
+    ))
+  }
+
   return (
     <div className="w-[90%] h-full flex justify-center items-center gap-5 flex-col">
-      <h1>{title}</h1>
+      <h1 className="font-bold">{title ? title : "Loading..."}</h1>
       <form onSubmit={handleFormSubmit}>
         <input
           className="text-center rounded-lg p-2 text-black w-[250px]"
@@ -97,15 +109,7 @@ export default function CardList({ title, url, type }) {
           Search
         </button>
       </form>
-      {!id && (
-        <div className="flex justify-center items-center gap-5">
-          <PagingButton handleClick={setPreviousPage}>Previous</PagingButton>
-          <p>
-            {page} / {info.pages}
-          </p>
-          <PagingButton handleClick={setNextPage}>Next</PagingButton>
-        </div>
-      )}
+      <PagingButtons />
       <div
         className={
           id
@@ -123,15 +127,7 @@ export default function CardList({ title, url, type }) {
               return <EpisodeCard key={card.id} data={card} />;
           })}
       </div>
-      {!id && (
-        <div className="flex justify-center items-center gap-5">
-          <PagingButton handleClick={setPreviousPage}>Previous</PagingButton>
-          <p>
-            {page} / {info.pages}
-          </p>
-          <PagingButton handleClick={setNextPage}>Next</PagingButton>
-        </div>
-      )}
+      <PagingButtons />
     </div>
   );
 }
