@@ -31,7 +31,7 @@ export default function CardList({ title, url, type }) {
         });
     } else {
       axios.get(`${url}?page=${page}`).then((response) => {
-        setData(response.data.results.slice(0, ITEMS_PER_PAGE));
+        setData(response.data.results);
         setInfo(response.data.info);
         console.log(response.data.results);
         console.log(response.data.info);
@@ -97,6 +97,15 @@ export default function CardList({ title, url, type }) {
           Search
         </button>
       </form>
+      {!id && (
+        <div className="flex justify-center items-center gap-5">
+          <PagingButton handleClick={setPreviousPage}>Previous</PagingButton>
+          <p>
+            {page} / {info.pages}
+          </p>
+          <PagingButton handleClick={setNextPage}>Next</PagingButton>
+        </div>
+      )}
       <div
         className={
           id
