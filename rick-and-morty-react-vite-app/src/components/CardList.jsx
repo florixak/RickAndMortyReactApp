@@ -1,24 +1,23 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import PagingButton from "./PagingButton";
 import CharacterCard from "./Characters/CharacterCard";
 import LocationCard from "./Locations/LocationCard";
 import EpisodeCard from "./Episodes/EpisodeCard";
-import { ITEMS_PER_PAGE } from "../data";
 
 export default function CardList({ title, url, type }) {
   const [data, setData] = useState([]);
   const [info, setInfo] = useState({});
   const [inputValue, setInputValue] = useState(-1);
 
-  const { id } = useParams();
-  const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
+  const [searchParams, setSearchParams] = useSearchParams({ page: 1, id: -1 });
   const page = searchParams.get("page");
+  const id = searchParams.get("id");
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (id) {
+    if (id && id > 0) {
       axios
         .get(`${url}/${id}`)
         .then((response) => {
@@ -46,7 +45,7 @@ export default function CardList({ title, url, type }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (inputValue > 0) {
-      navigate(`/${type}/${inputValue}`, { replace: true });
+      navigate(`/${type}?id=${inputValue}`, { replace: true });
     } else {
       navigate(`/${type}?page=1`, { replace: true });
     }
@@ -76,12 +75,13 @@ export default function CardList({ title, url, type }) {
     });
   };
 
-  const filteredData = id
-    ? data.filter((character) => character.id === parseInt(id))
-    : data;
+  const filteredData =
+    id && id > 0
+      ? data.filter((character) => character.id === parseInt(id))
+      : data;
 
   const PagingButtons = () => {
-    return (!id && (
+    return !id || id < 0 ? (
       <div className="flex justify-center items-center gap-5">
         <PagingButton handleClick={setPreviousPage}>Previous</PagingButton>
         <p>
@@ -89,8 +89,8 @@ export default function CardList({ title, url, type }) {
         </p>
         <PagingButton handleClick={setNextPage}>Next</PagingButton>
       </div>
-    ))
-  }
+    ) : null;
+  };
 
   return (
     <div className="w-[90%] h-full flex justify-center items-center gap-5 flex-col">
@@ -112,9 +112,9 @@ export default function CardList({ title, url, type }) {
       <PagingButtons />
       <div
         className={
-          id
+          id && id > 0
             ? "flex justify-center items-center"
-            : "grid grid-cols-2 gap-10 sm:grid-cols-4"
+            : "grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
         }
       >
         {filteredData &&

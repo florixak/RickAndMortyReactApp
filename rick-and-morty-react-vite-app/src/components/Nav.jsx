@@ -15,17 +15,17 @@ export default function Nav() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/characters" className={NavLinkStyle}>
+          <NavLink to="/characters?page=1" className={NavLinkStyle}>
             Characters
           </NavLink>
         </li>
         <li>
-          <NavLink to="/locations" className={NavLinkStyle}>
+          <NavLink to="/locations?page=1" className={NavLinkStyle}>
             Locations
           </NavLink>
         </li>
         <li>
-          <NavLink to="/episodes" className={NavLinkStyle}>
+          <NavLink to="/episodes?page=1" className={NavLinkStyle}>
             Episodes
           </NavLink>
         </li>
