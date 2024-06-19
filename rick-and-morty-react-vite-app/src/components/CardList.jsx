@@ -5,8 +5,7 @@ import PagingButton from "./PagingButton";
 import CharacterCard from "./Characters/CharacterCard";
 import LocationCard from "./Locations/LocationCard";
 import EpisodeCard from "./Episodes/EpisodeCard";
-
-const itemsPerPage = 12;
+import { ITEMS_PER_PAGE } from "../data";
 
 export default function CardList({ title, url, type }) {
   const [data, setData] = useState([]);
@@ -15,31 +14,30 @@ export default function CardList({ title, url, type }) {
 
   const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
+  const page = searchParams.get("page");
   const navigate = useNavigate();
 
   useEffect(() => {
     if (id) {
-      // Načtení specifického charakteru podle ID
       axios
         .get(`${url}/${id}`)
         .then((response) => {
-          setData([response.data]); // Nastavení dat na pole s jediným charakterem
-          setInfo({ pages: 1 }); // Nastavení info pro jednu stránku
+          setData([response.data]);
+          setInfo({ pages: 1 });
           console.log(response.data);
         })
         .catch((error) => {
           setData([]);
         });
     } else {
-      // Načtení seznamu charakterů pro danou stránku
-      axios.get(`${url}?page=${searchParams.get("page")}`).then((response) => {
-        setData(response.data.results.slice(0, itemsPerPage));
+      axios.get(`${url}?page=${page}`).then((response) => {
+        setData(response.data.results.slice(0, ITEMS_PER_PAGE));
         setInfo(response.data.info);
         console.log(response.data.results);
         console.log(response.data.info);
       });
     }
-  }, [searchParams.get("page"), url, id]); // přidání `id` do závislostí useEffect
+  }, [page, url, id]); // přidání `id` do závislostí useEffect
 
   const handleInputValue = (e) => {
     setInputValue(e.target.value);
@@ -120,7 +118,7 @@ export default function CardList({ title, url, type }) {
         <div className="flex justify-center items-center gap-5">
           <PagingButton handleClick={setPreviousPage}>Previous</PagingButton>
           <p>
-            {searchParams.get("page")} / {info.pages}
+            {page} / {info.pages}
           </p>
           <PagingButton handleClick={setNextPage}>Next</PagingButton>
         </div>
