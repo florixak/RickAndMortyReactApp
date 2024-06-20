@@ -103,7 +103,7 @@ export default function CardList({ title, url, type }) {
           type="number"
           min={1}
           max={info.count}
-          placeholder="Specify id"
+          placeholder={`Specify id (1 to ${info.count})`}
           value={inputValue > 0 ? inputValue : ""}
           onChange={handleInputValue}
         />
