@@ -13,7 +13,7 @@ export default function Home() {
         <NavCard
           title="Characters"
           image={<GiCharacter size={180} />}
-          navigateTo="/characters?page=1"
+          navigateTo="/characters?page=1&id=all"
         />
         <NavCard
           title="Locations"

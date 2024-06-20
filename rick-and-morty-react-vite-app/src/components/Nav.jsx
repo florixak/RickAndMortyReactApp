@@ -15,7 +15,7 @@ export default function Nav() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/characters?page=1" className={NavLinkStyle}>
+          <NavLink to="/characters?page=1&id=all" className={NavLinkStyle}>
             Characters
           </NavLink>
         </li>

@@ -11,7 +11,6 @@ import EpisodeCard from "./Episodes/EpisodeCard";
 export default function CardList({ title, url, type }) {
   const [data, setData] = useState([]);
   const [info, setInfo] = useState({});
-  const [inputValue, setInputValue] = useState(-1);
 
   const [searchParams, setSearchParams] = useSearchParams({ page: 1, id: -1 });
   const page = searchParams.get("page");
@@ -41,49 +40,49 @@ export default function CardList({ title, url, type }) {
   }, [searchParams, url]);
 
   const handleInputValue = (e) => {
-    setInputValue(e.target.value);
+    setSearchParams({ page: page, id: e.target.value ? e.target.value : "all" }, { replace: true });
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (inputValue > 0 && inputValue < info.count) {
-      navigate(`/${type}?id=${inputValue}`, { replace: true });
+    if (id && id > 0 && id < info.count) {
+      navigate(`/${type}?page=${page}&id=${id}`, { replace: true });
     } else {
-      navigate(`/${type}?page=1`, { replace: true });
+      navigate(`/${type}?page=1&id=all`, { replace: true });
     }
   };
 
   const setNextPage = () => {
-    setSearchParams((prevSearchParams) => {
-      const prevPage = parseInt(prevSearchParams.get("page"));
+    setSearchParams((prev) => {
+      const prevPage = parseInt(prev.get("page"));
       const newPage = prevPage
         ? prevPage === info.pages
           ? 1
           : prevPage + 1
         : 1;
-      return { page: newPage };
-    });
+      return { page: newPage, id: "all" };
+    }, { replace: true });
   };
 
   const setPreviousPage = () => {
-    setSearchParams((prevSearchParams) => {
-      const prevPage = parseInt(prevSearchParams.get("page"));
+    setSearchParams((prev) => {
+      const prevPage = parseInt(prev.get("page"));
       const newPage = prevPage
         ? prevPage === 1
           ? info.pages
           : prevPage - 1
         : 1;
-      return { page: newPage };
-    });
+        return { page: newPage, id: "all" };
+    }, { replace: true });
   };
 
   const filteredData =
-    id && id > 0
+    id && id > 0 && id !== "all"
       ? data.filter((character) => character.id === parseInt(id))
       : data;
 
   const PagingButtons = () => {
-    return !id || id < 0 ? (
+    return id == "all" ? (
       <div className="flex w-[50%] md:w-[30%] lg:w-[20%] justify-evenly items-center">
         <PagingButton handleClick={setPreviousPage}><MdNavigateBefore /></PagingButton>
         <p>
@@ -104,12 +103,9 @@ export default function CardList({ title, url, type }) {
           min={1}
           max={info.count}
           placeholder={`Specify id (1 to ${info.count})`}
-          value={inputValue > 0 ? inputValue : ""}
+          value={id > 0 ? id : ""}
           onChange={handleInputValue}
         />
-        <button className="hidden" type="submit">
-          Search
-        </button>
       </form>
       <PagingButtons />
       <div
