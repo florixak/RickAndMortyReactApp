@@ -12,7 +12,7 @@ export default function CardList({ title, url, type }) {
   const [data, setData] = useState([]);
   const [info, setInfo] = useState({});
 
-  const [searchParams, setSearchParams] = useSearchParams({ page: 1, id: -1 });
+  const [searchParams, setSearchParams] = useSearchParams({ page: 1, id: "all" });
   const page = searchParams.get("page");
   const id = searchParams.get("id");
   const navigate = useNavigate();
