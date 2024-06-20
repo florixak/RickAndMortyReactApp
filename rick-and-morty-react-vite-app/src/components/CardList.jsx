@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import PagingButton from "./PagingButton";
 import CharacterCard from "./Characters/CharacterCard";
 import LocationCard from "./Locations/LocationCard";
 import EpisodeCard from "./Episodes/EpisodeCard";
+
 
 export default function CardList({ title, url, type }) {
   const [data, setData] = useState([]);
@@ -36,7 +38,7 @@ export default function CardList({ title, url, type }) {
         console.log(response.data.info);
       });
     }
-  }, [page, url, id]);
+  }, [searchParams, url]);
 
   const handleInputValue = (e) => {
     setInputValue(e.target.value);
@@ -44,7 +46,7 @@ export default function CardList({ title, url, type }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (inputValue > 0) {
+    if (inputValue > 0 && inputValue < info.count) {
       navigate(`/${type}?id=${inputValue}`, { replace: true });
     } else {
       navigate(`/${type}?page=1`, { replace: true });
@@ -82,19 +84,19 @@ export default function CardList({ title, url, type }) {
 
   const PagingButtons = () => {
     return !id || id < 0 ? (
-      <div className="flex justify-center items-center gap-5">
-        <PagingButton handleClick={setPreviousPage}>Previous</PagingButton>
+      <div className="flex w-[50%] md:w-[30%] lg:w-[20%] justify-evenly items-center">
+        <PagingButton handleClick={setPreviousPage}><MdNavigateBefore /></PagingButton>
         <p>
-          {page} / {info.pages}
+          {page ? page : "?"} / {info.pages ? info.pages : "?"}
         </p>
-        <PagingButton handleClick={setNextPage}>Next</PagingButton>
+        <PagingButton handleClick={setNextPage}><MdNavigateNext /></PagingButton>
       </div>
     ) : null;
   };
 
   return (
     <div className="w-[90%] h-full flex justify-center items-center gap-5 flex-col">
-      <h1 className="font-bold">{title ? title : "Loading..."}</h1>
+      <h1 className="font-bold">{title}</h1>
       <form onSubmit={handleFormSubmit}>
         <input
           className="text-center rounded-lg p-2 text-black w-[250px]"

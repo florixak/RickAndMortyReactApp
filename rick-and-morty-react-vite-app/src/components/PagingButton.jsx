@@ -1,7 +1,7 @@
 export default function PagingButton({ children, handleClick }) {
 
   return (
-    <button className="border p-2" onClick={handleClick}>
+    <button className="p-5" onClick={handleClick}>
       {children}
     </button>
   );
