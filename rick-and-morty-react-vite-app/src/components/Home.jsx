@@ -2,6 +2,7 @@ import NavCard from "./NavCard";
 import { GiCharacter } from "react-icons/gi";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { MdVideoLibrary } from "react-icons/md";
+import { CHARACTERS_NAV_URL, LOCATIONS_NAV_URL, EPISODES_NAV_URL } from "../data";
 
 export default function Home() {
   return (
@@ -13,17 +14,17 @@ export default function Home() {
         <NavCard
           title="Characters"
           image={<GiCharacter size={180} />}
-          navigateTo="/characters?page=1&id=all"
+          navigateTo={CHARACTERS_NAV_URL}
         />
         <NavCard
           title="Locations"
           image={<FaMapLocationDot size={180} />}
-          navigateTo="/locations?page=1&id=all"
+          navigateTo={LOCATIONS_NAV_URL}
         />
         <NavCard
           title="Episodes"
           image={<MdVideoLibrary size={180} />}
-          navigateTo="/episodes?page=1&id=all"
+          navigateTo={EPISODES_NAV_URL}
         />
       </div>
     </main>

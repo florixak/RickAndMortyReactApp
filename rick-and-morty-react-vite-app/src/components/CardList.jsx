@@ -45,7 +45,7 @@ export default function CardList({ title, url, type }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (id && parseInt(id) > 0 && parseInt(id) < info.count) {
+    if (id && parseInt(id) > 0 && parseInt(id) < info.count && id !== "all") {
       navigate(`/${type}?page=${page}&id=${id}`, { replace: true });
     } else {
       navigate(`/${type}?page=1&id=all`, { replace: true });
@@ -77,12 +77,12 @@ export default function CardList({ title, url, type }) {
   };
 
   const filteredData =
-    id && id > 0 && id !== "all"
+    id && id !== "all"
       ? data.filter((character) => character.id === parseInt(id))
       : data;
 
   const PagingButtons = () => {
-    return id == "all" ? (
+    return id && id == "all" ? (
       <div className="flex w-[50%] md:w-[30%] lg:w-[20%] justify-evenly items-center">
         <PagingButton handleClick={setPreviousPage}><MdNavigateBefore /></PagingButton>
         <p>
@@ -110,7 +110,7 @@ export default function CardList({ title, url, type }) {
       <PagingButtons />
       <div
         className={
-          id && id > 0
+          id && id !== "all"
             ? "flex justify-center items-center"
             : "grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
         }

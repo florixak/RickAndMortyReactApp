@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { CHARACTERS_NAV_URL, LOCATIONS_NAV_URL, EPISODES_NAV_URL } from "../data";
 
 const activeColor = "text-[#97ce4c]";
 
@@ -15,17 +16,17 @@ export default function Nav() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/characters?page=1&id=all" className={NavLinkStyle}>
+          <NavLink to={CHARACTERS_NAV_URL} className={NavLinkStyle}>
             Characters
           </NavLink>
         </li>
         <li>
-          <NavLink to="/locations?page=1&id=all" className={NavLinkStyle}>
+          <NavLink to={LOCATIONS_NAV_URL} className={NavLinkStyle}>
             Locations
           </NavLink>
         </li>
         <li>
-          <NavLink to="/episodes?page=1&id=all" className={NavLinkStyle}>
+          <NavLink to={EPISODES_NAV_URL} className={NavLinkStyle}>
             Episodes
           </NavLink>
         </li>
