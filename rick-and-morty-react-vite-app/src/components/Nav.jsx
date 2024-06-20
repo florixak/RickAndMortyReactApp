@@ -20,12 +20,12 @@ export default function Nav() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/locations?page=1" className={NavLinkStyle}>
+          <NavLink to="/locations?page=1&id=all" className={NavLinkStyle}>
             Locations
           </NavLink>
         </li>
         <li>
-          <NavLink to="/episodes?page=1" className={NavLinkStyle}>
+          <NavLink to="/episodes?page=1&id=all" className={NavLinkStyle}>
             Episodes
           </NavLink>
         </li>

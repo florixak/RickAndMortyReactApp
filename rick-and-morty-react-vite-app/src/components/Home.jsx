@@ -18,12 +18,12 @@ export default function Home() {
         <NavCard
           title="Locations"
           image={<FaMapLocationDot size={180} />}
-          navigateTo="/locations?page=1"
+          navigateTo="/locations?page=1&id=all"
         />
         <NavCard
           title="Episodes"
           image={<MdVideoLibrary size={180} />}
-          navigateTo="/episodes?page=1"
+          navigateTo="/episodes?page=1&id=all"
         />
       </div>
     </main>

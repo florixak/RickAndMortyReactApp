@@ -45,7 +45,7 @@ export default function CardList({ title, url, type }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (id && id > 0 && id < info.count) {
+    if (id && parseInt(id) > 0 && parseInt(id) < info.count) {
       navigate(`/${type}?page=${page}&id=${id}`, { replace: true });
     } else {
       navigate(`/${type}?page=1&id=all`, { replace: true });
