@@ -6,16 +6,34 @@ import PagingButton from "./PagingButton";
 import CharacterCard from "./Characters/CharacterCard";
 import LocationCard from "./Locations/LocationCard";
 import EpisodeCard from "./Episodes/EpisodeCard";
-
+import CharacterSkeleton from "./Characters/CharacterSkeleton";
+import LocationSkeleton from "./Locations/LocationSkeleton";
+import EpisodeSkeleton from "./Episodes/EpisodeSkeleton";
 
 export default function CardList({ title, url, type }) {
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [info, setInfo] = useState({});
 
-  const [searchParams, setSearchParams] = useSearchParams({ page: 1, id: "all" });
+  const [searchParams, setSearchParams] = useSearchParams({
+    page: 1,
+    id: "all",
+  });
   const page = searchParams.get("page");
   const id = searchParams.get("id");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => {
+      console.log("Timer cleared")
+      clearTimeout(timer);
+    }
+
+  }, []);
 
   useEffect(() => {
     if (id && id > 0) {
@@ -40,7 +58,10 @@ export default function CardList({ title, url, type }) {
   }, [searchParams, url]);
 
   const handleInputValue = (e) => {
-    setSearchParams({ page: page, id: e.target.value ? e.target.value : "all" }, { replace: true });
+    setSearchParams(
+      { page: page, id: e.target.value ? e.target.value : "all" },
+      { replace: true }
+    );
   };
 
   const handleFormSubmit = (e) => {
@@ -53,27 +74,33 @@ export default function CardList({ title, url, type }) {
   };
 
   const setNextPage = () => {
-    setSearchParams((prev) => {
-      const prevPage = parseInt(prev.get("page"));
-      const newPage = prevPage
-        ? prevPage === info.pages
-          ? 1
-          : prevPage + 1
-        : 1;
-      return { page: newPage, id: "all" };
-    }, { replace: true });
+    setSearchParams(
+      (prev) => {
+        const prevPage = parseInt(prev.get("page"));
+        const newPage = prevPage
+          ? prevPage === info.pages
+            ? 1
+            : prevPage + 1
+          : 1;
+        return { page: newPage, id: "all" };
+      },
+      { replace: true }
+    );
   };
 
   const setPreviousPage = () => {
-    setSearchParams((prev) => {
-      const prevPage = parseInt(prev.get("page"));
-      const newPage = prevPage
-        ? prevPage === 1
-          ? info.pages
-          : prevPage - 1
-        : 1;
+    setSearchParams(
+      (prev) => {
+        const prevPage = parseInt(prev.get("page"));
+        const newPage = prevPage
+          ? prevPage === 1
+            ? info.pages
+            : prevPage - 1
+          : 1;
         return { page: newPage, id: "all" };
-    }, { replace: true });
+      },
+      { replace: true }
+    );
   };
 
   const filteredData =
@@ -84,11 +111,16 @@ export default function CardList({ title, url, type }) {
   const PagingButtons = () => {
     return id && id == "all" ? (
       <div className="flex w-[50%] md:w-[30%] lg:w-[20%] justify-evenly items-center">
-        <PagingButton handleClick={setPreviousPage}><MdNavigateBefore /></PagingButton>
+        <PagingButton handleClick={setPreviousPage}>
+          <MdNavigateBefore />
+        </PagingButton>
         <p>
-          {page ? page : "?"} / {info.pages ? info.pages : "?"}
+          {page ? page : "Loading..."} /{" "}
+          {info.pages ? info.pages : "Loading..."}
         </p>
-        <PagingButton handleClick={setNextPage}><MdNavigateNext /></PagingButton>
+        <PagingButton handleClick={setNextPage}>
+          <MdNavigateNext />
+        </PagingButton>
       </div>
     ) : null;
   };
@@ -118,11 +150,23 @@ export default function CardList({ title, url, type }) {
         {filteredData &&
           filteredData.map((card) => {
             if (type === "characters")
-              return <CharacterCard key={card.id} data={card} />;
+              return loading ? (
+                <CharacterSkeleton key={card.id} />
+              ) : (
+                <CharacterCard key={card.id} data={card} />
+              );
             else if (type === "locations")
-              return <LocationCard key={card.id} data={card} />;
+              return loading ? (
+                <LocationSkeleton key={card.id} />
+              ) : (
+                <LocationCard key={card.id} data={card} />
+              );
             else if (type === "episodes")
-              return <EpisodeCard key={card.id} data={card} />;
+              return loading ? (
+                <EpisodeSkeleton key={card.id} />
+              ) : (
+                <EpisodeCard key={card.id} data={card} />
+              );
           })}
       </div>
       <PagingButtons />
