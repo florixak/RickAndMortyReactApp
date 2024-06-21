@@ -17,6 +17,11 @@ npm install
 npm run dev
 ```
 
+## Sample of work
+Screenshoty nebo krátké popisy toho, jak aplikace vypadá a funguje.
+
+![Screenshot Hlavní stránky](link-na-screenshot)
+
 ## Poděkování
 - Thanks to [Rick and Morty API](https://rickandmortyapi.com/) for providing data.
 
