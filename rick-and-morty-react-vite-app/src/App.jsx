@@ -17,7 +17,7 @@ const App = () => {
       <Routes>
         <Route path="/" exact index element={<Home />} />
         <Route path="/characters" element={<Characters />} />
-        <Route path="/character/:id" element={<Character />} />
+        <Route path="/character/:id" element={<Character id={0} />} />
         <Route path="/locations" element={<Locations />}>
           <Route path=":id" element={<Locations />} />
         </Route>

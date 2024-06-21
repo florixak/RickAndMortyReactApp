@@ -11,6 +11,8 @@ export default function CharacterCard({ data }) {
       <Link to={`/character/${id}`}>
         <img
           className="rounded-3xl shadow-black shadow-md"
+          width={300}
+          height={300}
           src={image}
           alt="image"
         />

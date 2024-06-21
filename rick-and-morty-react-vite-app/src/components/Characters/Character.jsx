@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { CHARACTERS_URL as url, CHARACTERS_NAV_URL } from "../../data";
-import Card from "../Card";
 import CharacterGender from "./CharacterGender";
 import CharacterStatus from "./CharacterStatus";
 
@@ -28,21 +27,26 @@ export default function Character(id = 1) {
     }
   }, [id]);
 
-  const { image, name, status, species, gender, origin, location } = data;
+  const { image, name, status, species, gender, origin, location, episode } =
+    data;
+
   return (
-    <Card>
+    <div key={id} className="w-[50%] flex flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
       <img
         className="rounded-3xl shadow-black shadow-md"
+        width={300}
+        height={300}
         src={image}
         alt="image"
       />
-      <h1 className="text-xl font-bold flex flex-row">
-        {name}
-        <span className="flex justify-center items-center">
-          <CharacterGender gender={gender} />
-        </span>
-      </h1>
+
       <div className="flex flex-col items-start justify-start">
+        <h1 className="text-xl font-bold flex flex-row">
+          {name}
+          <span className="flex justify-center items-center">
+            <CharacterGender gender={gender} />
+          </span>
+        </h1>
         <p>
           <span className="font-semibold">ID:</span> {id}
         </p>
@@ -64,6 +68,6 @@ export default function Character(id = 1) {
           </p>
         )}
       </div>
-    </Card>
+    </div>
   );
 }
