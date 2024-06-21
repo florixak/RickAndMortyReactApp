@@ -1,9 +1,9 @@
 import Card from "../Card";
 
 export default function Location({ data }) {
-    const { id, name, type, dimension } = data;
+  const { id, name, type, dimension } = data;
   return (
-    <Card>
+    <Card type="locations" id={id}>
       <h1 className="text-xl font-bold">{name}</h1>
       <div className="flex flex-col items-start justify-start">
         <p>ID: {id}</p>

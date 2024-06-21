@@ -5,7 +5,7 @@ export default function Episode({ data }) {
   const { id, name, air_date, episode } = data;
 
   return (
-    <Card>
+    <Card type={"episodes"} id={id}>
       <h1 className="text-xl font-bold">{name}</h1>
       <div className="flex flex-col items-start justify-start">
         <p>ID: {id}</p>

@@ -6,7 +6,9 @@ import Home from "./components/Home";
 import Characters from "./components/Characters/Characters";
 import Character from "./components/Characters/Character";
 import Locations from "./components/Locations/Locations";
+import Location from "./components/Locations/Location";
 import Episodes from "./components/Episodes/Episodes";
+import Episode from "./components/Episodes/Episode";
 import Footer from "./components/Footer";
 import PageNotFoundError from "./components/PageNotFoundError";
 
@@ -17,13 +19,11 @@ const App = () => {
       <Routes>
         <Route path="/" exact index element={<Home />} />
         <Route path="/characters" element={<Characters />} />
-        <Route path="/character/:id" element={<Character id={0} />} />
-        <Route path="/locations" element={<Locations />}>
-          <Route path=":id" element={<Locations />} />
-        </Route>
-        <Route path="/episodes" element={<Episodes />}>
-          <Route path=":id" element={<Episodes />} />
-        </Route>
+        <Route path="/characters/:id" element={<Character id={0} />} />
+        <Route path="/locations" element={<Locations />} />
+        <Route path="/locations/:id" element={<Location id={0} />} />
+        <Route path="/episodes" element={<Episodes />} />
+        <Route path="/episodes/:id" element={<Episode />} />
         <Route path="/*" element={<PageNotFoundError />} />
       </Routes>
       <Footer />
