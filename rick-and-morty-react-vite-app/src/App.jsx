@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Characters from "./components/Characters/Characters";
+import Character from "./components/Characters/Character";
 import Locations from "./components/Locations/Locations";
 import Episodes from "./components/Episodes/Episodes";
 import Footer from "./components/Footer";
@@ -15,9 +16,8 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" exact index element={<Home />} />
-        <Route path="/characters" element={<Characters />}>
-          <Route path=":id" element={<Characters />} />
-        </Route>
+        <Route path="/characters" element={<Characters />} />
+        <Route path="/character/:id" element={<Character />} />
         <Route path="/locations" element={<Locations />}>
           <Route path=":id" element={<Locations />} />
         </Route>
