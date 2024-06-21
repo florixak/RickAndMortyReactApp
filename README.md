@@ -1,5 +1,8 @@
 # Rick And Morty Web Using API
 
+## Popis
+This web application is built on Vite React and uses the Rick and Morty public API to display information about characters, episodes and locations from the show. Data is obtained by the axios library.
+
 ## Instalace
 Steps for local installation and startup
 
@@ -18,7 +21,7 @@ npm run dev
 ```
 
 ## Sample of work
-Screenshoty nebo krátké popisy toho, jak aplikace vypadá a funguje.
+Screenshots of how application looks and works.
 
 ![Screenshot Hlavní stránky](link-na-screenshot)
 
