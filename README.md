@@ -15,7 +15,7 @@ npm install
 
 # Spuštění aplikace
 npm run dev
-
+```
 
 ## Poděkování
 - Thanks to [Rick and Morty API](https://rickandmortyapi.com/) for providing data.
