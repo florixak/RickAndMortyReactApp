@@ -3,12 +3,12 @@ import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import Home from "./components/Home";
-import Characters from "./components/Characters/Characters";
-import Character from "./components/Characters/Character";
-import Locations from "./components/Locations/Locations";
-import Location from "./components/Locations/Location";
-import Episodes from "./components/Episodes/Episodes";
-import Episode from "./components/Episodes/Episode";
+import Characters from "./components/characters/Characters";
+import Character from "./components/characters/Character";
+import Locations from "./components/locations/Locations";
+import Location from "./components/locations/Location";
+import Episodes from "./components/episodes/Episodes";
+import Episode from "./components/episodes/Episode";
 import Footer from "./components/Footer";
 import PageNotFoundError from "./components/PageNotFoundError";
 
@@ -18,13 +18,13 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" exact index element={<Home />} />
-        <Route path="/characters" element={<Characters />} />
-        <Route path="/characters/:id" element={<Character id={0} />} />
-        <Route path="/locations" element={<Locations />} />
-        <Route path="/locations/:id" element={<Location id={0} />} />
-        <Route path="/episodes" element={<Episodes />} />
-        <Route path="/episodes/:id" element={<Episode />} />
-        <Route path="/*" element={<PageNotFoundError />} />
+        <Route path="characters" element={<Characters />} />
+        <Route path="characters/:id" element={<Character id={0} />} />
+        <Route path="locations" element={<Locations />} />
+        <Route path="locations/:id" element={<Location id={0} />} />
+        <Route path="episodes" element={<Episodes />} />
+        <Route path="episodes/:id" element={<Episode />} />
+        <Route path="*" element={<PageNotFoundError />} />
       </Routes>
       <Footer />
     </div>

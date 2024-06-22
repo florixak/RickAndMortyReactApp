@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import PagingButton from "./PagingButton";
-import CharacterCard from "./Characters/CharacterCard";
-import LocationCard from "./Locations/LocationCard";
-import EpisodeCard from "./Episodes/EpisodeCard";
-import CharacterSkeleton from "./Characters/CharacterSkeleton";
-import LocationSkeleton from "./Locations/LocationSkeleton";
-import EpisodeSkeleton from "./Episodes/EpisodeSkeleton";
+import CharacterCard from "./characters/CharacterCard";
+import LocationCard from "./locations/LocationCard";
+import EpisodeCard from "./episodes/EpisodeCard";
+import CharacterSkeleton from "./characters/CharacterSkeleton";
+import LocationSkeleton from "./locations/LocationSkeleton";
+import EpisodeSkeleton from "./episodes/EpisodeSkeleton";
 
 export default function CardList({ title, url, type }) {
   const [loading, setLoading] = useState(true);
