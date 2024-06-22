@@ -10,7 +10,7 @@ export default function CharacterSkeleton() {
     <Card>
       <div className="relative animate-pulse">
         <svg
-          className="w-[300px] h-[300px] text-gray-200 dark:text-gray-600"
+          className="text-gray-200 dark:text-gray-600"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"

@@ -29,20 +29,17 @@ export default function CardList({ title, url, type }) {
     }, 1000);
 
     return () => {
-      console.log("Timer cleared")
       clearTimeout(timer);
-    }
-
+    };
   }, []);
 
   useEffect(() => {
-    if (id && id > 0) {
+    if (id && parseInt(id) > 0) {
       axios
         .get(`${url}/${id}`)
         .then((response) => {
           setData([response.data]);
           setInfo({ pages: 1 });
-          console.log(response.data);
         })
         .catch((error) => {
           setData([]);
@@ -51,8 +48,6 @@ export default function CardList({ title, url, type }) {
       axios.get(`${url}?page=${page}`).then((response) => {
         setData(response.data.results);
         setInfo(response.data.info);
-        console.log(response.data.results);
-        console.log(response.data.info);
       });
     }
   }, [searchParams, url]);
@@ -104,7 +99,7 @@ export default function CardList({ title, url, type }) {
   };
 
   const filteredData =
-    id && id !== "all"
+    id !== "all"
       ? data.filter((character) => character.id === parseInt(id))
       : data;
 
@@ -134,7 +129,7 @@ export default function CardList({ title, url, type }) {
           type="number"
           min={1}
           max={info.count}
-          placeholder={`Specify id (1 to ${info.count})`}
+          placeholder={`Specify ID (1 to ${info.count})`}
           value={id > 0 ? id : ""}
           onChange={handleInputValue}
         />

@@ -14,7 +14,7 @@ import PageNotFoundError from "./components/PageNotFoundError";
 
 const App = () => {
   return (
-    <div className="flex flex-col w-full h-full items-center gap-5 bg-slate-800 text-white">
+    <div className="relative flex flex-col w-full h-full items-center gap-5 bg-slate-800 text-white">
       <Header />
       <Routes>
         <Route path="/" exact index element={<Home />} />
