@@ -19,7 +19,7 @@ export default function Character(id) {
         .get(`${url}/${id}`)
         .then((response) => {
           setData(response.data);
-          console.log(response.data);
+          //console.log(response.data);
         })
         .catch((error) => {
           setData({});
