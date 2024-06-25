@@ -6,7 +6,7 @@ import PagingButton from "./PagingButton";
 import CharacterCard from "./characters/CharacterCard";
 import LocationCard from "./locations/LocationCard";
 import EpisodeCard from "./episodes/EpisodeCard";
-import CharacterSkeleton from "./characters/CharacterSkeleton";
+import CharacterCardSkeleton from "./characters/CharacterCardSkeleton";
 import LocationSkeleton from "./locations/LocationSkeleton";
 import EpisodeSkeleton from "./episodes/EpisodeSkeleton";
 
@@ -146,7 +146,7 @@ export default function CardList({ title, url, type }) {
           filteredData.map((card) => {
             if (type === "characters")
               return loading ? (
-                <CharacterSkeleton key={card.id} />
+                <CharacterCardSkeleton key={card.id} />
               ) : (
                 <CharacterCard key={card.id} data={card} />
               );
