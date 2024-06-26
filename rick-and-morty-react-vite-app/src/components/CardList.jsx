@@ -31,7 +31,7 @@ export default function CardList({ title, url, type }) {
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [searchParams]);
 
   useEffect(() => {
     if (id && parseInt(id) > 0) {
