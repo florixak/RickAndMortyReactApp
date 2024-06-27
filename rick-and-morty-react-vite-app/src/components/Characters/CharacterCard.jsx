@@ -1,6 +1,7 @@
 import Card from "../Card";
 import CharacterGender from "../characters/CharacterGender";
 import CharacterStatus from "../characters/CharacterStatus";
+import DefaultCharacterImage from "../../assets/DefaultCharacterImage.png";
 
 export default function CharacterCard({ data }) {
   const { image, name, id, status, species, gender, origin, location } = data;
@@ -8,11 +9,11 @@ export default function CharacterCard({ data }) {
   return (
     <Card type={"characters"} id={id}>
       <img
-        className="rounded-3xl shadow-black shadow-md"
+        className="rounded-3xl shadow-black shadow-md m-auto"
         width={300}
         height={300}
-        src={image}
-        alt="image"
+        src={image ? image : DefaultCharacterImage}
+        alt={name ? `${name}'s image` : "Characters image"}
       />
       <h1 className="text-xl font-bold flex flex-row">
         {name}

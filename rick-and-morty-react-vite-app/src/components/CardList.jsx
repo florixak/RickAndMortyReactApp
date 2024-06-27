@@ -26,13 +26,11 @@ export default function CardList({ title, url, type }) {
   useEffect(() => {
     setLoading(true);
     const timer = setTimeout(() => {
-      console.log("Turn off timeout");
       setLoading(false);
-    }, 1000);
+    }, 1500);
 
     return () => {
       clearTimeout(timer);
-      console.log("Clearing timerout")
     };
   }, [searchParams]);
 
