@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import CharacterGender from "./CharacterGender";
-import CharacterStatus from "./CharacterStatus";
+import CharacterGender from "../characters/CharacterGender";
+import CharacterStatus from "../characters/CharacterStatus";
 import {
   CHARACTERS_URL as url,
   CHARACTERS_NAV_URL as navUrl,
@@ -36,7 +36,7 @@ export default function Character(id) {
   return (
     <div
       key={id}
-      className="w-[50%] flex flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
+      className="w-[50%] flex flex-col lg:flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
     >
       <img
         className="rounded-3xl shadow-black shadow-md"
@@ -50,15 +50,15 @@ export default function Character(id) {
         <h1 className="text-xl font-bold flex flex-row">
           {name}
           <span className="flex justify-center items-center">
-            <CharacterGender gender={gender} />
+            {gender && <CharacterGender gender={gender} />}
           </span>
         </h1>
         <p>
           <span className="font-semibold">ID:</span> {id}
         </p>
         <p className="flex justify-center items-center">
-          <span className="font-semibold">Status:</span>{" "}
-          <CharacterStatus status={status} />
+          <span className="font-semibold">Status: </span>
+          {status && <CharacterStatus status={status} />}
         </p>
         <p>
           <span className="font-semibold">Species:</span> {species}

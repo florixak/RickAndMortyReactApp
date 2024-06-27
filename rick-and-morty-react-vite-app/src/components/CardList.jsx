@@ -24,12 +24,15 @@ export default function CardList({ title, url, type }) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
     const timer = setTimeout(() => {
+      console.log("Turn off timeout");
       setLoading(false);
     }, 1000);
 
     return () => {
       clearTimeout(timer);
+      console.log("Clearing timerout")
     };
   }, [searchParams]);
 
@@ -106,14 +109,14 @@ export default function CardList({ title, url, type }) {
   const PagingButtons = () => {
     return id && id == "all" ? (
       <div className="flex w-[50%] md:w-[30%] lg:w-[20%] justify-evenly items-center">
-        <PagingButton handleClick={setPreviousPage}>
+        <PagingButton handleClick={setPreviousPage} isDisabled={loading}>
           <MdNavigateBefore />
         </PagingButton>
         <p>
           {page ? page : "Loading..."} /{" "}
           {info.pages ? info.pages : "Loading..."}
         </p>
-        <PagingButton handleClick={setNextPage}>
+        <PagingButton handleClick={setNextPage} isDisabled={loading}>
           <MdNavigateNext />
         </PagingButton>
       </div>

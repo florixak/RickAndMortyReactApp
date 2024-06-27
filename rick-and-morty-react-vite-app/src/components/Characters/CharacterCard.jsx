@@ -1,6 +1,6 @@
 import Card from "../Card";
-import CharacterStatus from "./CharacterStatus";
-import CharacterGender from "./CharacterGender";
+import CharacterGender from "../characters/CharacterGender";
+import CharacterStatus from "../characters/CharacterStatus";
 
 export default function CharacterCard({ data }) {
   const { image, name, id, status, species, gender, origin, location } = data;
@@ -17,7 +17,7 @@ export default function CharacterCard({ data }) {
       <h1 className="text-xl font-bold flex flex-row">
         {name}
         <span className="flex justify-center items-center">
-          <CharacterGender gender={gender} />
+          {gender && <CharacterGender gender={gender} />}
         </span>
       </h1>
       <div className="flex flex-col items-start justify-start">
@@ -25,8 +25,8 @@ export default function CharacterCard({ data }) {
           <span className="font-semibold">ID:</span> {id}
         </p>
         <p className="flex justify-center items-center">
-          <span className="font-semibold">Status:</span>{" "}
-          <CharacterStatus status={status} />
+          <span className="font-semibold">Status: </span>
+          {status && <CharacterStatus status={status} />}
         </p>
         <p>
           <span className="font-semibold">Species:</span> {species}

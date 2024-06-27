@@ -1,7 +1,7 @@
-export default function PagingButton({ children, handleClick }) {
+export default function PagingButton({ children, handleClick, isDisabled }) {
 
   return (
-    <button className="p-5" onClick={handleClick}>
+    <button className="p-5" onClick={handleClick} disabled={isDisabled}>
       {children}
     </button>
   );
