@@ -4,6 +4,8 @@ import { FaMapLocationDot } from "react-icons/fa6";
 import { MdVideoLibrary } from "react-icons/md";
 import { CHARACTERS_NAV_URL, LOCATIONS_NAV_URL, EPISODES_NAV_URL } from "../data";
 
+const ICON_SIZE = 200;
+
 export default function Home() {
 
   return (
@@ -14,17 +16,17 @@ export default function Home() {
       <div className="flex flex-wrap w-full justify-center gap-20">
         <NavCard
           title="Characters"
-          image={<GiCharacter size={200} />}
+          icon={<GiCharacter size={ICON_SIZE} />}
           navigateTo={CHARACTERS_NAV_URL}
         />
         <NavCard
           title="Locations"
-          image={<FaMapLocationDot size={200} />}
+          icon={<FaMapLocationDot size={ICON_SIZE} />}
           navigateTo={LOCATIONS_NAV_URL}
         />
         <NavCard
           title="Episodes"
-          image={<MdVideoLibrary size={200} />}
+          icon={<MdVideoLibrary size={ICON_SIZE} />}
           navigateTo={EPISODES_NAV_URL}
         />
       </div>
