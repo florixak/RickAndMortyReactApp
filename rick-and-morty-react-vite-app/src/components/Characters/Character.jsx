@@ -7,11 +7,24 @@ import {
   CHARACTERS_URL as url,
   CHARACTERS_NAV_URL as navUrl,
 } from "../../data";
+import CharacterSkeleton from "./CharacterSkeleton";
 
 export default function Character(id) {
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState({});
   id = useParams().id ? useParams().id : id;
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [id]);
 
   useEffect(() => {
     if (id) {
@@ -33,13 +46,15 @@ export default function Character(id) {
   const { image, name, status, species, gender, origin, location, episode } =
     data;
 
+
+  if (loading) {
+    return <CharacterSkeleton />
+  }
+
   return (
-    <div
-      key={id}
-      className="w-[50%] flex flex-col lg:flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
-    >
+    <div className="flex flex-col justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
       <img
-        className="rounded-3xl shadow-black shadow-md"
+        className="rounded-3xl shadow-black shadow-md m-auto"
         width={300}
         height={300}
         src={image}

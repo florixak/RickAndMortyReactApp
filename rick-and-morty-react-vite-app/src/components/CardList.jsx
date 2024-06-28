@@ -11,7 +11,7 @@ import LocationSkeleton from "./locations/LocationSkeleton";
 import EpisodeSkeleton from "./episodes/EpisodeSkeleton";
 
 export default function CardList({ title, url, type }) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [info, setInfo] = useState({});
 
