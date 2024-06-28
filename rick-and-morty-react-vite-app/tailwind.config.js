@@ -7,6 +7,8 @@ export default {
         "spin-slow": "spin 3s linear infinite",
         "fade-in": "fadeIn 3s linear",
         "fade-out": "fadeOut 3s linear",
+        "scaling": "scaling 1.5s linear",
+        "infinite-scaling": "scaling 3s linear infinite",
       },
       keyframes: {
         fadeIn: {
@@ -22,6 +24,11 @@ export default {
           "50%": { opacity: 0.5 },
           "75%": { opacity: 0.25 },
           "100%": { opacity: 0 },
+        },
+        scaling: {
+          "0%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" },
+          "100%": { transform: "scale(1)" },
         },
       },
     },

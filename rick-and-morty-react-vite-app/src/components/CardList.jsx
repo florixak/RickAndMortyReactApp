@@ -12,6 +12,7 @@ import EpisodeSkeleton from "./episodes/EpisodeSkeleton";
 
 export default function CardList({ title, url, type }) {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
   const [data, setData] = useState([]);
   const [info, setInfo] = useState({});
 
@@ -35,21 +36,21 @@ export default function CardList({ title, url, type }) {
   }, [searchParams]);
 
   useEffect(() => {
-    if (id && parseInt(id) > 0) {
-      axios
-        .get(`${url}/${id}`)
-        .then((response) => {
+    try {
+      if (id && parseInt(id) > 0) {
+        axios.get(`${url}/${id}`).then((response) => {
           setData([response.data]);
           setInfo({ pages: 1 });
-        })
-        .catch((error) => {
-          setData([]);
         });
-    } else {
-      axios.get(`${url}?page=${page}`).then((response) => {
-        setData(response.data.results);
-        setInfo(response.data.info);
-      });
+      } else {
+        axios.get(`${url}?page=${page}`).then((response) => {
+          setData(response.data.results);
+          setInfo(response.data.info);
+        });
+      }
+    } catch (e) {
+      setData([]);
+      setInfo({ pages: 1 });
     }
   }, [searchParams, url]);
 

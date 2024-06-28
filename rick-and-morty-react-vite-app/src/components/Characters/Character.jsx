@@ -27,28 +27,25 @@ export default function Character(id) {
   }, [id]);
 
   useEffect(() => {
-    if (id) {
-      axios
-        .get(`${url}/${id}`)
-        .then((response) => {
+    try {
+      if (id) {
+        axios.get(`${url}/${id}`).then((response) => {
           setData(response.data);
           //console.log(response.data);
-        })
-        .catch((error) => {
-          setData({});
-          navigate(navUrl, { replace: true });
         });
-    } else {
-      navigate(navUrl, { replace: true });
+      } else {
+        navigate(navUrl, { replace: true });
+      }
+    } catch (e) {
+      setData({});
     }
   }, [id]);
 
   const { image, name, status, species, gender, origin, location, episode } =
     data;
 
-
   if (loading) {
-    return <CharacterSkeleton />
+    return <CharacterSkeleton />;
   }
 
   return (
