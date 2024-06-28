@@ -107,7 +107,7 @@ export default function CardList({ title, url, type }) {
 
   const PagingButtons = () => {
     return id && id == "all" ? (
-      <div className="flex w-[50%] md:w-[30%] lg:w-[20%] justify-evenly items-center">
+      <div className="w-[50%] md:w-[30%] lg:w-[20%] flex justify-evenly items-center">
         <PagingButton handleClick={setPreviousPage} isDisabled={loading}>
           <MdNavigateBefore />
         </PagingButton>
