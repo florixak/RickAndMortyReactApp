@@ -1,11 +1,12 @@
 import Card from "../Card";
 
-export default function LocationSkeleton() {
+export default function EpisodeCardSkeleton() {
   const TextSkeleton = () => {
     return (
       <div className="w-[300px] h-3 bg-gray-800 rounded-full mb-3 animate-pulse"></div>
     );
   };
+
   return (
     <Card>
       <div className="w-[300px] h-5 bg-gray-800 rounded-full mb-4 animate-pulse"></div>

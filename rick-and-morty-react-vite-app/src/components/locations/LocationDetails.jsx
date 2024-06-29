@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { LOCATIONS_URL as url, LOCATIONS_NAV_URL as navUrl } from "../../data";
 
-export default function Location(id) {
+export default function LocationDetails(id) {
   const [data, setData] = useState({});
   id = useParams().id ? useParams().id : id;
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ export default function Location(id) {
   return (
     <div
       key={id}
-      className="w-[50%] flex flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
+      className="w-[50%] flex flex-row md:flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
     >
       <div className="flex flex-col items-start justify-start">
         <h1 className="text-xl font-bold flex flex-row">{name}</h1>

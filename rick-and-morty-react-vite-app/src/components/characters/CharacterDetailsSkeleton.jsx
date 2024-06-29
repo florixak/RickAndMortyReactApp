@@ -1,4 +1,4 @@
-export default function CharacterSkeleton() {
+export default function CharacterDetailsSkeleton() {
   const TextSkeleton = () => {
     return (
       <div className="w-[300px] h-3 bg-gray-800 rounded-full mb-3 animate-pulse"></div>
@@ -6,7 +6,7 @@ export default function CharacterSkeleton() {
   };
 
   return (
-    <div className="flex flex-col justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
+    <div className="flex flex-col md:flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
       <div className="relative animate-pulse">
         <svg
           className="text-gray-200 dark:text-gray-600"
