@@ -7,13 +7,13 @@ import Footer from "./components/Footer";
 import PageNotFoundError from "./components/PageNotFoundError";
 import Loader from "./components/Loader";
 
-const Characters = lazy(() => import("./components/characters/Characters"));
-const Locations = lazy(() => import("./components/locations/Locations"));
-const Episodes = lazy(() => import("./components/episodes/Episodes"));
+const CharacterList = lazy(() => import("./components/characters/CharacterList"));
+const LocationList = lazy(() => import("./components/locations/LocationList"));
+const EpisodeList = lazy(() => import("./components/episodes/EpisodeList"));
 
-const Character = lazy(() => import("./components/characters/Character"));
-const Location = lazy(() => import("./components/locations/Location"));
-const Episode = lazy(() => import("./components/episodes/Episode"));
+const CharacterDetails = lazy(() => import("./components/characters/CharacterDetails"));
+const LocationDetails = lazy(() => import("./components/locations/LocationDetails"));
+const EpisodeDetails = lazy(() => import("./components/episodes/EpisodeDetails"));
 
 const App = () => {
   return (
@@ -25,7 +25,7 @@ const App = () => {
           path="characters"
           element={
             <Suspense fallback={<Loader />}>
-              <Characters />
+              <CharacterList />
             </Suspense>
           }
         />
@@ -33,7 +33,7 @@ const App = () => {
           path="characters/:id"
           element={
             <Suspense fallback={<Loader />}>
-              <Character id={0} />
+              <CharacterDetails id={0} />
             </Suspense>
           }
         />
@@ -41,7 +41,7 @@ const App = () => {
           path="locations"
           element={
             <Suspense fallback={<Loader />}>
-              <Locations />
+              <LocationList />
             </Suspense>
           }
         />
@@ -49,7 +49,7 @@ const App = () => {
           path="locations/:id"
           element={
             <Suspense fallback={<Loader />}>
-              <Location id={0} />
+              <LocationDetails id={0} />
             </Suspense>
           }
         />
@@ -57,7 +57,7 @@ const App = () => {
           path="episodes"
           element={
             <Suspense fallback={<Loader />}>
-              <Episodes />
+              <EpisodeList />
             </Suspense>
           }
         />
@@ -65,7 +65,7 @@ const App = () => {
           path="episodes/:id"
           element={
             <Suspense fallback={<Loader />}>
-              <Episode />
+              <EpisodeDetails />
             </Suspense>
           }
         />

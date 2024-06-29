@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import CharacterGender from "../characters/CharacterGender";
-import CharacterStatus from "../characters/CharacterStatus";
+import CharacterGender from "./CharacterGender";
+import CharacterStatus from "./CharacterStatus";
 import {
   CHARACTERS_URL as url,
   CHARACTERS_NAV_URL as navUrl,
 } from "../../data";
-import CharacterSkeleton from "./CharacterSkeleton";
+import CharacterDetailsSkeleton from "./CharacterDetailsSkeleton";
 
-export default function Character(id) {
-  const [loading, setLoading] = useState(true);
+export default function CharacterDetails(id) {
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({});
   id = useParams().id ? useParams().id : id;
   const navigate = useNavigate();
@@ -45,11 +45,11 @@ export default function Character(id) {
     data;
 
   if (loading) {
-    return <CharacterSkeleton />;
+    return <CharacterDetailsSkeleton />;
   }
 
   return (
-    <div className="flex flex-col justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
+    <div className="flex flex-col md:flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
       <img
         className="rounded-3xl shadow-black shadow-md m-auto"
         width={300}

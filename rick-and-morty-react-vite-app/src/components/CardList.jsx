@@ -7,8 +7,8 @@ import CharacterCard from "./characters/CharacterCard";
 import LocationCard from "./locations/LocationCard";
 import EpisodeCard from "./episodes/EpisodeCard";
 import CharacterCardSkeleton from "./characters/CharacterCardSkeleton";
-import LocationSkeleton from "./locations/LocationSkeleton";
-import EpisodeSkeleton from "./episodes/EpisodeSkeleton";
+import LocationCardSkeleton from "./locations/LocationCardSkeleton";
+import EpisodeCardSkeleton from "./episodes/EpisodeCardSkeleton";
 
 export default function CardList({ title, url, type }) {
   const [loading, setLoading] = useState(false);
@@ -161,13 +161,13 @@ export default function CardList({ title, url, type }) {
               );
             else if (type === "locations")
               return loading ? (
-                <LocationSkeleton key={card.id} />
+                <LocationCardSkeleton key={card.id} />
               ) : (
                 <LocationCard key={card.id} data={card} />
               );
             else if (type === "episodes")
               return loading ? (
-                <EpisodeSkeleton key={card.id} />
+                <EpisodeCardSkeleton key={card.id} />
               ) : (
                 <EpisodeCard key={card.id} data={card} />
               );
