@@ -1,11 +1,11 @@
 import Card from "../Card";
-import CharacterGender from "../characters/CharacterGender";
-import CharacterStatus from "../characters/CharacterStatus";
-import CharacterImage from "../characters/CharacterImage";
-import CharacterOrigin from "./CharacterOrigin";
-import CharacterSpecies from "./CharacterSpecies";
-import CharacterLocation from "./CharacterLocation";
-import CharacterID from "./CharacterID";
+import CharacterGender from "./information/CharacterGender";
+import CharacterStatus from "./information/CharacterStatus";
+import CharacterImage from "./information/CharacterImage";
+import CharacterOrigin from "./information/CharacterOrigin";
+import CharacterSpecies from "./information/CharacterSpecies";
+import CharacterLocation from "./information/CharacterLocation";
+import CharacterID from "./information/CharacterID";
 
 export default function CharacterCard({ data }) {
   const { image, name, id, status, species, gender, origin, location } = data;

@@ -1,4 +1,4 @@
-import DefaultCharacterImage from "../../assets/DefaultCharacterImage.png";
+import DefaultCharacterImage from "../../../assets/DefaultCharacterImage.png";
 
 export default function CharacterImage({ name, image }) {
   return (
