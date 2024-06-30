@@ -5,9 +5,10 @@ export default function CharacterGender({ gender }) {
     return gender === "Male" ? <IoMdMale /> : <IoMdFemale />;
   };
 
+  if (!gender) return null;
   return (
-    <span className={`ml-1 font-bold text-xl`}>
-      {symbol()}
-    </span>
+    <p className="flex justify-center items-center">
+      <span className={`ml-1 font-bold text-xl`}>{symbol()}</span>
+    </p>
   );
 }

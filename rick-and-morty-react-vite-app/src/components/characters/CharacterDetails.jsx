@@ -1,16 +1,21 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import CharacterGender from "./CharacterGender";
-import CharacterStatus from "./CharacterStatus";
-import CharacterImage from "./CharacterImage";
 import {
   CHARACTERS_URL as url,
   CHARACTERS_NAV_URL as navUrl,
 } from "../../data";
-import CharacterDetailsSkeleton from "./CharacterDetailsSkeleton";
 
-export default function CharacterDetails(id) {
+import CharacterGender from "./CharacterGender";
+import CharacterStatus from "./CharacterStatus";
+import CharacterImage from "./CharacterImage";
+import CharacterDetailsSkeleton from "./CharacterDetailsSkeleton";
+import CharacterOrigin from "./CharacterOrigin";
+import CharacterSpecies from "./CharacterSpecies";
+import CharacterLocation from "./CharacterLocation";
+import CharacterID from "./CharacterID";
+
+export default function CharacterDetails({ id }) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({});
   id = useParams().id ? useParams().id : id;
@@ -55,30 +60,13 @@ export default function CharacterDetails(id) {
       <div className="flex flex-col items-start justify-start">
         <h1 className="text-xl font-bold flex flex-row">
           {name}
-          <span className="flex justify-center items-center">
-            {gender && <CharacterGender gender={gender} />}
-          </span>
+          <CharacterGender gender={gender} />
         </h1>
-        <p>
-          <span className="font-semibold">ID:</span> {id}
-        </p>
-        <p className="flex justify-center items-center">
-          <span className="font-semibold">Status: </span>
-          {status && <CharacterStatus status={status} />}
-        </p>
-        <p>
-          <span className="font-semibold">Species:</span> {species}
-        </p>
-        {origin && (
-          <p>
-            <span className="font-semibold">Origin:</span> {origin.name}
-          </p>
-        )}
-        {location && (
-          <p>
-            <span className="font-semibold">Location:</span> {location.name}
-          </p>
-        )}
+        <CharacterID id={id} />
+        <CharacterStatus status={status} />
+        <CharacterSpecies species={species} />
+        <CharacterOrigin origin={origin} />
+        <CharacterLocation location={location} />
       </div>
     </div>
   );

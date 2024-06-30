@@ -2,6 +2,10 @@ import Card from "../Card";
 import CharacterGender from "../characters/CharacterGender";
 import CharacterStatus from "../characters/CharacterStatus";
 import CharacterImage from "../characters/CharacterImage";
+import CharacterOrigin from "./CharacterOrigin";
+import CharacterSpecies from "./CharacterSpecies";
+import CharacterLocation from "./CharacterLocation";
+import CharacterID from "./CharacterID";
 
 export default function CharacterCard({ data }) {
   const { image, name, id, status, species, gender, origin, location } = data;
@@ -11,31 +15,14 @@ export default function CharacterCard({ data }) {
       <CharacterImage image={image} name={name} />
       <h1 className="text-xl font-bold flex flex-row">
         {name}
-        <span className="flex justify-center items-center">
-          {gender && <CharacterGender gender={gender} />}
-        </span>
+        <CharacterGender gender={gender} />
       </h1>
       <div className="flex flex-col items-start justify-start">
-        <p>
-          <span className="font-semibold">ID:</span> {id}
-        </p>
-        <p className="flex justify-center items-center">
-          <span className="font-semibold">Status: </span>
-          {status && <CharacterStatus status={status} />}
-        </p>
-        <p>
-          <span className="font-semibold">Species:</span> {species}
-        </p>
-        {origin && (
-          <p>
-            <span className="font-semibold">Origin:</span> {origin.name}
-          </p>
-        )}
-        {location && (
-          <p>
-            <span className="font-semibold">Location:</span> {location.name}
-          </p>
-        )}
+        <CharacterID id={id} />
+        <CharacterStatus status={status} />
+        <CharacterSpecies species={species} />
+        <CharacterOrigin origin={origin} />
+        <CharacterLocation location={location} />
       </div>
     </Card>
   );
