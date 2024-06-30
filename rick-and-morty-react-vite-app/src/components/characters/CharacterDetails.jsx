@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import CharacterGender from "./CharacterGender";
 import CharacterStatus from "./CharacterStatus";
+import CharacterImage from "./CharacterImage";
 import {
   CHARACTERS_URL as url,
   CHARACTERS_NAV_URL as navUrl,
@@ -50,14 +51,7 @@ export default function CharacterDetails(id) {
 
   return (
     <div className="flex flex-col md:flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
-      <img
-        className="rounded-3xl shadow-black shadow-md m-auto"
-        width={300}
-        height={300}
-        src={image}
-        alt="image"
-      />
-
+      <CharacterImage image={image} name={name} />
       <div className="flex flex-col items-start justify-start">
         <h1 className="text-xl font-bold flex flex-row">
           {name}
