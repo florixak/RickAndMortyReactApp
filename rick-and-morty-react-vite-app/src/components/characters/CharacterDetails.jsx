@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   CHARACTERS_URL as url,
   CHARACTERS_NAV_URL as navUrl,
+  getEpisodeURL
 } from "../../data";
 
 import CharacterGender from "./information/CharacterGender";
 import CharacterStatus from "./information/CharacterStatus";
 import CharacterImage from "./information/CharacterImage";
-import CharacterDetailsSkeleton from "./CharacterDetailsSkeleton";
+import CharacterDetailsSkeleton from "./skeleton/CharacterDetailsSkeleton";
 import CharacterOrigin from "./information/CharacterOrigin";
 import CharacterSpecies from "./information/CharacterSpecies";
 import CharacterLocation from "./information/CharacterLocation";
 import CharacterID from "./information/CharacterID";
+import CharacterName from "./information/CharacterName";
 
 export default function CharacterDetails({ id }) {
   const [loading, setLoading] = useState(false);
@@ -59,7 +61,7 @@ export default function CharacterDetails({ id }) {
       <CharacterImage image={image} name={name} />
       <div className="flex flex-col items-start justify-start">
         <h1 className="text-xl font-bold flex flex-row">
-          {name}
+          <CharacterName name={name} />
           <CharacterGender gender={gender} />
         </h1>
         <CharacterID id={id} />
@@ -67,6 +69,16 @@ export default function CharacterDetails({ id }) {
         <CharacterSpecies species={species} />
         <CharacterOrigin origin={origin} />
         <CharacterLocation location={location} />
+
+        <div className="flex flex-wrap gap-2 max-w-[300px]">
+          Episodes:
+          {episode && episode.map((ep) => {
+            const episodeNum = ep.match(/\/(\d+)$/)[1];
+            return (
+              <span onClick={() => navigate(getEpisodeURL(episodeNum))} id={ep} className="hover:cursor-pointer hover:underline">{episodeNum}</span>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

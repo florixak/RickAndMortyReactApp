@@ -7,4 +7,16 @@ export const CHARACTERS_NAV_URL = "/characters?page=1&id=all";
 export const LOCATIONS_NAV_URL = "/locations?page=1&id=all";
 export const EPISODES_NAV_URL = "/episodes?page=1&id=all";
 
+export function getCharacterURL(id) {
+    return `/characters/${id}`;
+}
+
+export function getEpisodeURL(id) {
+    return `/episodes/${id}`;
+}
+
+export function getLocationURL(id) {
+    return `/locations/${id}`;
+}
+
 export const ITEMS_PER_PAGE = 12;

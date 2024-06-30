@@ -6,7 +6,7 @@ import PagingButton from "./PagingButton";
 import CharacterCard from "./characters/CharacterCard";
 import LocationCard from "./locations/LocationCard";
 import EpisodeCard from "./episodes/EpisodeCard";
-import CharacterCardSkeleton from "./characters/CharacterCardSkeleton";
+import CharacterCardSkeleton from "./characters/skeleton/CharacterCardSkeleton";
 import LocationCardSkeleton from "./locations/LocationCardSkeleton";
 import EpisodeCardSkeleton from "./episodes/EpisodeCardSkeleton";
 
