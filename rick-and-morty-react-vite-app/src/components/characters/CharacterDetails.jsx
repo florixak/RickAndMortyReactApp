@@ -75,7 +75,7 @@ export default function CharacterDetails({ id }) {
           {episode && episode.map((ep) => {
             const episodeNum = ep.match(/\/(\d+)$/)[1];
             return (
-              <span onClick={() => navigate(getEpisodeURL(episodeNum))} id={ep} className="hover:cursor-pointer hover:underline">{episodeNum}</span>
+              <span onClick={() => navigate(getEpisodeURL(episodeNum))} key={ep} className="hover:cursor-pointer hover:underline">{episodeNum}</span>
             );
           })}
         </div>
