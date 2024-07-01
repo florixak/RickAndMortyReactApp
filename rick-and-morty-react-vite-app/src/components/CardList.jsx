@@ -12,7 +12,7 @@ import EpisodeCardSkeleton from "./episodes/EpisodeCardSkeleton";
 
 export default function CardList({ title, url, type }) {
   const [loading, setLoading] = useState(false);
-  //const [error, setError] = useState();
+  const [error, setError] = useState();
   const [data, setData] = useState([]);
   const [info, setInfo] = useState({});
 
@@ -44,6 +44,7 @@ export default function CardList({ title, url, type }) {
           setInfo({ pages: 1 });
         })
         .catch((error) => {
+          setError({ message: "Failed to fetch data." });
           setData([]);
           setInfo({ pages: 1 });
         });
@@ -55,6 +56,7 @@ export default function CardList({ title, url, type }) {
           setInfo(response.data.info);
         })
         .catch((error) => {
+          setError({ message: "Failed to fetch data." });
           setData([]);
           setInfo({ pages: 1 });
         });
@@ -128,6 +130,10 @@ export default function CardList({ title, url, type }) {
       </div>
     ) : null;
   };
+
+  if (error) {
+    return <div>Error occured</div>;
+  }
 
   return (
     <div className="w-[90%] h-full flex justify-center items-center gap-5 flex-col">

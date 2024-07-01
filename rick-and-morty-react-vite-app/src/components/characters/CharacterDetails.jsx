@@ -6,7 +6,7 @@ import {
   CHARACTERS_NAV_URL as navUrl,
 } from "../../data";
 
-import CharacterGender from "./information/CharacterGender";
+import CharacterTitle from "./information/CharacterTitle";
 import CharacterStatus from "./information/CharacterStatus";
 import CharacterImage from "./information/CharacterImage";
 import CharacterDetailsSkeleton from "./skeleton/CharacterDetailsSkeleton";
@@ -14,11 +14,11 @@ import CharacterOrigin from "./information/CharacterOrigin";
 import CharacterSpecies from "./information/CharacterSpecies";
 import CharacterLocation from "./information/CharacterLocation";
 import CharacterID from "./information/CharacterID";
-import CharacterName from "./information/CharacterName";
 import CharacterEpisodes from "./information/CharacterEpisodes";
 
 export default function CharacterDetails({ id }) {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
   const [data, setData] = useState({});
   id = useParams().id ? useParams().id : id;
   const navigate = useNavigate();
@@ -56,20 +56,20 @@ export default function CharacterDetails({ id }) {
     return <CharacterDetailsSkeleton />;
   }
 
+  if (error) {
+    return <div>Error occured</div>
+  }
+
   return (
     <div className="flex flex-col lg:flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
       <CharacterImage image={image} name={name} />
       <div className="flex flex-col items-start justify-start">
-        <h1 className="text-xl font-bold flex flex-row">
-          <CharacterName name={name} />
-          <CharacterGender gender={gender} />
-        </h1>
+        <CharacterTitle name={name} gender={gender} />
         <CharacterID id={id} />
         <CharacterStatus status={status} />
         <CharacterSpecies species={species} />
         <CharacterOrigin origin={origin} />
         <CharacterLocation location={location} />
-
         <CharacterEpisodes episode={episode} />
       </div>
     </div>
