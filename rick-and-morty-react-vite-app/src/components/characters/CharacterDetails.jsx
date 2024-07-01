@@ -15,6 +15,7 @@ import CharacterSpecies from "./information/CharacterSpecies";
 import CharacterLocation from "./information/CharacterLocation";
 import CharacterID from "./information/CharacterID";
 import CharacterEpisodes from "./information/CharacterEpisodes";
+import Error from "../Error"
 
 export default function CharacterDetails({ id }) {
   const [loading, setLoading] = useState(false);
@@ -45,6 +46,7 @@ export default function CharacterDetails({ id }) {
         navigate(navUrl, { replace: true });
       }
     } catch (e) {
+      setError({ message: "Failed to fetch data." });
       setData({});
     }
   }, [id]);
@@ -57,7 +59,7 @@ export default function CharacterDetails({ id }) {
   }
 
   if (error) {
-    return <div>Error occured</div>
+    return <Error>{error.message}</Error>
   }
 
   return (

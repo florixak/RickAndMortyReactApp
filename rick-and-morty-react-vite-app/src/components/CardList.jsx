@@ -9,6 +9,7 @@ import EpisodeCard from "./episodes/EpisodeCard";
 import CharacterCardSkeleton from "./characters/skeleton/CharacterCardSkeleton";
 import LocationCardSkeleton from "./locations/LocationCardSkeleton";
 import EpisodeCardSkeleton from "./episodes/EpisodeCardSkeleton";
+import Error from "./Error"
 
 export default function CardList({ title, url, type }) {
   const [loading, setLoading] = useState(false);
@@ -36,30 +37,22 @@ export default function CardList({ title, url, type }) {
   }, [searchParams]);
 
   useEffect(() => {
-    if (id && parseInt(id) > 0) {
-      axios
-        .get(`${url}/${id}`)
-        .then((response) => {
+    try {
+      if (id && parseInt(id) > 0) {
+        axios.get(`${url}/${id}`).then((response) => {
           setData([response.data]);
           setInfo({ pages: 1 });
-        })
-        .catch((error) => {
-          setError({ message: "Failed to fetch data." });
-          setData([]);
-          setInfo({ pages: 1 });
         });
-    } else {
-      axios
-        .get(`${url}?page=${page}`)
-        .then((response) => {
+      } else {
+        axios.get(`${url}?page=${page}`).then((response) => {
           setData(response.data.results);
           setInfo(response.data.info);
-        })
-        .catch((error) => {
-          setError({ message: "Failed to fetch data." });
-          setData([]);
-          setInfo({ pages: 1 });
         });
+      }
+    } catch (e) {
+      setError({ message: "Failed to fetch data." });
+      setData({});
+      setInfo({ pages: 1 });
     }
   }, [searchParams, url]);
 
@@ -132,7 +125,7 @@ export default function CardList({ title, url, type }) {
   };
 
   if (error) {
-    return <div>Error occured</div>;
+    return <Error>{error.message}</Error>
   }
 
   return (
