@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   CHARACTERS_URL as url,
   CHARACTERS_NAV_URL as navUrl,
-  getEpisodeURL
 } from "../../data";
 
 import CharacterGender from "./information/CharacterGender";
@@ -16,6 +15,7 @@ import CharacterSpecies from "./information/CharacterSpecies";
 import CharacterLocation from "./information/CharacterLocation";
 import CharacterID from "./information/CharacterID";
 import CharacterName from "./information/CharacterName";
+import CharacterEpisodes from "./information/CharacterEpisodes";
 
 export default function CharacterDetails({ id }) {
   const [loading, setLoading] = useState(false);
@@ -57,7 +57,7 @@ export default function CharacterDetails({ id }) {
   }
 
   return (
-    <div className="flex flex-col md:flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
+    <div className="flex flex-col lg:flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
       <CharacterImage image={image} name={name} />
       <div className="flex flex-col items-start justify-start">
         <h1 className="text-xl font-bold flex flex-row">
@@ -70,15 +70,7 @@ export default function CharacterDetails({ id }) {
         <CharacterOrigin origin={origin} />
         <CharacterLocation location={location} />
 
-        <div className="flex flex-wrap gap-2 max-w-[300px]">
-          Episodes:
-          {episode && episode.map((ep) => {
-            const episodeNum = ep.match(/\/(\d+)$/)[1];
-            return (
-              <span onClick={() => navigate(getEpisodeURL(episodeNum))} key={ep} className="hover:cursor-pointer hover:underline">{episodeNum}</span>
-            );
-          })}
-        </div>
+        <CharacterEpisodes episode={episode} />
       </div>
     </div>
   );

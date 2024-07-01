@@ -8,7 +8,7 @@ export default function CharacterDetailsSkeleton() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
+    <div className="flex flex-col lg:flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
       <CharacterImageSkeleton />
       <div className="flex flex-col items-start justify-start">
         <h1 className="text-xl font-bold flex flex-row">
