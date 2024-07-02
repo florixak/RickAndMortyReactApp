@@ -9,13 +9,14 @@ export default function CharacterEpisodes({ episode }) {
       {episode &&
         episode.map((ep) => {
           const episodeNum = ep.match(/\/(\d+)$/)[1];
+          console.log(episode.length)
           return (
             <span
               onClick={() => navigate(getEpisodeURL(episodeNum))}
               key={ep}
               className="hover:cursor-pointer hover:underline"
             >
-              {episodeNum}{episodeNum-1 === episode.length ? "" : ","}
+              {episodeNum}{episodeNum === episode.length ? "" : ","}
             </span>
           );
         })}
