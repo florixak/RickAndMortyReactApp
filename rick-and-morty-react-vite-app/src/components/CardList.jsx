@@ -9,7 +9,7 @@ import EpisodeCard from "./episodes/EpisodeCard";
 import CharacterCardSkeleton from "./characters/skeleton/CharacterCardSkeleton";
 import LocationCardSkeleton from "./locations/LocationCardSkeleton";
 import EpisodeCardSkeleton from "./episodes/EpisodeCardSkeleton";
-import Error from "./Error"
+import Error from "./Error";
 
 export default function CardList({ title, url, type }) {
   const [loading, setLoading] = useState(false);
@@ -103,7 +103,7 @@ export default function CardList({ title, url, type }) {
   };
 
   const filteredData =
-    id !== "all"
+    id && id !== "all" && data
       ? data.filter((character) => character.id === parseInt(id))
       : data;
 
@@ -125,7 +125,7 @@ export default function CardList({ title, url, type }) {
   };
 
   if (error) {
-    return <Error>{error.message}</Error>
+    return <Error>{error.message}</Error>;
   }
 
   return (
@@ -136,8 +136,10 @@ export default function CardList({ title, url, type }) {
           className="text-center rounded-lg p-2 text-black w-[250px]"
           type="number"
           min={1}
-          max={info.count}
-          placeholder={`Specify ID (1 to ${info.count})`}
+          max={info.count && info.count}
+          placeholder={`Specify ID (1 to ${
+            info.count ? info.count : "Loading..."
+          })`}
           value={id > 0 ? id : ""}
           onChange={handleInputValue}
         />
