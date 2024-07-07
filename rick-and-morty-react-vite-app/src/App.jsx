@@ -7,13 +7,21 @@ import Footer from "./components/Footer";
 import PageNotFoundError from "./components/PageNotFoundError";
 import Loader from "./components/Loader";
 
-const CharacterList = lazy(() => import("./components/characters/CharacterList"));
+const CharacterList = lazy(() =>
+  import("./components/characters/CharacterList")
+);
 const LocationList = lazy(() => import("./components/locations/LocationList"));
 const EpisodeList = lazy(() => import("./components/episodes/EpisodeList"));
 
-const CharacterDetails = lazy(() => import("./components/characters/CharacterDetails"));
-const LocationDetails = lazy(() => import("./components/locations/LocationDetails"));
-const EpisodeDetails = lazy(() => import("./components/episodes/EpisodeDetails"));
+const CharacterDetails = lazy(() =>
+  import("./components/characters/CharacterDetails")
+);
+const LocationDetails = lazy(() =>
+  import("./components/locations/LocationDetails")
+);
+const EpisodeDetails = lazy(() =>
+  import("./components/episodes/EpisodeDetails")
+);
 
 const App = () => {
   return (

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import PagingButton from "./PagingButton";
 import CharacterCard from "./characters/CharacterCard";
 import LocationCard from "./locations/LocationCard";
@@ -58,7 +57,7 @@ export default function CardList({ title, url, type }) {
 
   const handleInputValue = (e) => {
     setSearchParams(
-      { page: page, id: e.target.value ? e.target.value : "all" },
+      { page: page, id: e.target.value || "all" },
       { replace: true }
     );
   };
@@ -110,16 +109,20 @@ export default function CardList({ title, url, type }) {
   const PagingButtons = () => {
     return id && id === "all" ? (
       <div className="w-[50%] md:w-[30%] lg:w-[20%] flex justify-evenly items-center">
-        <PagingButton handleClick={setPreviousPage} isDisabled={loading}>
-          <MdNavigateBefore />
-        </PagingButton>
+        <PagingButton
+          type="previous"
+          handleClick={setPreviousPage}
+          isDisabled={loading}
+        />
         <p>
-          {page ? page : "Loading..."} /{" "}
-          {info.pages ? info.pages : "Loading..."}
+          {page || "Loading..."} /{" "}
+          {info.pages || "Loading..."}
         </p>
-        <PagingButton handleClick={setNextPage} isDisabled={loading}>
-          <MdNavigateNext />
-        </PagingButton>
+        <PagingButton
+          type="next"
+          handleClick={setNextPage}
+          isDisabled={loading}
+        />
       </div>
     ) : null;
   };
@@ -130,16 +133,14 @@ export default function CardList({ title, url, type }) {
 
   return (
     <div className="w-[90%] h-full flex justify-center items-center gap-5 flex-col">
-      <h1 className="font-bold">{title}</h1>
+      <h1 className="font-bold">{title && title}</h1>
       <form onSubmit={handleFormSubmit}>
         <input
           className="text-center rounded-lg p-2 text-black w-[250px]"
           type="number"
           min={1}
           max={info.count && info.count}
-          placeholder={`Specify ID (1 to ${
-            info.count ? info.count : "Loading..."
-          })`}
+          placeholder={`Specify ID (1 to ${info.count || "Loading..."})`}
           value={id > 0 ? id : ""}
           onChange={handleInputValue}
         />

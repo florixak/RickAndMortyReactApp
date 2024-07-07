@@ -1,33 +1,34 @@
-import React from "react";
-import { Fade } from "react-slideshow-image";
-import "react-slideshow-image/dist/styles.css";
+import { useState } from "react";
+import PagingButton from "./PagingButton";
 
-const fadeImages = [
-  {
-    url: "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-    caption: "Slide 1",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80",
-    caption: "Slide 2",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-    caption: "Slide 3",
-  },
-];
-
-export default function SlideShow() {
+export default function SlideShow({ slides }) {
+  const [currentSlide, setCurrentSlide] = useState(0);
   return (
-    <div className="slide-container">
-      <Fade>
-        {fadeImages.map((fadeImage, index) => (
-          <div key={index}>
-            <img style={{ width: "100%" }} src={fadeImage.url} />
-            <h2>{fadeImage.caption}</h2>
-          </div>
-        ))}
-      </Fade>
+    <div className="w-full flex items-center justify-center flex-col">
+      <div className="w-full flex items-center justify-center gap-5">
+        <PagingButton
+          type="previous"
+          handleClick={() =>
+            setCurrentSlide((prev) =>
+              prev <= 0 ? slides.length - 1 : prev - 1
+            )
+          }
+        >
+          Previous
+        </PagingButton>
+        {slides[currentSlide]}
+
+        <PagingButton
+          type="next"
+          handleClick={() =>
+            setCurrentSlide((prev) =>
+              prev >= slides.length - 1 ? 0 : prev + 1
+            )
+          }
+        >
+          Next
+        </PagingButton>
+      </div>
     </div>
   );
 }
