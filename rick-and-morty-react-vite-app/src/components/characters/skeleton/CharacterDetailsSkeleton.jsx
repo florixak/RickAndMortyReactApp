@@ -9,11 +9,11 @@ export default function CharacterDetailsSkeleton() {
         <h1 className="text-xl font-bold flex flex-row">
           <TextSkeleton width={"300px"} height={"20px"} />
         </h1>
-        <TextSkeleton width={"300px"} height={"12px"} />
-        <TextSkeleton width={"300px"} height={"12px"} />
-        <TextSkeleton width={"300px"} height={"12px"} />
-        <TextSkeleton width={"300px"} height={"12px"} />
-        <TextSkeleton width={"300px"} height={"12px"} />
+        <TextSkeleton width={"300px"} height={"0.75rem"} />
+        <TextSkeleton width={"300px"} height={"0.75rem"} />
+        <TextSkeleton width={"300px"} height={"0.75rem"} />
+        <TextSkeleton width={"300px"} height={"0.75rem"} />
+        <TextSkeleton width={"300px"} height={"0.75rem"} />
       </div>
     </div>
   );

@@ -6,15 +6,15 @@ import { useState } from "react";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpen = () => {
+  const toggleNav = () => {
     setIsOpen((prev) => !prev);
     console.log(isOpen);
   };
   return (
     <header className="w-full flex flex-col items-center gap-5 justify-center bg-slate-700 p-10 text-slate-50">
       <img
-        className="absolute left-[0] top-[0] w-[100px] md:hidden"
-        onClick={handleOpen}
+        className="absolute left-[0] top-[0] w-[100px] md:hidden z-20"
+        onClick={toggleNav}
         src={PortalGunImage}
         alt="Portal Gun Image"
       />
@@ -23,7 +23,7 @@ export default function Header() {
         src={Logo}
         alt="Rick And Morty Logo"
       />
-      <Nav open={isOpen} />
+      <Nav open={isOpen} toggleNav={toggleNav} />
     </header>
   );
 }
