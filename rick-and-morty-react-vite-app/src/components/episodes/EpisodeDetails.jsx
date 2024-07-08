@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { EPISODES_URL as url, EPISODES_NAV_URL as navUrl } from "../../data";
-import EpisodeDetailsSkeleton from "./EpisodeDetailsSkeleton";
+import {
+  EPISODES_URL as url,
+  EPISODES_NAV_URL as navUrl,
+} from "../../utils.js";
+
+import EpisodeDetailsSkeleton from "./skeleton/EpisodeDetailsSkeleton";
+import Error from "../Error";
 
 export default function EpisodeDetails(id) {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
   const [data, setData] = useState({});
   id = useParams().id ? useParams().id : id;
   const navigate = useNavigate();
@@ -22,19 +28,20 @@ export default function EpisodeDetails(id) {
   }, [id]);
 
   useEffect(() => {
-    if (id) {
-      axios
-        .get(`${url}/${id}`)
-        .then((response) => {
-          setData(response.data);
-          console.log(response.data);
-        })
-        .catch((error) => {
-          setData({});
-          navigate(navUrl, { replace: true });
-        });
-    } else {
-      navigate(navUrl, { replace: true });
+    try {
+      if (id) {
+        axios
+          .get(`${url}/${id}`)
+          .then((response) => {
+            setData(response.data);
+            console.log(response.data);
+          })
+          .catch((error) => setError({ message: "Failed to fetch data." }));
+      } else {
+        navigate(navUrl, { replace: true });
+      }
+    } catch (error) {
+      setError({ message: "Failed to fetch data." });
     }
   }, [id]);
 
@@ -42,6 +49,10 @@ export default function EpisodeDetails(id) {
 
   if (loading) {
     return <EpisodeDetailsSkeleton />;
+  }
+
+  if (error) {
+    return <Error>{error.message}</Error>;
   }
 
   return (

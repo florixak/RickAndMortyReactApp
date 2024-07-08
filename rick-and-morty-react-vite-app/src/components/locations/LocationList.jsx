@@ -1,4 +1,4 @@
-import { LOCATIONS_URL } from "../../data";
+import { LOCATIONS_URL } from "../../utils.js";
 import CardList from "../CardList";
 
 export default function LocationList() {

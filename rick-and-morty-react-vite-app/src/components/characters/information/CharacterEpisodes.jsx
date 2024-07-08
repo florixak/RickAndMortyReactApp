@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { getEpisodeURL } from "../../../data";
+import { getEpisodeURL } from "../../../utils.js";
 
 export default function CharacterEpisodes({ episode }) {
   const navigate = useNavigate();
@@ -9,7 +9,6 @@ export default function CharacterEpisodes({ episode }) {
       {episode &&
         episode.map((ep) => {
           const episodeNum = ep.match(/\/(\d+)$/)[1];
-          console.log(episode.length)
           return (
             <span
               onClick={() => navigate(getEpisodeURL(episodeNum))}

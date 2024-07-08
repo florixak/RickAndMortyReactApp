@@ -1,31 +1,59 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { LOCATIONS_URL as url, LOCATIONS_NAV_URL as navUrl } from "../../data";
+import {
+  LOCATIONS_URL as url,
+  LOCATIONS_NAV_URL as navUrl,
+} from "../../utils.js";
+
+import LocationDetailsSkeleton from "./skeleton/LocationDetailsSkeleton.jsx";
+import Error from "../Error";
 
 export default function LocationDetails(id) {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
   const [data, setData] = useState({});
   id = useParams().id ? useParams().id : id;
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (id) {
-      axios
-        .get(`${url}/${id}`)
-        .then((response) => {
-          setData(response.data);
-          console.log(response.data);
-        })
-        .catch((error) => {
-          setData({});
-          navigate(navUrl, { replace: true });
-        });
-    } else {
-      navigate(navUrl, { replace: true });
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [id]);
+
+  useEffect(() => {
+    try {
+      if (id) {
+        axios
+          .get(`${url}/${id}`)
+          .then((response) => {
+            setData(response.data);
+            console.log(response.data);
+          })
+          .catch((error) => setError({ message: "Failed to fetch data." }));
+      } else {
+        navigate(navUrl, { replace: true });
+      }
+    } catch (error) {
+      setError({ message: "Failed to fetch data." });
     }
   }, [id]);
 
   const { name } = data;
+
+  if (loading) {
+    return <LocationDetailsSkeleton />;
+  }
+
+  if (error) {
+    return <Error>{error.message}</Error>;
+  }
 
   return (
     <div

@@ -1,11 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { CHARACTERS_NAV_URL, LOCATIONS_NAV_URL, EPISODES_NAV_URL } from "../data";
-
-const activeColor = "text-[#97ce4c]";
+import { CHARACTERS_NAV_URL, LOCATIONS_NAV_URL, EPISODES_NAV_URL } from "../utils.js";
 
 export default function Nav() {
   const NavLinkStyle = ({ isActive, isPending }) =>
-    isPending ? null : isActive ? activeColor : "";
+    isPending ? null : isActive ? "text-[#97ce4c]" : "";
 
   return (
     <nav>

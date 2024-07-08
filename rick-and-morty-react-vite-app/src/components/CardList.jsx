@@ -1,13 +1,13 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import PagingButton from "./PagingButton";
 import CharacterCard from "./characters/CharacterCard";
 import LocationCard from "./locations/LocationCard";
 import EpisodeCard from "./episodes/EpisodeCard";
 import CharacterCardSkeleton from "./characters/skeleton/CharacterCardSkeleton";
-import LocationCardSkeleton from "./locations/LocationCardSkeleton";
-import EpisodeCardSkeleton from "./episodes/EpisodeCardSkeleton";
+import LocationCardSkeleton from "./locations/skeleton/LocationCardSkeleton";
+import EpisodeCardSkeleton from "./episodes/skeleton/EpisodeCardSkeleton";
 import Error from "./Error";
 
 export default function CardList({ title, url, type }) {

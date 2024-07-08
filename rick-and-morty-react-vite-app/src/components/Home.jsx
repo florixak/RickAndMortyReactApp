@@ -6,7 +6,7 @@ import {
   CHARACTERS_NAV_URL,
   LOCATIONS_NAV_URL,
   EPISODES_NAV_URL,
-} from "../data";
+} from "../utils.js";
 
 const ICON_SIZE = 200;
 

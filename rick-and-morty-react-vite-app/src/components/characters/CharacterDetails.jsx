@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import {
   CHARACTERS_URL as url,
   CHARACTERS_NAV_URL as navUrl,
-} from "../../data";
+} from "../../utils.js";
 
 import CharacterTitle from "./information/CharacterTitle";
 import CharacterStatus from "./information/CharacterStatus";
@@ -15,7 +15,7 @@ import CharacterSpecies from "./information/CharacterSpecies";
 import CharacterLocation from "./information/CharacterLocation";
 import CharacterID from "./information/CharacterID";
 import CharacterEpisodes from "./information/CharacterEpisodes";
-import Error from "../Error"
+import Error from "../Error";
 
 export default function CharacterDetails({ id }) {
   const [loading, setLoading] = useState(false);
@@ -38,16 +38,18 @@ export default function CharacterDetails({ id }) {
   useEffect(() => {
     try {
       if (id) {
-        axios.get(`${url}/${id}`).then((response) => {
-          setData(response.data);
-          //console.log(response.data);
-        });
+        axios
+          .get(`${url}/${id}`)
+          .then((response) => {
+            setData(response.data);
+            //console.log(response.data);
+          })
+          .catch((error) => setError({ message: "Failed to fetch data." }));
       } else {
         navigate(navUrl, { replace: true });
       }
     } catch (e) {
       setError({ message: "Failed to fetch data." });
-      setData({});
     }
   }, [id]);
 
@@ -59,7 +61,7 @@ export default function CharacterDetails({ id }) {
   }
 
   if (error) {
-    return <Error>{error.message}</Error>
+    return <Error>{error.message}</Error>;
   }
 
   return (
