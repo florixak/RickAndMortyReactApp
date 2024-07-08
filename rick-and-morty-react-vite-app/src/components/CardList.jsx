@@ -134,6 +134,27 @@ export default function CardList({ title, url, type }) {
     }
   };
 
+  const PagingButtons = () => {
+    return (
+      id &&
+      id === "all" && (
+        <div className="w-[50%] md:w-[30%] lg:w-[20%] flex justify-evenly items-center">
+          <PagingButton
+            type="previous"
+            handleClick={setPreviousPage}
+            isDisabled={loading}
+          />
+          <p>{`${page || "Loading..."} / ${info.pages || "Loading..."}`}</p>
+          <PagingButton
+            type="next"
+            handleClick={setNextPage}
+            isDisabled={loading}
+          />
+        </div>
+      )
+    );
+  };
+
   if (error) {
     return <Error>{error.message}</Error>;
   }
@@ -152,21 +173,7 @@ export default function CardList({ title, url, type }) {
           onChange={handleInputValue}
         />
       </form>
-      {id && id === "all" && (
-        <div className="w-[50%] md:w-[30%] lg:w-[20%] flex justify-evenly items-center">
-          <PagingButton
-            type="previous"
-            handleClick={setPreviousPage}
-            isDisabled={loading}
-          />
-          <p>{`${page || "Loading..."} / ${info.pages || "Loading..."}`}</p>
-          <PagingButton
-            type="next"
-            handleClick={setNextPage}
-            isDisabled={loading}
-          />
-        </div>
-      )}
+      <PagingButtons />
       <div
         className={
           id && id !== "all"
@@ -178,21 +185,7 @@ export default function CardList({ title, url, type }) {
           loading ? renderCardSkeleton(card) : renderCard(card)
         )}
       </div>
-      {id && id === "all" && (
-        <div className="w-[50%] md:w-[30%] lg:w-[20%] flex justify-evenly items-center">
-          <PagingButton
-            type="previous"
-            handleClick={setPreviousPage}
-            isDisabled={loading}
-          />
-          <p>{`${page || "Loading..."} / ${info.pages || "Loading..."}`}</p>
-          <PagingButton
-            type="next"
-            handleClick={setNextPage}
-            isDisabled={loading}
-          />
-        </div>
-      )}
+      <PagingButtons />
     </div>
   );
 }
