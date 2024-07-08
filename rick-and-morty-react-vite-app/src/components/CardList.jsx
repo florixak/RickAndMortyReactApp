@@ -8,25 +8,24 @@ import EpisodeCard from "./episodes/EpisodeCard";
 import CharacterCardSkeleton from "./characters/skeleton/CharacterCardSkeleton";
 import LocationCardSkeleton from "./locations/skeleton/LocationCardSkeleton";
 import EpisodeCardSkeleton from "./episodes/skeleton/EpisodeCardSkeleton";
-import Error from "./Error";
+import Error from "./errors/Error";
 
 export default function CardList({ title, url, type }) {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState(null);
   const [data, setData] = useState([]);
   const [info, setInfo] = useState({});
-
   const [searchParams, setSearchParams] = useSearchParams({
     page: 1,
     id: "all",
   });
+
   const page = searchParams.get("page");
   const id = searchParams.get("id");
   const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => {
+    let timer = setTimeout(() => {
       setLoading(false);
     }, 1500);
 
@@ -36,24 +35,29 @@ export default function CardList({ title, url, type }) {
   }, [searchParams]);
 
   useEffect(() => {
-    try {
-      if (id && parseInt(id) > 0) {
-        axios.get(`${url}/${id}`).then((response) => {
+    const fetchData = async () => {
+      try {
+        let response;
+        if (id && parseInt(id) > 0) {
+          response = await axios.get(`${url}/${id}`);
           setData([response.data]);
           setInfo({ pages: 1 });
-        });
-      } else {
-        axios.get(`${url}?page=${page}`).then((response) => {
+        } else {
+          response = await axios.get(`${url}?page=${page}`);
           setData(response.data.results);
           setInfo(response.data.info);
-        });
+        }
+      } catch (e) {
+        setError({ message: "Failed to fetch data." });
+        setData([]);
+        setInfo({ pages: 1 });
+      } finally {
+        setLoading(true);
       }
-    } catch (e) {
-      setError({ message: "Failed to fetch data." });
-      setData({});
-      setInfo({ pages: 1 });
-    }
-  }, [searchParams, url]);
+    };
+
+    fetchData();
+  }, [searchParams, url, id, page]);
 
   const handleInputValue = (e) => {
     setSearchParams(
@@ -102,29 +106,32 @@ export default function CardList({ title, url, type }) {
   };
 
   const filteredData =
-    id && id !== "all" && data
-      ? data.filter((character) => character.id === parseInt(id))
-      : data;
+    id && id !== "all" ? data.filter((card) => card.id === parseInt(id)) : data;
 
-  const PagingButtons = () => {
-    return id && id === "all" ? (
-      <div className="w-[50%] md:w-[30%] lg:w-[20%] flex justify-evenly items-center">
-        <PagingButton
-          type="previous"
-          handleClick={setPreviousPage}
-          isDisabled={loading}
-        />
-        <p>
-          {page || "Loading..."} /{" "}
-          {info.pages || "Loading..."}
-        </p>
-        <PagingButton
-          type="next"
-          handleClick={setNextPage}
-          isDisabled={loading}
-        />
-      </div>
-    ) : null;
+  const renderCardSkeleton = (card) => {
+    switch (type) {
+      case "characters":
+        return <CharacterCardSkeleton key={card.id} />;
+      case "locations":
+        return <LocationCardSkeleton key={card.id} />;
+      case "episodes":
+        return <EpisodeCardSkeleton key={card.id} />;
+      default:
+        return null;
+    }
+  };
+
+  const renderCard = (card) => {
+    switch (type) {
+      case "characters":
+        return <CharacterCard key={card.id} data={card} />;
+      case "locations":
+        return <LocationCard key={card.id} data={card} />;
+      case "episodes":
+        return <EpisodeCard key={card.id} data={card} />;
+      default:
+        return null;
+    }
   };
 
   if (error) {
@@ -133,19 +140,33 @@ export default function CardList({ title, url, type }) {
 
   return (
     <div className="w-[90%] h-full flex justify-center items-center gap-5 flex-col">
-      <h1 className="font-bold">{title && title}</h1>
+      <h1 className="font-bold">{title}</h1>
       <form onSubmit={handleFormSubmit}>
         <input
           className="text-center rounded-lg p-2 text-black w-[250px]"
           type="number"
           min={1}
-          max={info.count && info.count}
+          max={info.count || ""}
           placeholder={`Specify ID (1 to ${info.count || "Loading..."})`}
           value={id > 0 ? id : ""}
           onChange={handleInputValue}
         />
       </form>
-      <PagingButtons />
+      {id && id === "all" && (
+        <div className="w-[50%] md:w-[30%] lg:w-[20%] flex justify-evenly items-center">
+          <PagingButton
+            type="previous"
+            handleClick={setPreviousPage}
+            isDisabled={loading}
+          />
+          <p>{`${page || "Loading..."} / ${info.pages || "Loading..."}`}</p>
+          <PagingButton
+            type="next"
+            handleClick={setNextPage}
+            isDisabled={loading}
+          />
+        </div>
+      )}
       <div
         className={
           id && id !== "all"
@@ -153,29 +174,25 @@ export default function CardList({ title, url, type }) {
             : "grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
         }
       >
-        {filteredData &&
-          filteredData.map((card) => {
-            if (type === "characters")
-              return loading ? (
-                <CharacterCardSkeleton key={card.id} />
-              ) : (
-                <CharacterCard key={card.id} data={card} />
-              );
-            else if (type === "locations")
-              return loading ? (
-                <LocationCardSkeleton key={card.id} />
-              ) : (
-                <LocationCard key={card.id} data={card} />
-              );
-            else if (type === "episodes")
-              return loading ? (
-                <EpisodeCardSkeleton key={card.id} />
-              ) : (
-                <EpisodeCard key={card.id} data={card} />
-              );
-          })}
+        {filteredData.map((card) =>
+          loading ? renderCardSkeleton(card) : renderCard(card)
+        )}
       </div>
-      <PagingButtons />
+      {id && id === "all" && (
+        <div className="w-[50%] md:w-[30%] lg:w-[20%] flex justify-evenly items-center">
+          <PagingButton
+            type="previous"
+            handleClick={setPreviousPage}
+            isDisabled={loading}
+          />
+          <p>{`${page || "Loading..."} / ${info.pages || "Loading..."}`}</p>
+          <PagingButton
+            type="next"
+            handleClick={setNextPage}
+            isDisabled={loading}
+          />
+        </div>
+      )}
     </div>
   );
 }
