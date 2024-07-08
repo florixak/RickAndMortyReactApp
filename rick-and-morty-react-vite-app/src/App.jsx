@@ -4,8 +4,9 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
-import PageNotFoundError from "./components/PageNotFoundError";
+import PageNotFoundError from "./components/errors/PageNotFoundError";
 import Loader from "./components/Loader";
+import ErrorBoundary from "./components/errors/ErrorBoundary";
 
 const CharacterList = lazy(() =>
   import("./components/characters/CharacterList")
@@ -32,49 +33,61 @@ const App = () => {
         <Route
           path="characters"
           element={
-            <Suspense fallback={<Loader />}>
-              <CharacterList />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<Loader />}>
+                <CharacterList />
+              </Suspense>
+            </ErrorBoundary>
           }
         />
         <Route
           path="characters/:id"
           element={
-            <Suspense fallback={<Loader />}>
-              <CharacterDetails id={0} />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<Loader />}>
+                <CharacterDetails />
+              </Suspense>
+            </ErrorBoundary>
           }
         />
         <Route
           path="locations"
           element={
-            <Suspense fallback={<Loader />}>
-              <LocationList />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<Loader />}>
+                <LocationList />
+              </Suspense>
+            </ErrorBoundary>
           }
         />
         <Route
           path="locations/:id"
           element={
-            <Suspense fallback={<Loader />}>
-              <LocationDetails id={0} />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<Loader />}>
+                <LocationDetails />
+              </Suspense>
+            </ErrorBoundary>
           }
         />
         <Route
           path="episodes"
           element={
-            <Suspense fallback={<Loader />}>
-              <EpisodeList />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<Loader />}>
+                <EpisodeList />
+              </Suspense>
+            </ErrorBoundary>
           }
         />
         <Route
           path="episodes/:id"
           element={
-            <Suspense fallback={<Loader />}>
-              <EpisodeDetails />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<Loader />}>
+                <EpisodeDetails />
+              </Suspense>
+            </ErrorBoundary>
           }
         />
         <Route path="*" element={<PageNotFoundError />} />

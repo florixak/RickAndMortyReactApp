@@ -1,7 +1,7 @@
+import { useState } from "react";
 import Nav from "./Nav";
 import Logo from "../assets/RickAndMortyLogo.png";
 import PortalGunImage from "../assets/PortalGun.png";
-import { useState } from "react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,4 +1,4 @@
-import PageNotFoundErrorLogo from "../assets/PageNotFoundLogo.png";
+import PageNotFoundErrorLogo from "../../assets/PageNotFoundLogo.png";
 
 export default function PageNotFoundError() {
   return (
@@ -8,6 +8,7 @@ export default function PageNotFoundError() {
       </h1>
       <img
         src={PageNotFoundErrorLogo}
+        className="animate-infinite-scaling"
         width={320}
         alt="Page not found error logo"
       />

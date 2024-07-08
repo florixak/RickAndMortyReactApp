@@ -7,43 +7,40 @@ import {
 } from "../../utils.js";
 
 import LocationDetailsSkeleton from "./skeleton/LocationDetailsSkeleton.jsx";
-import Error from "../Error";
+import Error from "../errors/Error.jsx";
 
-export default function LocationDetails(id) {
+export default function LocationDetails() {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState(null);
   const [data, setData] = useState({});
-  id = useParams().id ? useParams().id : id;
+  const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500);
+    let timer = null;
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(`${url}/${id}`);
+        setData(response.data);
+        setError(null);
+      } catch (err) {
+        setError({ message: "Failed to fetch data." });
+      } finally {
+        timer = setTimeout(() => setLoading(false), 1500);
+      }
+    };
+
+    if (id) {
+      fetchData();
+    } else {
+      navigate(navUrl, { replace: true });
+    }
 
     return () => {
       clearTimeout(timer);
     };
-  }, [id]);
-
-  useEffect(() => {
-    try {
-      if (id) {
-        axios
-          .get(`${url}/${id}`)
-          .then((response) => {
-            setData(response.data);
-            console.log(response.data);
-          })
-          .catch((error) => setError({ message: "Failed to fetch data." }));
-      } else {
-        navigate(navUrl, { replace: true });
-      }
-    } catch (error) {
-      setError({ message: "Failed to fetch data." });
-    }
-  }, [id]);
+  }, [id, navigate]);
 
   const { name } = data;
 
