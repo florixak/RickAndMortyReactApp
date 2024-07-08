@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <main className="w-full flex flex-col justify-center items-center">
       <h1 className="text-[48px]">Welcome!</h1>
-      <div className="w-full h-[70vh] flex flex-row justify-center items-center gap-16">
+      <div className="w-full h-full md:h-[70vh] flex flex-col md:flex-row justify-center items-center gap-16">
 
         <NavCard
           title="Locations"

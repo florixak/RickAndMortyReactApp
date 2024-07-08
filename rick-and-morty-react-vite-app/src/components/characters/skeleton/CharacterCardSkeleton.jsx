@@ -7,14 +7,14 @@ export default function CharacterSkeleton() {
     <Card>
       <CharacterImageSkeleton />
       <h1 className="text-xl font-bold flex flex-row">
-        <TextSkeleton isTitle={true} width={"300px"} />
+        <TextSkeleton width={"300px"} height={"20px"} />
       </h1>
       <div className="flex flex-col items-start justify-start">
-        <TextSkeleton isTitle={false} width={"300px"} />
-        <TextSkeleton isTitle={false} width={"300px"} />
-        <TextSkeleton isTitle={false} width={"300px"} />
-        <TextSkeleton isTitle={false} width={"300px"} />
-        <TextSkeleton isTitle={false} width={"300px"} />
+        <TextSkeleton width={"300px"} height={"12px"} />
+        <TextSkeleton width={"300px"} height={"12px"} />
+        <TextSkeleton width={"300px"} height={"12px"} />
+        <TextSkeleton width={"300px"} height={"12px"} />
+        <TextSkeleton width={"300px"} height={"12px"} />
       </div>
     </Card>
   );

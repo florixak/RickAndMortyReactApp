@@ -7,13 +7,13 @@ export default function CharacterDetailsSkeleton() {
       <CharacterImageSkeleton />
       <div className="flex flex-col items-start justify-start">
         <h1 className="text-xl font-bold flex flex-row">
-          <TextSkeleton isTitle={true} width={"300px"} />
+          <TextSkeleton width={"300px"} height={"20px"} />
         </h1>
-        <TextSkeleton isTitle={false} width={"300px"} />
-        <TextSkeleton isTitle={false} width={"300px"} />
-        <TextSkeleton isTitle={false} width={"300px"} />
-        <TextSkeleton isTitle={false} width={"300px"} />
-        <TextSkeleton isTitle={false} width={"300px"} />
+        <TextSkeleton width={"300px"} height={"12px"} />
+        <TextSkeleton width={"300px"} height={"12px"} />
+        <TextSkeleton width={"300px"} height={"12px"} />
+        <TextSkeleton width={"300px"} height={"12px"} />
+        <TextSkeleton width={"300px"} height={"12px"} />
       </div>
     </div>
   );

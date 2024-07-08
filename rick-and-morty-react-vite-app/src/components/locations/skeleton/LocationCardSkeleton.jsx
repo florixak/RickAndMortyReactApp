@@ -4,11 +4,11 @@ import TextSkeleton from "../../TextSkeleton";
 export default function LocationCardSkeleton() {
   return (
     <Card>
-      <TextSkeleton isTitle={true} width={"300px"} />
+      <TextSkeleton width={"300px"} height={"20px"} />
       <div className="flex flex-col items-start justify-start">
-        <TextSkeleton isTitle={false} width={"300px"} />
-        <TextSkeleton isTitle={false} width={"300px"} />
-        <TextSkeleton isTitle={false} width={"300px"} />
+        <TextSkeleton width={"300px"} height={"12px"} />
+        <TextSkeleton width={"300px"} height={"12px"} />
+        <TextSkeleton width={"300px"} height={"12px"} />
       </div>
     </Card>
   );
