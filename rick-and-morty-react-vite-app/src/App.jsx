@@ -1,7 +1,8 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
+import Nav from "./components/Nav";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import PageNotFoundError from "./components/errors/PageNotFoundError";
@@ -25,9 +26,17 @@ const EpisodeDetails = lazy(() =>
 );
 
 const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsOpen((prev) => !prev);
+    //console.log(isOpen);
+  };
+
   return (
     <div className="relative flex flex-col w-full h-full min-h-[100vh] pb-[5rem] lg:pb-[5rem] items-center gap-5 bg-slate-800 text-white">
       <Header />
+      <Nav open={isOpen} toggleNav={toggleNav} />
       <Routes>
         <Route path="/" exact index element={<Home />} />
         <Route

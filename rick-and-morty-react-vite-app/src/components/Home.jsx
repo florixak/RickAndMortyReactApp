@@ -1,5 +1,5 @@
 import NavCard from "./NavCard";
-import { GiCharacter } from "react-icons/gi";
+import { BsPersonLinesFill } from "react-icons/bs";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { MdVideoLibrary } from "react-icons/md";
 import {
@@ -24,7 +24,7 @@ export default function Home() {
 
         <NavCard
           title="Characters"
-          icon={<GiCharacter size={ICON_SIZE} />}
+          icon={<BsPersonLinesFill size={ICON_SIZE} />}
           navigateTo={CHARACTERS_NAV_URL}
         />
 

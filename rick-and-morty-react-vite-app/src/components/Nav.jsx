@@ -1,63 +1,60 @@
 import { NavLink } from "react-router-dom";
+import { FiMenu } from "react-icons/fi";
+import { TfiClose } from "react-icons/tfi";
 import {
   CHARACTERS_NAV_URL,
   LOCATIONS_NAV_URL,
   EPISODES_NAV_URL,
 } from "../utils.js";
 
-export default function Nav({ open, toggleNav }) {
-  const NavLinkStyle = ({ isActive, isPending }) =>
-    isPending ? null : isActive ? "text-[#97ce4c]" : "";
+const NavLinkStyle = ({ isActive, isPending }) =>
+  isPending ? "" : isActive ? "text-[#97ce4c]" : "";
 
+const mobileNavButtonStyle = "absolute left-[20px] top-[20px] md:hidden z-20";
+
+const links = [
+  { to: "/", label: "Home" },
+  { to: CHARACTERS_NAV_URL, label: "Characters" },
+  { to: LOCATIONS_NAV_URL, label: "Locations" },
+  { to: EPISODES_NAV_URL, label: "Episodes" },
+];
+
+export default function Nav({ open, toggleNav }) {
+  const MobileNavButton = () => {
+    return open ? (
+      <TfiClose
+        size={50}
+        className={mobileNavButtonStyle}
+        onClick={toggleNav}
+      />
+    ) : (
+      <FiMenu size={50} className={mobileNavButtonStyle} onClick={toggleNav} />
+    );
+  };
   return (
     <nav>
+      <MobileNavButton />
       {open && (
         <div className="w-full h-full absolute left-[0] top-[0] z-10 bg-slate-800">
-          <ul className="w-full flex flex-col justify-center items-center gap-4">
-            <li>
-              <NavLink to="/" className={NavLinkStyle} onClick={toggleNav}>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={CHARACTERS_NAV_URL} className={NavLinkStyle} onClick={toggleNav}>
-                Characters
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={LOCATIONS_NAV_URL} className={NavLinkStyle} onClick={toggleNav}>
-                Locations
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={EPISODES_NAV_URL} className={NavLinkStyle} onClick={toggleNav}>
-                Episodes
-              </NavLink>
-            </li>
+          <ul className="flex flex-col justify-center items-center gap-4 mt-[30%] text-[30px]">
+            {links.map(({ to, label }) => (
+              <li key={label}>
+                <NavLink to={to} className={NavLinkStyle} onClick={toggleNav}>
+                  {label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
       )}
       <ul className="hidden w-full md:flex flex-col md:flex-row gap-4">
-        <li>
-          <NavLink to="/" className={NavLinkStyle}>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to={CHARACTERS_NAV_URL} className={NavLinkStyle}>
-            Characters
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to={LOCATIONS_NAV_URL} className={NavLinkStyle}>
-            Locations
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to={EPISODES_NAV_URL} className={NavLinkStyle}>
-            Episodes
-          </NavLink>
-        </li>
+        {links.map(({ to, label }) => (
+          <li key={label}>
+            <NavLink to={to} className={NavLinkStyle}>
+              {label}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );
