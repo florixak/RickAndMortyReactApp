@@ -12,27 +12,24 @@ const ICON_SIZE = 200;
 
 export default function Home() {
   return (
-    <main className="w-full flex flex-col justify-center items-center">
-      <div className="w-full h-full md:h-[50vh] flex flex-col md:flex-row justify-center items-center gap-16">
+    <main className="w-full mt-[50px] md:h-[50vh] flex flex-col md:flex-row justify-center items-center gap-16">
+      <NavCard
+        title="Locations"
+        icon={<FaMapLocationDot size={ICON_SIZE} />}
+        navigateTo={LOCATIONS_NAV_URL}
+      />
 
-        <NavCard
-          title="Locations"
-          icon={<FaMapLocationDot size={ICON_SIZE} />}
-          navigateTo={LOCATIONS_NAV_URL}
-        />
+      <NavCard
+        title="Characters"
+        icon={<BsPersonLinesFill size={ICON_SIZE} />}
+        navigateTo={CHARACTERS_NAV_URL}
+      />
 
-        <NavCard
-          title="Characters"
-          icon={<BsPersonLinesFill size={ICON_SIZE} />}
-          navigateTo={CHARACTERS_NAV_URL}
-        />
-
-        <NavCard
-          title="Episodes"
-          icon={<MdVideoLibrary size={ICON_SIZE} />}
-          navigateTo={EPISODES_NAV_URL}
-        />
-      </div>
+      <NavCard
+        title="Episodes"
+        icon={<MdVideoLibrary size={ICON_SIZE} />}
+        navigateTo={EPISODES_NAV_URL}
+      />
     </main>
   );
 }

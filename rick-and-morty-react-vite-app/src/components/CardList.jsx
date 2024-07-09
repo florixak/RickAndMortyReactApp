@@ -160,7 +160,7 @@ export default function CardList({ title, url, type }) {
   }
 
   return (
-    <div className="w-[90%] h-full flex justify-center items-center gap-5 flex-col">
+    <div className="w-full h-full flex justify-center items-center gap-5 flex-col">
       <h1 className="font-bold">{title}</h1>
       <form onSubmit={handleFormSubmit}>
         <input

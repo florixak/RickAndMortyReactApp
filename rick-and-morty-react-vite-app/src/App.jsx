@@ -34,7 +34,7 @@ const App = () => {
   };
 
   return (
-    <div className="relative flex flex-col w-full h-full min-h-[100vh] pb-[5rem] lg:pb-[5rem] items-center gap-5 bg-slate-800 text-white">
+    <div className="relative flex flex-col w-full h-full min-h-[100vh] pb-[5rem] bg-slate-800 text-white">
       <Header />
       <Nav open={isOpen} toggleNav={toggleNav} />
       <Routes>

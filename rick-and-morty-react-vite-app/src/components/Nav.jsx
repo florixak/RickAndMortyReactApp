@@ -8,16 +8,16 @@ import {
 } from "../utils.js";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: CHARACTERS_NAV_URL, label: "Characters" },
-  { to: LOCATIONS_NAV_URL, label: "Locations" },
-  { to: EPISODES_NAV_URL, label: "Episodes" },
+  { to: "/", label: "HOME" },
+  { to: CHARACTERS_NAV_URL, label: "CHARACTERS" },
+  { to: LOCATIONS_NAV_URL, label: "LOCATIONS" },
+  { to: EPISODES_NAV_URL, label: "EPISODES" },
 ];
 
-const navLinkStyle = ({ isActive, isPending }) =>
-  isPending ? "" : isActive ? "text-[#97ce4c]" : "";
+const navLinkStyle = ({ isActive }) => (isActive ? "text-[#97ce4c]" : "");
 
-const mobileNavButtonStyle = "absolute left-[20px] top-[20px] md:hidden z-20 cursor-pointer";
+const mobileNavButtonStyle =
+  "absolute left-[20px] top-[20px] md:hidden z-20 cursor-pointer";
 
 const MobileNavButton = ({ open, toggleNav }) => {
   return open ? (
@@ -44,7 +44,7 @@ export default function Nav({ open, toggleNav }) {
           </ul>
         </div>
       )}
-      <ul className="hidden w-full md:flex flex-col md:flex-row gap-4">
+      <ul className="hidden w-full h-[5vh] md:flex flex-col items-center justify-end pr-10 md:flex-row gap-4 bg-slate-500">
         {links.map(({ to, label }) => (
           <li key={label}>
             <NavLink to={to} className={navLinkStyle}>
