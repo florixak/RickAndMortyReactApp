@@ -8,6 +8,7 @@ import {
 
 import LocationDetailsSkeleton from "./skeleton/LocationDetailsSkeleton.jsx";
 import Error from "../errors/Error.jsx";
+import Details from "../Details.jsx";
 
 export default function LocationDetails() {
   const [loading, setLoading] = useState(false);
@@ -53,16 +54,13 @@ export default function LocationDetails() {
   }
 
   return (
-    <div
-      key={id}
-      className="w-[50%] flex flex-row md:flex-row justify-start p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
-    >
+    <Details>
       <div className="flex flex-col items-start justify-start">
         <h1 className="text-xl font-bold flex flex-row">{name}</h1>
         <p>
           <span className="font-semibold">ID:</span> {id}
         </p>
       </div>
-    </div>
+    </Details>
   );
 }

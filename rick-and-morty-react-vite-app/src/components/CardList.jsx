@@ -9,6 +9,7 @@ import CharacterCardSkeleton from "./characters/skeleton/CharacterCardSkeleton";
 import LocationCardSkeleton from "./locations/skeleton/LocationCardSkeleton";
 import EpisodeCardSkeleton from "./episodes/skeleton/EpisodeCardSkeleton";
 import Error from "./errors/Error";
+import { motion } from "framer-motion";
 
 export default function CardList({ title, url, type }) {
   const [loading, setLoading] = useState(false);
@@ -160,7 +161,12 @@ export default function CardList({ title, url, type }) {
   }
 
   return (
-    <div className="w-full h-full flex justify-center items-center gap-5 flex-col">
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ duration: 0.8, delay: 0.1 }}
+      className="w-full h-full flex justify-center items-center gap-5 flex-col"
+    >
       <h1 className="font-bold">{title}</h1>
       <form onSubmit={handleFormSubmit}>
         <input
@@ -178,7 +184,7 @@ export default function CardList({ title, url, type }) {
         className={
           id && id !== "all"
             ? "flex justify-center items-center"
-            : "grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+            : "grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
         }
       >
         {filteredData.map((card) =>
@@ -186,6 +192,6 @@ export default function CardList({ title, url, type }) {
         )}
       </div>
       <PagingButtons />
-    </div>
+    </motion.div>
   );
 }

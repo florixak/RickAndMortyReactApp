@@ -16,6 +16,7 @@ import CharacterLocation from "./information/CharacterLocation";
 import CharacterID from "./information/CharacterID";
 import CharacterEpisodes from "./information/CharacterEpisodes";
 import Error from "../errors/Error.jsx";
+import Details from "../Details.jsx";
 
 export default function CharacterDetails() {
   const [loading, setLoading] = useState(false);
@@ -62,7 +63,7 @@ export default function CharacterDetails() {
   }
 
   return (
-    <div className="w-full md:w-[40%] flex flex-col 2xl:flex-row m-auto p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
+    <Details>
       <CharacterImage image={image} name={name} />
       <div className="flex flex-col items-start justify-start">
         <CharacterTitle name={name} gender={gender} />
@@ -73,6 +74,6 @@ export default function CharacterDetails() {
         <CharacterLocation location={location} />
         <CharacterEpisodes episode={episode} />
       </div>
-    </div>
+    </Details>
   );
 }

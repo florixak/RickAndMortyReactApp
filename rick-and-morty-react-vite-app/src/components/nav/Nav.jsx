@@ -1,14 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { TfiClose } from "react-icons/tfi";
+import { motion } from "framer-motion";
 import {
   CHARACTERS_NAV_URL,
   LOCATIONS_NAV_URL,
   EPISODES_NAV_URL,
-} from "../utils.js";
-import LogoImage from "../assets/RickAndMortyLogo.png";
+} from "../../utils.js";
+import LogoImage from "../../assets/RickAndMortyLogo.png";
 
-const links = [
+const NavLinks = [
   { to: "/", label: "HOME" },
   { to: CHARACTERS_NAV_URL, label: "CHARACTERS" },
   { to: LOCATIONS_NAV_URL, label: "LOCATIONS" },
@@ -17,19 +18,22 @@ const links = [
 
 const Logo = () => {
   return (
-    <img
-      className="animate-infinite-scaling w-[240px] md:w-[460px]"
+    <motion.img
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.5 }}
       src={LogoImage}
       alt="Rick And Morty Logo"
+      className="animate-infinite-scaling w-[240px] md:w-[460px]"
     />
   );
 };
 
-const navLinkStyle = ({ isActive }) => (isActive ? "text-[#97ce4c]" : "");
+const navLinkActiveStyle = ({ isActive }) => (isActive ? "text-[#97ce4c]" : "");
 
 export default function Nav({ open, toggleNav }) {
   const mobileNavButtonStyle = `absolute left-[20px] top-[20px] ${
-    !open ? "md:hidden" : null
+    !open ? "lg:hidden" : null
   } z-20 cursor-pointer`;
 
   const MobileNavButton = ({ open, toggleNav }) => {
@@ -46,9 +50,14 @@ export default function Nav({ open, toggleNav }) {
 
   const NavLinkPackage = ({ children }) => {
     return (
-      <div className="hidden md:flex text-center flex-col xl:flex-row gap-10">
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="hidden lg:flex text-center flex-col xl:flex-row gap-10"
+      >
         {children}
-      </div>
+      </motion.div>
     );
   };
 
@@ -58,32 +67,41 @@ export default function Nav({ open, toggleNav }) {
       {open && (
         <div className="w-full h-full absolute left-[0] top-[0] z-10 bg-slate-800">
           <ul className="flex flex-col justify-center items-center gap-4 mt-[30%] text-[30px]">
-            {links.map(({ to, label }) => (
-              <li key={label}>
-                <NavLink to={to} className={navLinkStyle} onClick={toggleNav}>
+            {NavLinks.map(({ to, label }) => (
+              <motion.li
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.4, delay: 0 }}
+                key={label}
+              >
+                <NavLink
+                  to={to}
+                  className={navLinkActiveStyle}
+                  onClick={toggleNav}
+                >
                   {label}
                 </NavLink>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>
       )}
       <div className="w-full h-full flex flex-row items-center justify-center gap-20">
         <NavLinkPackage>
-          <NavLink to={links[0].to} className={navLinkStyle}>
-            {links[0].label}
+          <NavLink to={NavLinks[0].to} className={navLinkActiveStyle}>
+            {NavLinks[0].label}
           </NavLink>
-          <NavLink to={links[1].to} className={navLinkStyle}>
-            {links[1].label}
+          <NavLink to={NavLinks[1].to} className={navLinkActiveStyle}>
+            {NavLinks[1].label}
           </NavLink>
         </NavLinkPackage>
         <Logo />
         <NavLinkPackage>
-          <NavLink to={links[2].to} className={navLinkStyle}>
-            {links[2].label}
+          <NavLink to={NavLinks[2].to} className={navLinkActiveStyle}>
+            {NavLinks[2].label}
           </NavLink>
-          <NavLink to={links[3].to} className={navLinkStyle}>
-            {links[3].label}
+          <NavLink to={NavLinks[3].to} className={navLinkActiveStyle}>
+            {NavLinks[3].label}
           </NavLink>
         </NavLinkPackage>
       </div>
