@@ -7,7 +7,7 @@ export default function Home() {
         <h1 className="p-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">WATCH NOW</h1>
         <h1 className="p-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">READ MORE</h1>
       </div>
-      <div className="max-w-[100vh] flex flex-col sm:flex-row p-10 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
+      <div className="max-w-[100vh] flex flex-col sm:flex-row p-10 gap-3 mb-16 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
         <div className="flex flex-col">
           <h1 className="text-[25px] font-bold">About show</h1>
           <p>

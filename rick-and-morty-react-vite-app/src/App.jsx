@@ -27,7 +27,7 @@ const EpisodeDetails = lazy(() =>
 const App = () => {
 
   return (
-    <div className="relative flex flex-col w-full h-full min-h-[100vh] pb-[5rem] animated-background text-white bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900">
+    <div className="relative flex flex-col w-full h-full min-h-[100vh] pb-[5rem] gap-5 animated-background text-white bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900">
       <Header />
       <Routes>
         <Route path="/" exact index element={<Home />} />
