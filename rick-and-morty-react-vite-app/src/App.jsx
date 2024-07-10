@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState } from "react";
+import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -25,16 +25,10 @@ const EpisodeDetails = lazy(() =>
 );
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleNavOpen = () => {
-    setIsOpen((prev) => !prev);
-    //console.log(isOpen);
-  };
 
   return (
     <div className="relative flex flex-col w-full h-full min-h-[100vh] pb-[5rem] animated-background text-white bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900">
-      <Header mobileNavOpen={isOpen} handleNavOpen={handleNavOpen} />
+      <Header />
       <Routes>
         <Route path="/" exact index element={<Home />} />
         <Route

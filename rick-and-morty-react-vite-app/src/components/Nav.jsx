@@ -6,7 +6,7 @@ import {
   LOCATIONS_NAV_URL,
   EPISODES_NAV_URL,
 } from "../utils.js";
-import Logo from "../assets/RickAndMortyLogo.png";
+import LogoImage from "../assets/RickAndMortyLogo.png";
 
 const links = [
   { to: "/", label: "HOME" },
@@ -15,20 +15,43 @@ const links = [
   { to: EPISODES_NAV_URL, label: "EPISODES" },
 ];
 
-const navLinkStyle = ({ isActive }) => (isActive ? "text-[#97ce4c]" : "");
-
-const mobileNavButtonStyle =
-  "absolute left-[20px] top-[20px] md:hidden z-20 cursor-pointer";
-
-const MobileNavButton = ({ open, toggleNav }) => {
-  return open ? (
-    <TfiClose size={50} className={mobileNavButtonStyle} onClick={toggleNav} />
-  ) : (
-    <FiMenu size={50} className={mobileNavButtonStyle} onClick={toggleNav} />
+const Logo = () => {
+  return (
+    <img
+      className="animate-infinite-scaling w-[240px] md:w-[480px]"
+      src={LogoImage}
+      alt="Rick And Morty Logo"
+    />
   );
 };
 
+const navLinkStyle = ({ isActive }) => (isActive ? "text-[#97ce4c]" : "");
+
 export default function Nav({ open, toggleNav }) {
+  const mobileNavButtonStyle = `absolute left-[20px] top-[20px] ${
+    !open ? "md:hidden" : null
+  } z-20 cursor-pointer`;
+
+  const MobileNavButton = ({ open, toggleNav }) => {
+    return open ? (
+      <TfiClose
+        size={50}
+        className={mobileNavButtonStyle}
+        onClick={toggleNav}
+      />
+    ) : (
+      <FiMenu size={50} className={mobileNavButtonStyle} onClick={toggleNav} />
+    );
+  };
+
+  const NavLinkPackage = ({ children }) => {
+    return (
+      <div className="hidden md:flex text-center flex-col xl:flex-row gap-10">
+        {children}
+      </div>
+    );
+  };
+
   return (
     <nav>
       <MobileNavButton open={open} toggleNav={toggleNav} />
@@ -45,24 +68,24 @@ export default function Nav({ open, toggleNav }) {
           </ul>
         </div>
       )}
-      <div className="w-full h-full hidden md:flex flex-row items-center justify-center gap-16">
+      <div className="w-full h-full flex flex-row items-center justify-center gap-20">
+        <NavLinkPackage>
           <NavLink to={links[0].to} className={navLinkStyle}>
             {links[0].label}
           </NavLink>
           <NavLink to={links[1].to} className={navLinkStyle}>
             {links[1].label}
           </NavLink>
-          <img
-            className="animate-infinite-scaling w-[240px] md:w-[480px]"
-            src={Logo}
-            alt="Rick And Morty Logo"
-          />
+        </NavLinkPackage>
+        <Logo />
+        <NavLinkPackage>
           <NavLink to={links[2].to} className={navLinkStyle}>
             {links[2].label}
           </NavLink>
           <NavLink to={links[3].to} className={navLinkStyle}>
             {links[3].label}
           </NavLink>
+        </NavLinkPackage>
       </div>
     </nav>
   );
