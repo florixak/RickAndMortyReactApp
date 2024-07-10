@@ -6,6 +6,7 @@ import {
   LOCATIONS_NAV_URL,
   EPISODES_NAV_URL,
 } from "../utils.js";
+import Logo from "../assets/RickAndMortyLogo.png";
 
 const links = [
   { to: "/", label: "HOME" },
@@ -44,15 +45,25 @@ export default function Nav({ open, toggleNav }) {
           </ul>
         </div>
       )}
-      <ul className="hidden w-full h-[5vh] md:flex flex-col items-center justify-end pr-10 md:flex-row gap-4 bg-slate-500">
-        {links.map(({ to, label }) => (
-          <li key={label}>
-            <NavLink to={to} className={navLinkStyle}>
-              {label}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+      <div className="w-full h-full hidden md:flex flex-row items-center justify-center gap-16">
+          <NavLink to={links[0].to} className={navLinkStyle}>
+            {links[0].label}
+          </NavLink>
+          <NavLink to={links[1].to} className={navLinkStyle}>
+            {links[1].label}
+          </NavLink>
+          <img
+            className="animate-infinite-scaling w-[240px] md:w-[480px]"
+            src={Logo}
+            alt="Rick And Morty Logo"
+          />
+          <NavLink to={links[2].to} className={navLinkStyle}>
+            {links[2].label}
+          </NavLink>
+          <NavLink to={links[3].to} className={navLinkStyle}>
+            {links[3].label}
+          </NavLink>
+      </div>
     </nav>
   );
 }

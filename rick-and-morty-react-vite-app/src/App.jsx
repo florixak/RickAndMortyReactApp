@@ -28,15 +28,14 @@ const EpisodeDetails = lazy(() =>
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleNav = () => {
+  const handleNavOpen = () => {
     setIsOpen((prev) => !prev);
     //console.log(isOpen);
   };
 
   return (
     <div className="relative flex flex-col w-full h-full min-h-[100vh] pb-[5rem] bg-slate-800 text-white">
-      <Header />
-      <Nav open={isOpen} toggleNav={toggleNav} />
+      <Header mobileNavOpen={isOpen} handleNavOpen={handleNavOpen} />
       <Routes>
         <Route path="/" exact index element={<Home />} />
         <Route
