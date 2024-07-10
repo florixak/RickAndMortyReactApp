@@ -9,7 +9,6 @@ import CharacterCardSkeleton from "./characters/skeleton/CharacterCardSkeleton";
 import LocationCardSkeleton from "./locations/skeleton/LocationCardSkeleton";
 import EpisodeCardSkeleton from "./episodes/skeleton/EpisodeCardSkeleton";
 import Error from "./errors/Error";
-import { motion } from "framer-motion";
 
 export default function CardList({ title, url, type }) {
   const [loading, setLoading] = useState(false);
@@ -161,12 +160,7 @@ export default function CardList({ title, url, type }) {
   }
 
   return (
-    <motion.div
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ duration: 0.8, delay: 0.1 }}
-      className="w-full h-full flex justify-center items-center gap-5 flex-col"
-    >
+    <div className="w-full h-full flex justify-center items-center gap-5 flex-col">
       <h1 className="font-bold">{title}</h1>
       <form onSubmit={handleFormSubmit}>
         <input
@@ -192,6 +186,6 @@ export default function CardList({ title, url, type }) {
         )}
       </div>
       <PagingButtons />
-    </motion.div>
+    </div>
   );
 }

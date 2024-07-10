@@ -2,12 +2,12 @@ import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
-import Home from "./components/Home";
 import Footer from "./components/Footer";
 import PageNotFoundError from "./components/errors/PageNotFoundError";
 import Loader from "./components/Loader";
 import ErrorBoundary from "./components/errors/ErrorBoundary";
 
+const Home = lazy(() => import("./components/Home"));
 const CharacterList = lazy(() =>
   import("./components/characters/CharacterList")
 );
@@ -25,7 +25,6 @@ const EpisodeDetails = lazy(() =>
 );
 
 const App = () => {
-
   return (
     <div className="relative flex flex-col w-full h-full min-h-[100vh] pb-[5rem] gap-5 animated-background text-white bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900">
       <Header />
