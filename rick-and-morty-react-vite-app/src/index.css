@@ -30,3 +30,22 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(179, 179, 179);
 }
+
+.animated-background {
+    background-size: 400%;
+
+    -webkit-animation: background-animation 15s ease infinite;
+    -moz-animation: background-animation 15s ease infinite;
+    animation: background-animation 15s ease infinite;
+}
+
+@keyframes background-animation {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
