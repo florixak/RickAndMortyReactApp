@@ -11,7 +11,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full md:min-w-[1220px] h-[15vh] md:h-[25vh] flex justify-center bg-slate-800 border-[#97ce4c] border-b-2 rounded-b-[60px] md:rounded-b-[80px]">
+    <header className="w-full md:min-w-[1220px] h-[15vh] md:h-[20vh] flex justify-center bg-slate-800 border-[#97ce4c] border-b-2 rounded-b-[60px] md:rounded-b-[80px]">
       <Nav open={isOpen} toggleNav={handleNavOpen} />
     </header>
   );

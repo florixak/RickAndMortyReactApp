@@ -18,7 +18,7 @@ const links = [
 const Logo = () => {
   return (
     <img
-      className="animate-infinite-scaling w-[240px] md:w-[480px]"
+      className="animate-infinite-scaling w-[240px] md:w-[460px]"
       src={LogoImage}
       alt="Rick And Morty Logo"
     />

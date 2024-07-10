@@ -62,7 +62,7 @@ export default function CharacterDetails() {
   }
 
   return (
-    <div className="w-[50%] flex flex-col lg:flex-row p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
+    <div className="w-full md:w-[40%] flex flex-col 2xl:flex-row m-auto p-5 gap-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md">
       <CharacterImage image={image} name={name} />
       <div className="flex flex-col items-start justify-start">
         <CharacterTitle name={name} gender={gender} />
