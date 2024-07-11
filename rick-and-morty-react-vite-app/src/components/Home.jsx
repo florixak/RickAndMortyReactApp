@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <main className="w-full mt-[50px] md:h-[100%] flex flex-col items-center gap-16">
+    <main className="w-full mt-[50px] md:h-[100%] flex flex-col justify-center items-center gap-16">
       <div className="w-full flex justify-center gap-10">
         <motion.a
           initial={{ scale: 0 }}
@@ -28,30 +28,41 @@ export default function Home() {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.2, delay: 0.5 }}
-        className="max-w-[100vh] flex flex-col sm:flex-row p-10 gap-3 mb-16 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg"
+        className="flex flex-col gap-5 mb-16 items-center justify-center"
       >
-        <div className="flex flex-col">
-          <h1 className="text-[25px] font-bold">About show</h1>
-          <p>
-            Rick and Morty is an American adult animated science fiction sitcom
-            created by Justin Roiland and Dan Harmon for Cartoon Network's
-            nighttime programming block Adult Swim. The series follows the
-            misadventures of Rick Sanchez, a cynical mad scientist, and his
-            good-hearted but fretful grandson Morty Smith, who split their time
-            between domestic life and interdimensional adventures that take
-            place across an infinite number of realities, often traveling to
-            other planets and dimensions through portals and on Rick's flying
-            saucer. The general concept of Rick and Morty relies on two
-            conflicting scenarios: domestic family drama and a misanthropic
-            grandfather dragging his grandson into hijinks.
-          </p>
+        <div className="flex flex-col lg:flex-row gap-5">
+          <div className="max-w-[70vh] flex flex-col p-10 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
+            <h1 className="text-[25px] font-bold">About show</h1>
+            <p className="text-justify">
+              "Rick and Morty" is a popular American animated series for adults
+              created by Dan Harmon and Justin Roiland. The first episode aired
+              on Adult Swim, the nighttime programming block of Cartoon Network,
+              in December 2013. The series combines elements of sci-fi, dark
+              comedy, and family drama, quickly gaining a large fan base thanks
+              to its unique style of humor, complex storylines, and deep
+              philosophical questions.
+            </p>
+          </div>
+          <div className="w-[40vh] flex flex-col gap-3 text-center p-10 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
+            <img
+              width={240}
+              className="rounded-3xl shadow-black shadow-lg m-auto"
+              src={RickAndMortyTVImage}
+              alt=""
+            />
+            <a
+              className="text-[15px]"
+              href="https://www.imdb.com/title/tt2861424/mediaviewer/rm209331968/?ref_=tt_ov_i"
+              target="_blank"
+            >
+              Image from IMDb
+            </a>
+          </div>
         </div>
-        <img
-          width={240}
-          className="rounded-3xl shadow-black shadow-lg m-auto"
-          src={RickAndMortyTVImage}
-          alt=""
-        />
+        <div className="max-w-[113vh] flex flex-col p-10 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
+          <h1 className="text-[25px] font-bold">Main Characters</h1>
+          
+        </div>
       </motion.div>
     </main>
   );

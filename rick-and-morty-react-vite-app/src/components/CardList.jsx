@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { motion } from "framer-motion";
+
 import PagingButton from "./PagingButton";
 import CharacterCard from "./characters/CharacterCard";
 import LocationCard from "./locations/LocationCard";
@@ -9,7 +11,6 @@ import CharacterCardSkeleton from "./characters/skeleton/CharacterCardSkeleton";
 import LocationCardSkeleton from "./locations/skeleton/LocationCardSkeleton";
 import EpisodeCardSkeleton from "./episodes/skeleton/EpisodeCardSkeleton";
 import Error from "./errors/Error";
-import { motion } from "framer-motion";
 
 export default function CardList({ title, url, type }) {
   const [loading, setLoading] = useState(false);
@@ -26,16 +27,12 @@ export default function CardList({ title, url, type }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    let timer = setTimeout(() => {
+    setLoading(true);
+
+    const timer = setTimeout(() => {
       setLoading(false);
     }, 1500);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [searchParams]);
-
-  useEffect(() => {
     const fetchData = async () => {
       try {
         let response;
@@ -52,12 +49,14 @@ export default function CardList({ title, url, type }) {
         setError({ message: "Failed to fetch data." });
         setData([]);
         setInfo({ pages: 1 });
-      } finally {
-        setLoading(true);
       }
     };
 
     fetchData();
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [searchParams, url, id, page]);
 
   const handleInputValue = (e) => {
@@ -76,30 +75,18 @@ export default function CardList({ title, url, type }) {
     }
   };
 
-  const setNextPage = () => {
+  const handlePageChange = (direction) => {
     setSearchParams(
       (prev) => {
-        const prevPage = parseInt(prev.get("page"));
-        const newPage = prevPage
-          ? prevPage === info.pages
-            ? 1
-            : prevPage + 1
-          : 1;
-        return { page: newPage, id: "all" };
-      },
-      { replace: true }
-    );
-  };
-
-  const setPreviousPage = () => {
-    setSearchParams(
-      (prev) => {
-        const prevPage = parseInt(prev.get("page"));
-        const newPage = prevPage
-          ? prevPage === 1
-            ? info.pages
-            : prevPage - 1
-          : 1;
+        const prevPage = parseInt(prev.get("page")) || 1;
+        let newPage;
+        if (direction === "next") {
+          newPage = prevPage === info.pages ? 1 : prevPage + 1;
+        } else if (direction === "previous") {
+          newPage = prevPage === 1 ? info.pages : prevPage - 1;
+        } else {
+          newPage = prevPage;
+        }
         return { page: newPage, id: "all" };
       },
       { replace: true }
@@ -107,7 +94,12 @@ export default function CardList({ title, url, type }) {
   };
 
   const filteredData =
-    id && id !== "all" ? data.filter((card) => card.id === parseInt(id)) : data;
+    id !== "all" ? data.filter((card) => card.id === parseInt(id)) : data;
+
+  const cardStyle =
+    id !== "all"
+      ? "flex justify-center items-center"
+      : "grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4";
 
   const renderCardSkeleton = (card) => {
     switch (type) {
@@ -137,18 +129,17 @@ export default function CardList({ title, url, type }) {
 
   const PagingButtons = () => {
     return (
-      id &&
       id === "all" && (
         <div className="w-[50%] md:w-[30%] lg:w-[20%] flex justify-evenly items-center">
           <PagingButton
             type="previous"
-            handleClick={setPreviousPage}
+            handleClick={() => handlePageChange("previous")}
             isDisabled={loading}
           />
           <p>{`${page || "Loading..."} / ${info.pages || "Loading..."}`}</p>
           <PagingButton
             type="next"
-            handleClick={setNextPage}
+            handleClick={() => handlePageChange("next")}
             isDisabled={loading}
           />
         </div>
@@ -180,13 +171,7 @@ export default function CardList({ title, url, type }) {
         />
       </form>
       <PagingButtons />
-      <div
-        className={
-          id && id !== "all"
-            ? "flex justify-center items-center"
-            : "grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
-        }
-      >
+      <div className={cardStyle}>
         {filteredData.map((card) =>
           loading ? renderCardSkeleton(card) : renderCard(card)
         )}
