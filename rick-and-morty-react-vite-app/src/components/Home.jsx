@@ -2,27 +2,23 @@ import RickAndMortyTVImage from "../assets/RickAndMortyTV.jpg";
 import { motion } from "framer-motion";
 
 export default function Home() {
+  const AnimatedLink = ({ href, children }) => (
+    <motion.a
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ duration: 0.8, delay: 0.3 }}
+      className="p-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
+      href={href}
+    >
+      {children}
+    </motion.a>
+  );
+
   return (
     <main className="w-full mt-[50px] md:h-[100%] flex flex-col justify-center items-center gap-16">
       <div className="w-full flex justify-center gap-10">
-        <motion.a
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="p-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
-          href="/"
-        >
-          WATCH NOW
-        </motion.a>
-        <motion.a
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="p-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
-          href="/"
-        >
-          READ MORE
-        </motion.a>
+        <AnimatedLink href="/">WATCH NOW</AnimatedLink>
+        <AnimatedLink href="/">READ MORE</AnimatedLink>
       </div>
       <motion.div
         initial={{ scale: 0 }}
@@ -61,7 +57,6 @@ export default function Home() {
         </div>
         <div className="w-full flex flex-col p-10 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
           <h1 className="text-[25px] font-bold">Main Characters</h1>
-          
         </div>
       </motion.div>
     </main>
