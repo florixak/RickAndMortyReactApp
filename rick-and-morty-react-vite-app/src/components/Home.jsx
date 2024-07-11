@@ -59,7 +59,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="max-w-[113vh] flex flex-col p-10 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
+        <div className="w-full flex flex-col p-10 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
           <h1 className="text-[25px] font-bold">Main Characters</h1>
           
         </div>
