@@ -1,18 +1,19 @@
 import RickAndMortyTVImage from "../assets/RickAndMortyTV.jpg";
 import { motion } from "framer-motion";
 
+const AnimatedLink = ({ href, children }) => (
+  <motion.a
+    initial={{ scale: 0 }}
+    animate={{ scale: 1 }}
+    transition={{ duration: 0.8, delay: 0.3 }}
+    className="p-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
+    href={href}
+  >
+    {children}
+  </motion.a>
+);
+
 export default function Home() {
-  const AnimatedLink = ({ href, children }) => (
-    <motion.a
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ duration: 0.8, delay: 0.3 }}
-      className="p-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
-      href={href}
-    >
-      {children}
-    </motion.a>
-  );
 
   return (
     <main className="w-full mt-[50px] md:h-[100%] flex flex-col justify-center items-center gap-16">
@@ -39,7 +40,7 @@ export default function Home() {
               philosophical questions.
             </p>
           </div>
-          <div className="w-[40vh] flex flex-col gap-3 text-center p-10 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
+          <div className="lg:w-[40vh] flex flex-col gap-3 text-center p-10 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
             <img
               width={240}
               className="rounded-3xl shadow-black shadow-lg m-auto"
@@ -48,7 +49,7 @@ export default function Home() {
             />
             <a
               className="text-[15px]"
-              href="https://www.imdb.com/title/tt2861424/mediaviewer/rm209331968/?ref_=tt_ov_i"
+              href="https://www.imdb.com/title/tt2861424/mediaviewer/rm209331968/?ref_=ext_shr_lnk"
               target="_blank"
             >
               Image from IMDb
