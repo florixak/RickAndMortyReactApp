@@ -2,17 +2,14 @@ import RickAndMortyTVImage from "../assets/RickAndMortyTV.jpg";
 import { motion } from "framer-motion";
 import { MainCharacters } from "../utils";
 
-const AnimatedLink = ({ href, children, delay }) => (
-  <motion.a
-    initial={{ opacity: 0, scale: 0 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.8, delay: delay }}
+const Link = ({ href, children }) => (
+  <a
     className="p-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
     href={href}
     target="_blank"
   >
     {children}
-  </motion.a>
+  </a>
 );
 
 const AnimatedSectionInView = ({ className, children, delay }) => {
@@ -53,17 +50,6 @@ const MainCharacterInfo = ({ name, image, description }) => {
 export default function Home() {
   return (
     <main className="w-full mt-[50px] md:h-[100%] flex flex-col justify-center items-center gap-16 text-primary-text">
-      <div className="w-full flex justify-center gap-10">
-        <AnimatedLink href="/" delay={0.3}>
-          WATCH NOW
-        </AnimatedLink>
-        <AnimatedLink
-          href="https://en.wikipedia.org/wiki/Rick_and_Morty"
-          delay={0.3}
-        >
-          READ MORE
-        </AnimatedLink>
-      </div>
       <section className="max-w-[1000px] flex flex-col gap-16 mb-16 items-center justify-center">
         <section className="flex flex-col lg:flex-row gap-5 h-auto" delay={0}>
           {/* About story */}
@@ -73,7 +59,7 @@ export default function Home() {
           >
             <h1 className="text-[25px] font-bold">About show</h1>
             <section className="flex flex-col gap-5">
-              <p className="text-justify bg-dark-background p-5 rounded-3xl">
+              <p className="bg-dark-background p-5 rounded-3xl">
                 "Rick and Morty" is a popular American animated series for
                 adults created by Dan Harmon and Justin Roiland. The first
                 episode aired on Adult Swim, the nighttime programming block of
@@ -82,7 +68,7 @@ export default function Home() {
                 large fan base thanks to its unique style of humor, complex
                 storylines, and deep philosophical questions.
               </p>
-              <p className="text-justify bg-dark-background p-5 rounded-3xl">
+              <p className="bg-dark-background p-5 rounded-3xl">
                 Follows the adventures of Rick and Morty as they travel across
                 different dimensions and timelines. The series is known for its
                 intricate plots, often exploring deep philosophical questions
@@ -140,13 +126,19 @@ export default function Home() {
           delay={0.3}
         >
           <h1 className="text-[25px] font-bold">Conclusion</h1>
-          <p className="text-justify bg-dark-background p-5 rounded-3xl">
-            It is more than just an animated series; it is a phenomenon that
+          <p className="bg-dark-background p-5 rounded-3xl">
+            It is more than just an animated series, it is a phenomenon that
             brings viewers incredible adventures and deep thoughts, all wrapped
             in a unique mix of humor and dramatic moments. It is a series that
             makes viewers think and laugh at the same time, which is why it has
             gained such dedicated fans worldwide.
           </p>
+        </AnimatedSectionInView>
+        <AnimatedSectionInView className="w-full flex justify-center gap-10" delay={0.3}>
+          <Link href="/">WATCH NOW</Link>
+          <Link href="https://en.wikipedia.org/wiki/Rick_and_Morty">
+            READ MORE
+          </Link>
         </AnimatedSectionInView>
       </section>
     </main>
