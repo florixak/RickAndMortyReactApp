@@ -38,7 +38,7 @@ export default function Nav() {
     setIsOpen((prev) => !prev);
   };
 
-  const mobileNavButtonStyle = `absolute left-[20px] top-[20px] ${
+  const mobileNavButtonStyle = `absolute z-50 left-[20px] top-[20px] ${
     !isOpen ? "lg:hidden" : null
   } z-20 cursor-pointer`;
 
@@ -73,7 +73,7 @@ export default function Nav() {
 
   return (
     <nav>
-      <MobileNavButton />
+      <MobileNavButton className="absolute z-50" />
       {isOpen && <MobileNav navLinks={navLinks} toggleNav={handleNavOpen} />}
       <div className="w-full h-full flex flex-row items-center justify-center gap-20">
         <NavLinkPackage>

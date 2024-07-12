@@ -6,9 +6,9 @@ Built on Vite React and TailwindCSS, this web app uses the public Rick and Morty
 
 ## Technologies
 
-Vite, React, TailwindCSS, React Router, Axios, Framer Motion
+Vite, ReactJS, TailwindCSS, React Router, Axios, Framer Motion
 
-## Instalace
+## Installation
 
 Steps for local installation and startup
 
@@ -43,17 +43,17 @@ Here are the main features of this web app:
 
 Feel free to explore these features and enjoy the world of Rick and Morty!
 
-## Sample of work
+## Screenshots
 
 Screenshots of how application looks and works.
 
-![Screenshot Hlavní stránky](link-na-screenshot)
+![Screenshot of main page](link-na-screenshot)
 
-## Poděkování
+## Thanks
 
 - Thanks to [Rick and Morty API](https://rickandmortyapi.com/) for providing data.
 
-## Odkazy
+## Links
 
 - [Rick and Morty API](https://rickandmortyapi.com/)
 - [Rick and Morty Logo](https://en.m.wikipedia.org/wiki/File:Rick_and_Morty.svg)

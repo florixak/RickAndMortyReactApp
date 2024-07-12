@@ -1,5 +1,6 @@
 import RickAndMortyTVImage from "../assets/RickAndMortyTV.jpg";
 import { motion } from "framer-motion";
+import { MainCharacters } from "../utils";
 
 const AnimatedLink = ({ href, children, delay }) => (
   <motion.a
@@ -14,35 +15,44 @@ const AnimatedLink = ({ href, children, delay }) => (
   </motion.a>
 );
 
-const AnimatedSection = ({ styles, children, delay }) => {
+const AnimatedSectionInView = ({ className, children, delay }) => {
   return (
     <motion.section
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1.2, delay: delay }}
-      className={styles}
+      initial={{ opacity: 0 /*, scale: 0*/ }}
+      whileInView={{ opacity: 1 /*, scale: 1*/ }}
+      transition={{ duration: 1, delay: delay || 0 }}
+      className={className}
     >
       {children}
     </motion.section>
   );
 };
 
-const AnimatedSectionInView = ({ styles, children, delay }) => {
+const MainCharacterInfo = ({ name, image, description }) => {
   return (
     <motion.section
       initial={{ opacity: 0 /*, scale: 0*/ }}
       whileInView={{ opacity: 1 /*, scale: 1*/ }}
-      transition={{ duration: 1, delay: delay || 0 }}
-      className={styles}
+      transition={{ duration: 1, delay: 0.3 }}
+      className="flex flex-col md:flex-row gap-5 p-10 items-center justify-center md:even:flex-row-reverse"
     >
-      {children}
+      <img
+        width={240}
+        className="rounded-3xl shadow-black shadow-lg m-auto"
+        src={image}
+        alt=""
+      />
+      <div className="flex flex-col w-[120%] md:w-full bg-dark-background rounded-3xl p-4 md:p-5">
+        <h2 className="text-[20px] font-bold">{name}</h2>
+        <p className="text-[20px] text-secondary-text">{description}</p>
+      </div>
     </motion.section>
   );
 };
 
 export default function Home() {
   return (
-    <main className="w-full mt-[50px] md:h-[100%] flex flex-col justify-center items-center gap-16">
+    <main className="w-full mt-[50px] md:h-[100%] flex flex-col justify-center items-center gap-16 text-primary-text">
       <div className="w-full flex justify-center gap-10">
         <AnimatedLink href="/" delay={0.3}>
           WATCH NOW
@@ -58,12 +68,12 @@ export default function Home() {
         <section className="flex flex-col lg:flex-row gap-5 h-auto" delay={0}>
           {/* About story */}
           <AnimatedSectionInView
-            styles="max-w-[75vh] flex flex-col p-10 gap-5 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg"
+            className="max-w-[75vh] flex flex-col p-10 gap-5 bg-light-background rounded-3xl shadow-black shadow-lg"
             delay={0.3}
           >
             <h1 className="text-[25px] font-bold">About show</h1>
             <section className="flex flex-col gap-5">
-              <p className="text-justify">
+              <p className="text-justify bg-dark-background p-5 rounded-3xl">
                 "Rick and Morty" is a popular American animated series for
                 adults created by Dan Harmon and Justin Roiland. The first
                 episode aired on Adult Swim, the nighttime programming block of
@@ -72,7 +82,7 @@ export default function Home() {
                 large fan base thanks to its unique style of humor, complex
                 storylines, and deep philosophical questions.
               </p>
-              <p className="text-justify">
+              <p className="text-justify bg-dark-background p-5 rounded-3xl">
                 Follows the adventures of Rick and Morty as they travel across
                 different dimensions and timelines. The series is known for its
                 intricate plots, often exploring deep philosophical questions
@@ -85,7 +95,7 @@ export default function Home() {
 
           {/* Image of Rick and Morty */}
           <AnimatedSectionInView
-            styles="lg:w-[40vh] flex flex-col gap-3 text-center p-10 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg"
+            className="lg:w-[40vh] flex flex-col gap-3 text-center p-5 bg-light-background rounded-3xl shadow-black shadow-lg"
             delay={0.3}
           >
             <img
@@ -106,19 +116,31 @@ export default function Home() {
 
         {/* Main Characters */}
         <AnimatedSectionInView
-          styles="flex flex-col p-10 gap-5 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg"
+          className="flex flex-col p-10 gap-5 bg-light-background rounded-3xl shadow-black shadow-lg"
           delay={0.3}
         >
-          <h1 className="text-[25px] font-bold">Main Characters</h1>
+          <h1 className="text-[25px] font-bold text-right">Main Characters</h1>
+          <section className="flex flex-wrap gap-10 items-center justify-center">
+            {MainCharacters.map((character) => {
+              return (
+                <MainCharacterInfo
+                  key={character.name}
+                  name={character.name}
+                  image={character.image}
+                  description={character.description}
+                />
+              );
+            })}
+          </section>
         </AnimatedSectionInView>
 
         {/* Conclusion */}
         <AnimatedSectionInView
-          styles="flex flex-col p-10 gap-5 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg"
+          className="flex flex-col p-10 gap-5 bg-light-background rounded-3xl shadow-black shadow-lg"
           delay={0.3}
         >
           <h1 className="text-[25px] font-bold">Conclusion</h1>
-          <p className="text-justify">
+          <p className="text-justify bg-dark-background p-5 rounded-3xl">
             It is more than just an animated series; it is a phenomenon that
             brings viewers incredible adventures and deep thoughts, all wrapped
             in a unique mix of humor and dramatic moments. It is a series that

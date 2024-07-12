@@ -6,7 +6,9 @@ export default {
       colors: {
         "primary-text": "#f8fafc",
         "secondary-text": "#cbd5e1",
-        "active-text": "#97ce4c",
+        "light-background": "#334155",
+        "dark-background": "#1e293b",
+        "light-green": "#97ce4c",
       },
       animation: {
         "spin-slow": "spin 3s linear infinite",

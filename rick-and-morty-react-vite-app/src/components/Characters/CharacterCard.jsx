@@ -8,7 +8,7 @@ import CharacterLocation from "./information/CharacterLocation";
 import CharacterID from "./information/CharacterID";
 
 export default function CharacterCard({ data }) {
-  const { image, name, id, status, species, gender, origin, location } = data;
+  const { image, name, id, status, species, gender, origin, location, description } = data;
 
   return (
     <Card type={"characters"} id={id}>
