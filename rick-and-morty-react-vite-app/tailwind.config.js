@@ -3,6 +3,11 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      colors: {
+        "primary-text": "#f8fafc",
+        "secondary-text": "#cbd5e1",
+        "active-text": "#97ce4c",
+      },
       animation: {
         "spin-slow": "spin 3s linear infinite",
         "fade-in": "fadeIn 3s linear",

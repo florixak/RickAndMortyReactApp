@@ -56,4 +56,4 @@ Screenshots of how application looks and works.
 ## Odkazy
 
 - [Rick and Morty API](https://rickandmortyapi.com/)
-- [Rick and Morty Logo](ODKAZ)
+- [Rick and Morty Logo](https://en.m.wikipedia.org/wiki/File:Rick_and_Morty.svg)

@@ -29,8 +29,6 @@ const Logo = () => {
   );
 };
 
-const navLinkActiveStyle = ({ isActive }) => (isActive ? "text-[#97ce4c]" : "");
-
 export default function Nav({ open, toggleNav }) {
   const mobileNavButtonStyle = `absolute left-[20px] top-[20px] ${
     !open ? "lg:hidden" : null
@@ -61,6 +59,17 @@ export default function Nav({ open, toggleNav }) {
     );
   };
 
+  const Link = ({ to, children }) => {
+    return (
+      <NavLink
+        to={to}
+        className={({ isActive }) => (isActive ? "text-active-text" : "")}
+      >
+        {children}
+      </NavLink>
+    );
+  };
+
   return (
     <nav>
       <MobileNavButton open={open} toggleNav={toggleNav} />
@@ -88,21 +97,13 @@ export default function Nav({ open, toggleNav }) {
       )}
       <div className="w-full h-full flex flex-row items-center justify-center gap-20">
         <NavLinkPackage>
-          <NavLink to={NavLinks[0].to} className={navLinkActiveStyle}>
-            {NavLinks[0].label}
-          </NavLink>
-          <NavLink to={NavLinks[1].to} className={navLinkActiveStyle}>
-            {NavLinks[1].label}
-          </NavLink>
+          <Link to={NavLinks[0].to}>{NavLinks[0].label}</Link>
+          <Link to={NavLinks[1].to}>{NavLinks[1].label}</Link>
         </NavLinkPackage>
         <Logo />
         <NavLinkPackage>
-          <NavLink to={NavLinks[2].to} className={navLinkActiveStyle}>
-            {NavLinks[2].label}
-          </NavLink>
-          <NavLink to={NavLinks[3].to} className={navLinkActiveStyle}>
-            {NavLinks[3].label}
-          </NavLink>
+          <Link to={NavLinks[2].to}>{NavLinks[2].label}</Link>
+          <Link to={NavLinks[3].to}>{NavLinks[3].label}</Link>
         </NavLinkPackage>
       </div>
     </nav>
