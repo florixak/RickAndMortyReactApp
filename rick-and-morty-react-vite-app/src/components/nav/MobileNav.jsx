@@ -4,8 +4,8 @@ import Link from "./Link";
 export default function MobileNav({ navLinks, toggleNav }) {
   return (
     <motion.div
-      initial={{ translateX: "-100%" }}
-      animate={{ translateX: 0 }}
+      initial={{ opacity: 0, translateX: "-100%" }}
+      animate={{ opacity: 1, translateX: 0 }}
       transition={{ duration: 0.2, delay: 0 }}
       className="w-full h-full absolute left-[0] top-[0] z-10 bg-slate-800"
     >

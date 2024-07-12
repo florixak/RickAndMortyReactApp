@@ -1,11 +1,11 @@
 import RickAndMortyTVImage from "../assets/RickAndMortyTV.jpg";
 import { motion } from "framer-motion";
 
-const AnimatedLink = ({ href, children }) => (
+const AnimatedLink = ({ href, children, delay }) => (
   <motion.a
-    initial={{ scale: 0 }}
-    animate={{ scale: 1 }}
-    transition={{ duration: 0.8, delay: 0.3 }}
+    initial={{ opacity: 0, scale: 0 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.8, delay: delay }}
     className="p-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
     href={href}
     target="_blank"
@@ -14,23 +14,53 @@ const AnimatedLink = ({ href, children }) => (
   </motion.a>
 );
 
+const AnimatedSection = ({ styles, children, delay }) => {
+  return (
+    <motion.section
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1.2, delay: delay }}
+      className={styles}
+    >
+      {children}
+    </motion.section>
+  );
+};
+
+const AnimatedSectionInView = ({ styles, children, delay }) => {
+  return (
+    <motion.section
+      initial={{ opacity: 0 /*, scale: 0*/ }}
+      whileInView={{ opacity: 1 /*, scale: 1*/ }}
+      transition={{ duration: 1, delay: delay || 0 }}
+      className={styles}
+    >
+      {children}
+    </motion.section>
+  );
+};
+
 export default function Home() {
   return (
     <main className="w-full mt-[50px] md:h-[100%] flex flex-col justify-center items-center gap-16">
       <div className="w-full flex justify-center gap-10">
-        <AnimatedLink href="/">WATCH NOW</AnimatedLink>
-        <AnimatedLink href="https://en.wikipedia.org/wiki/Rick_and_Morty">READ MORE</AnimatedLink>
+        <AnimatedLink href="/" delay={0.3}>
+          WATCH NOW
+        </AnimatedLink>
+        <AnimatedLink
+          href="https://en.wikipedia.org/wiki/Rick_and_Morty"
+          delay={0.3}
+        >
+          READ MORE
+        </AnimatedLink>
       </div>
-      <motion.section
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.2, delay: 0.5 }}
-        className="max-w-[1000px] flex flex-col gap-5 mb-16 items-center justify-center"
-      >
-        <section className="flex flex-col lg:flex-row gap-5">
-
+      <section className="max-w-[1000px] flex flex-col gap-16 mb-16 items-center justify-center">
+        <section className="flex flex-col lg:flex-row gap-5 h-auto" delay={0}>
           {/* About story */}
-          <section className="max-w-[75vh] flex flex-col p-10 gap-5 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
+          <AnimatedSectionInView
+            styles="max-w-[75vh] flex flex-col p-10 gap-5 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg"
+            delay={0.3}
+          >
             <h1 className="text-[25px] font-bold">About show</h1>
             <section className="flex flex-col gap-5">
               <p className="text-justify">
@@ -51,10 +81,13 @@ export default function Home() {
                 absurd situations and characters.
               </p>
             </section>
-          </section>
+          </AnimatedSectionInView>
 
           {/* Image of Rick and Morty */}
-          <section className="lg:w-[40vh] flex flex-col gap-3 text-center p-10 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
+          <AnimatedSectionInView
+            styles="lg:w-[40vh] flex flex-col gap-3 text-center p-10 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg"
+            delay={0.3}
+          >
             <img
               width={240}
               className="rounded-3xl shadow-black shadow-lg m-auto"
@@ -68,17 +101,22 @@ export default function Home() {
             >
               Image from IMDb
             </a>
-          </section>
-
+          </AnimatedSectionInView>
         </section>
 
         {/* Main Characters */}
-        <section className="flex flex-col p-10 gap-5 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
+        <AnimatedSectionInView
+          styles="flex flex-col p-10 gap-5 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg"
+          delay={0.3}
+        >
           <h1 className="text-[25px] font-bold">Main Characters</h1>
-        </section>
+        </AnimatedSectionInView>
 
         {/* Conclusion */}
-        <section className="flex flex-col p-10 gap-5 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg">
+        <AnimatedSectionInView
+          styles="flex flex-col p-10 gap-5 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-lg"
+          delay={0.3}
+        >
           <h1 className="text-[25px] font-bold">Conclusion</h1>
           <p className="text-justify">
             It is more than just an animated series; it is a phenomenon that
@@ -87,8 +125,8 @@ export default function Home() {
             makes viewers think and laugh at the same time, which is why it has
             gained such dedicated fans worldwide.
           </p>
-        </section>
-      </motion.section>
+        </AnimatedSectionInView>
+      </section>
     </main>
   );
 }
