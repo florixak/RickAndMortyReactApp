@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { TfiClose } from "react-icons/tfi";
 import { motion } from "framer-motion";
@@ -8,8 +8,10 @@ import {
   EPISODES_NAV_URL,
 } from "../../utils.js";
 import LogoImage from "../../assets/RickAndMortyLogo.png";
+import MobileNav from "./MobileNav.jsx";
+import Link from "./Link.jsx";
 
-const NavLinks = [
+const navLinks = [
   { to: "/", label: "HOME" },
   { to: CHARACTERS_NAV_URL, label: "CHARACTERS" },
   { to: LOCATIONS_NAV_URL, label: "LOCATIONS" },
@@ -29,20 +31,30 @@ const Logo = () => {
   );
 };
 
-export default function Nav({ open, toggleNav }) {
+export default function Nav() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleNavOpen = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   const mobileNavButtonStyle = `absolute left-[20px] top-[20px] ${
-    !open ? "lg:hidden" : null
+    !isOpen ? "lg:hidden" : null
   } z-20 cursor-pointer`;
 
-  const MobileNavButton = ({ open, toggleNav }) => {
-    return open ? (
+  const MobileNavButton = () => {
+    return isOpen ? (
       <TfiClose
         size={50}
         className={mobileNavButtonStyle}
-        onClick={toggleNav}
+        onClick={handleNavOpen}
       />
     ) : (
-      <FiMenu size={50} className={mobileNavButtonStyle} onClick={toggleNav} />
+      <FiMenu
+        size={50}
+        className={mobileNavButtonStyle}
+        onClick={handleNavOpen}
+      />
     );
   };
 
@@ -59,51 +71,19 @@ export default function Nav({ open, toggleNav }) {
     );
   };
 
-  const Link = ({ to, children }) => {
-    return (
-      <NavLink
-        to={to}
-        className={({ isActive }) => (isActive ? "text-active-text" : "")}
-      >
-        {children}
-      </NavLink>
-    );
-  };
-
   return (
     <nav>
-      <MobileNavButton open={open} toggleNav={toggleNav} />
-      {open && (
-        <div className="w-full h-full absolute left-[0] top-[0] z-10 bg-slate-800">
-          <ul className="flex flex-col justify-center items-center gap-4 mt-[30%] text-[30px]">
-            {NavLinks.map(({ to, label }) => (
-              <motion.li
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.4, delay: 0 }}
-                key={label}
-              >
-                <NavLink
-                  to={to}
-                  className={navLinkActiveStyle}
-                  onClick={toggleNav}
-                >
-                  {label}
-                </NavLink>
-              </motion.li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <MobileNavButton />
+      {isOpen && <MobileNav navLinks={navLinks} toggleNav={handleNavOpen} />}
       <div className="w-full h-full flex flex-row items-center justify-center gap-20">
         <NavLinkPackage>
-          <Link to={NavLinks[0].to}>{NavLinks[0].label}</Link>
-          <Link to={NavLinks[1].to}>{NavLinks[1].label}</Link>
+          <Link to={navLinks[0].to}>{navLinks[0].label}</Link>
+          <Link to={navLinks[1].to}>{navLinks[1].label}</Link>
         </NavLinkPackage>
         <Logo />
         <NavLinkPackage>
-          <Link to={NavLinks[2].to}>{NavLinks[2].label}</Link>
-          <Link to={NavLinks[3].to}>{NavLinks[3].label}</Link>
+          <Link to={navLinks[2].to}>{navLinks[2].label}</Link>
+          <Link to={navLinks[3].to}>{navLinks[3].label}</Link>
         </NavLinkPackage>
       </div>
     </nav>
