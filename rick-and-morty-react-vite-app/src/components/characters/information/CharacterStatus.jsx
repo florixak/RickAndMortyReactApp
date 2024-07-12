@@ -1,3 +1,5 @@
+import { GoDotFill } from "react-icons/go";
+
 export default function CharacterStatus({ status }) {
   const statusStyle = () => {
     if (status === "Alive") return "text-green-400";
@@ -8,7 +10,9 @@ export default function CharacterStatus({ status }) {
   return (
     <p className="flex justify-center items-center">
       <span className="font-semibold">Status: </span>
-      <span className={`${statusStyle()} ml-1 font-bold text-xl`}>•</span>
+      <span className={`${statusStyle()} ml-1 font-bold text-xl`}>
+        <GoDotFill />
+      </span>
     </p>
   );
 }

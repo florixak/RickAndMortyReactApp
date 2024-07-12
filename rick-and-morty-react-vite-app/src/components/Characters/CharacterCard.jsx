@@ -14,7 +14,7 @@ export default function CharacterCard({ data }) {
     <Card type={"characters"} id={id}>
       <CharacterImage image={image} name={name} />
       <CharacterTitle name={name} gender={gender} />
-      <div className="flex flex-col items-start justify-start">
+      <div className="max-w-[250px] flex flex-col items-start justify-start">
         <CharacterID id={id} />
         <CharacterStatus status={status} />
         <CharacterSpecies species={species} />

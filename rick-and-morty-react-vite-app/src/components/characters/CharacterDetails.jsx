@@ -54,7 +54,7 @@ export default function CharacterDetails() {
   const { image, name, status, species, gender, origin, location, episode } =
     data;
 
-  if (loading) {
+  if (loading || !data) {
     return <CharacterDetailsSkeleton />;
   }
 

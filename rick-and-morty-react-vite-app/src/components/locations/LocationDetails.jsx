@@ -43,9 +43,9 @@ export default function LocationDetails() {
     };
   }, [id, navigate]);
 
-  const { name } = data;
+  const { name, type, dimension } = data;
 
-  if (loading) {
+  if (loading || !data) {
     return <LocationDetailsSkeleton />;
   }
 
@@ -55,11 +55,13 @@ export default function LocationDetails() {
 
   return (
     <Details>
-      <div className="flex flex-col items-start justify-start">
-        <h1 className="text-xl font-bold flex flex-row">{name}</h1>
-        <p>
-          <span className="font-semibold">ID:</span> {id}
-        </p>
+      <div className="flex flex-col">
+        <h1 className="text-xl font-bold">{name || "Loading..."}</h1>
+        <div className="flex flex-col items-start justify-start">
+          <p>ID: {id || "Loading..."}</p>
+          <p>Type: {type || "Loading..."}</p>
+          <p>Dimension: {dimension || "Loading..."}</p>
+        </div>
       </div>
     </Details>
   );

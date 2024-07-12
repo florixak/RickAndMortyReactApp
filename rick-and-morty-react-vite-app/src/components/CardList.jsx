@@ -96,7 +96,7 @@ export default function CardList({ title, url, type }) {
   const filteredData =
     id !== "all" ? data.filter((card) => card.id === parseInt(id)) : data;
 
-  const cardStyle =
+  const cardListStyle =
     id !== "all"
       ? "flex justify-center items-center"
       : "grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4";
@@ -171,7 +171,7 @@ export default function CardList({ title, url, type }) {
         />
       </form>
       <PagingButtons />
-      <div className={cardStyle}>
+      <div className={cardListStyle}>
         {filteredData.map((card) =>
           loading ? renderCardSkeleton(card) : renderCard(card)
         )}
