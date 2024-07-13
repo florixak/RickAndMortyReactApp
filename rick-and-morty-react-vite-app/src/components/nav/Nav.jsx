@@ -47,7 +47,7 @@ export default function Nav() {
   };
 
   const mobileNavButtonStyle = `absolute z-50 left-[20px] top-[20px] ${
-    !isOpen ? "lg:hidden" : null
+    !isOpen && "lg:hidden"
   } z-20 cursor-pointer`;
 
   const MobileNavButton = () => {
