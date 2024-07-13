@@ -47,14 +47,14 @@ Feel free to explore these features and enjoy the world of Rick and Morty!
 ## Sample of work
 - Live Preview: [Coming soon...](./)
 
-Screenshots of how application looks and works.
-
-- Main page:
+- Home page:
 ![Screenshot of main page](./screenshots/home-page.png)
 ![Screenshot of main page](./screenshots/home-page-2.png)
 ![Screenshot of main page](./screenshots/home-page-3.png)
 
-- Characters:
+- Character page:
+- Location page:
+- Episode page:
 
 ## Thanks
 
