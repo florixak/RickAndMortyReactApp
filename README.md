@@ -1,4 +1,5 @@
 # Rick And Morty Web Using API
+- Still in active development
 
 ## Description
 
@@ -43,7 +44,8 @@ Here are the main features of this web app:
 
 Feel free to explore these features and enjoy the world of Rick and Morty!
 
-## Screenshots
+## Sample of work
+- Live Preview: ![CLICK](./)
 
 Screenshots of how application looks and works.
 
