@@ -45,7 +45,7 @@ Here are the main features of this web app:
 Feel free to explore these features and enjoy the world of Rick and Morty!
 
 ## Sample of work
-- Live Preview: [CLICK](./)
+- Live Preview: [Coming soon...](./)
 
 Screenshots of how application looks and works.
 
