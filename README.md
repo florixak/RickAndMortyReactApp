@@ -47,7 +47,7 @@ Feel free to explore these features and enjoy the world of Rick and Morty!
 
 Screenshots of how application looks and works.
 
-![Screenshot of main page](link-na-screenshot)
+![Screenshot of main page](./screenshots/home-page.png)
 
 ## Thanks
 
