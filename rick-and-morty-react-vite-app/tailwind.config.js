@@ -4,11 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary-text": "#f8fafc",
-        "secondary-text": "#cbd5e1",
-        "light-background": "#334155",
-        "dark-background": "#1e293b",
+        "primary": "#f8fafc",
+        "secondary": "#cbd5e1",
+        "light-slate": "#334155",
+        "dark-slate": "#1e293b",
         "light-green": "#97ce4c",
+        "cyan": "#4ade80",
       },
       animation: {
         "spin-slow": "spin 3s linear infinite",

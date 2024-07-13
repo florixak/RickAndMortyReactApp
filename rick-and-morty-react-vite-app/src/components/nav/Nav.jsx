@@ -28,6 +28,14 @@ const Logo = () => {
       alt="Rick And Morty Logo"
       className="animate-infinite-scaling w-[240px] md:w-[460px]"
     />
+    /*<motion.h1
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.5 }}
+      className="animate-infinite-scaling font-bold text-[60px]"
+    >
+      Rick And Morty
+    </motion.h1>*/
   );
 };
 

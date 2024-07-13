@@ -19,16 +19,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(30 41 59 / 1);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: whitesmoke;
-  border-radius: 12px;
+  background: #334155;
+  border-radius: 32px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(179, 179, 179);
+  background: transparent;
 }
 
 .animated-background {
