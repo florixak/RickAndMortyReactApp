@@ -57,11 +57,11 @@ const Paragraph = ({ children }) => {
 export default function Home() {
   return (
     <main className="w-full mt-[50px] md:h-[100%] flex flex-col justify-center items-center gap-16 text-primary">
-      <section className="max-w-[1050px] flex flex-col gap-36 mb-16 items-center justify-center">
+      <section className="max-w-[1050px] flex flex-col gap-5 md:gap-36 mb-16 items-center justify-center">
         <section className="flex flex-col lg:flex-row gap-5 h-auto">
           {/* About story */}
           <AnimatedSectionInView
-            className="max-w-[75vh] flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg"
+            className="lg:max-w-[75vh] flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg"
             delay={0.3}
           >
             <h1 className="text-[25px] font-bold">About show</h1>

@@ -1,10 +1,14 @@
 import { useParams } from "react-router-dom";
 import { LOCATIONS_URL as url } from "../../utils.js";
+import { useFetch } from "../../hooks/useFetch.js";
 
 import LocationDetailsSkeleton from "./skeleton/LocationDetailsSkeleton.jsx";
+import LocationName from "./information/LocationName.jsx";
+import LocationID from "./information/LocationID.jsx";
+import LocationType from "./information/LocationType.jsx";
+import LocationDimension from "./information/LocationDimension.jsx";
 import Error from "../errors/Error.jsx";
 import Details from "../Details.jsx";
-import { useFetch } from "../../hooks/useFetch.js";
 
 export default function LocationDetails() {
   const { id } = useParams();
@@ -24,11 +28,11 @@ export default function LocationDetails() {
   return (
     <Details>
       <div className="flex flex-col">
-        <h1 className="text-xl font-bold">{name || "Loading..."}</h1>
+        <LocationName name={name} />
         <div className="flex flex-col items-start justify-start">
-          <p>ID: {id || "Loading..."}</p>
-          <p>Type: {type || "Loading..."}</p>
-          <p>Dimension: {dimension || "Loading..."}</p>
+          <LocationID id={id} />
+          <LocationType type={type} />
+          <LocationDimension dimension={dimension} />
         </div>
       </div>
     </Details>
