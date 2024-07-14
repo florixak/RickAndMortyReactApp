@@ -128,7 +128,7 @@ export default function CardList({ title, url, type }) {
           className="text-center rounded-lg p-2 text-black w-[250px]"
           type="number"
           min={1}
-          max={info.count || ""}
+          max={info.count || 9999}
           placeholder={`Specify ID (1 to ${info.count || "Loading..."})`}
           value={id > 0 ? id : ""}
           onChange={handleInputValue}
