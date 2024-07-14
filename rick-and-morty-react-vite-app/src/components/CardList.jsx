@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -11,12 +9,9 @@ import CharacterCardSkeleton from "./characters/skeleton/CharacterCardSkeleton";
 import LocationCardSkeleton from "./locations/skeleton/LocationCardSkeleton";
 import EpisodeCardSkeleton from "./episodes/skeleton/EpisodeCardSkeleton";
 import Error from "./errors/Error";
+import { useFetch } from "../hooks/useFetch";
 
 export default function CardList({ title, url, type }) {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState([]);
-  const [info, setInfo] = useState({});
   const [searchParams, setSearchParams] = useSearchParams({
     page: 1,
     id: "all",
@@ -26,38 +21,7 @@ export default function CardList({ title, url, type }) {
   const id = searchParams.get("id");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setLoading(true);
-
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-
-    const fetchData = async () => {
-      try {
-        let response;
-        if (id && parseInt(id) > 0) {
-          response = await axios.get(`${url}/${id}`);
-          setData([response.data]);
-          setInfo({ pages: 1 });
-        } else {
-          response = await axios.get(`${url}?page=${page}`);
-          setData(response.data.results);
-          setInfo(response.data.info);
-        }
-      } catch (e) {
-        setError({ message: "Failed to fetch data." });
-        setData([]);
-        setInfo({ pages: 1 });
-      }
-    };
-
-    fetchData();
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [searchParams, url, id, page]);
+  const { isLoading, error, data, info } = useFetch({ id, page, url }, [])
 
   const handleInputValue = (e) => {
     setSearchParams(
@@ -134,13 +98,13 @@ export default function CardList({ title, url, type }) {
           <PagingButton
             type="previous"
             handleClick={() => handlePageChange("previous")}
-            isDisabled={loading}
+            isDisabled={isLoading}
           />
           <p>{`${page || "Loading..."} / ${info.pages || "Loading..."}`}</p>
           <PagingButton
             type="next"
             handleClick={() => handlePageChange("next")}
-            isDisabled={loading}
+            isDisabled={isLoading}
           />
         </div>
       )
@@ -173,7 +137,7 @@ export default function CardList({ title, url, type }) {
       <PagingButtons />
       <div className={cardListStyle}>
         {filteredData.map((card) =>
-          loading ? renderCardSkeleton(card) : renderCard(card)
+          isLoading ? renderCardSkeleton(card) : renderCard(card)
         )}
       </div>
       <PagingButtons />

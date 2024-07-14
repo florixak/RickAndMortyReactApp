@@ -1,51 +1,19 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
-import {
-  EPISODES_URL as url,
-  EPISODES_NAV_URL as navUrl,
-} from "../../utils.js";
+import { useParams } from "react-router-dom";
+import { EPISODES_URL as url } from "../../utils.js";
 
 import EpisodeDetailsSkeleton from "./skeleton/EpisodeDetailsSkeleton";
 import Error from "../errors/Error.jsx";
 import Details from "../Details.jsx";
+import { useFetch } from "../../hooks/useFetch.js";
 
 export default function EpisodeDetails() {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState({});
   const { id } = useParams();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    let timer = null;
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await axios.get(`${url}/${id}`);
-        setData(response.data);
-        setError(null);
-      } catch (err) {
-        setError({ message: "Failed to fetch data." });
-      } finally {
-        timer = setTimeout(() => setLoading(false), 1500);
-      }
-    };
+  const { isLoading, error, data } = useFetch({ id, url }, {});
 
-    if (id) {
-      fetchData();
-    } else {
-      navigate(navUrl, { replace: true });
-    }
+  const { name } = data[0] || {};
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [id, navigate]);
-
-  const { name } = data;
-
-  if (loading) {
+  if (isLoading) {
     return <EpisodeDetailsSkeleton />;
   }
 

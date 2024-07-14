@@ -1,10 +1,5 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
-import {
-  CHARACTERS_URL as url,
-  CHARACTERS_NAV_URL as navUrl,
-} from "../../utils.js";
+import { useParams } from "react-router-dom";
+import { CHARACTERS_URL as url } from "../../utils.js";
 
 import CharacterTitle from "./information/CharacterTitle";
 import CharacterStatus from "./information/CharacterStatus";
@@ -17,44 +12,17 @@ import CharacterID from "./information/CharacterID";
 import CharacterEpisodes from "./information/CharacterEpisodes";
 import Error from "../errors/Error.jsx";
 import Details from "../Details.jsx";
+import { useFetch } from "../../hooks/useFetch.js";
 
 export default function CharacterDetails() {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState({});
   const { id } = useParams();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    let timer = null;
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await axios.get(`${url}/${id}`);
-        setData(response.data);
-        setError(null);
-      } catch (err) {
-        setError({ message: "Failed to fetch data." });
-      } finally {
-        timer = setTimeout(() => setLoading(false), 1500);
-      }
-    };
-
-    if (id) {
-      fetchData();
-    } else {
-      navigate(navUrl, { replace: true });
-    }
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [id, navigate]);
+  const { isLoading, error, data } = useFetch({ id, url }, {});
 
   const { image, name, status, species, gender, origin, location, episode } =
-    data;
+    data[0] || {};
 
-  if (loading || !data) {
+  if (isLoading || !data) {
     return <CharacterDetailsSkeleton />;
   }
 
