@@ -1,19 +1,37 @@
 import RickAndMortyTVImage from "../assets/RickAndMortyTV.jpg";
 import { motion } from "framer-motion";
 import { MainCharacters } from "../utils";
-import { ShowIn } from "../motions";
+import { ScaleIn, ShowIn } from "../motions";
 
-const Link = ({ href, children }) => (
-  <a
+const AdditionalButtons = [
+  {
+    id: 1,
+    link: "https://www.adultswim.com/videos/rick-and-morty",
+    text: "WATCH NOW",
+    delay: 0.6,
+  },
+  {
+    id: 2,
+    link: "https://en.wikipedia.org/wiki/Rick_and_Morty",
+    text: "READ MORE",
+    delay: 0.8,
+  },
+];
+
+const ButtonLink = ({ link, children, delay }) => (
+  <motion.a
+    variants={ScaleIn(0.5, delay)}
+    initial="hidden"
+    whileInView="show"
     className="p-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
-    href={href}
+    href={link}
     target="_blank"
   >
     {children}
-  </a>
+  </motion.a>
 );
 
-const AnimatedSectionInView = ({ className, children, delay }) => {
+const AnimatedSectionInView = ({ className, children }) => {
   return (
     <motion.section
       variants={ShowIn(0.5, 0.3)}
@@ -45,7 +63,7 @@ const MainCharacterInfo = ({ name, image, description }) => {
 
       <div className="flex flex-col w-[120%] md:w-full bg-dark-slate rounded-3xl p-4 md:p-5">
         <h2 className="text-[20px] font-bold">{name}</h2>
-        <p className="text-[20px] text-secondary-text">{description}</p>
+        <p className="text-[17px] text-secondary-text">{description}</p>
       </div>
     </motion.section>
   );
@@ -136,9 +154,7 @@ export default function Home() {
         </AnimatedSectionInView>
 
         {/* Conclusion */}
-        <AnimatedSectionInView
-          className="flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg"
-        >
+        <AnimatedSectionInView className="flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg">
           <h1 className="text-[25px] font-bold">Conclusion</h1>
           <Paragraph>
             It is more than just an animated series, it is a phenomenon that
@@ -150,13 +166,14 @@ export default function Home() {
         </AnimatedSectionInView>
 
         {/* Watch now and Read more buttons */}
-        <AnimatedSectionInView
-          className="w-full flex justify-center gap-10"
-        >
-          <Link href="/">WATCH NOW</Link>
-          <Link href="https://en.wikipedia.org/wiki/Rick_and_Morty">
-            READ MORE
-          </Link>
+        <AnimatedSectionInView className="w-full flex justify-center gap-10">
+          {AdditionalButtons.map((button) => {
+            return (
+              <ButtonLink key={button.id} link={button.link} delay={button.delay}>
+                {button.text}
+              </ButtonLink>
+            );
+          })}
         </AnimatedSectionInView>
       </section>
     </main>

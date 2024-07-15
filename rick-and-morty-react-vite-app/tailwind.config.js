@@ -11,16 +11,6 @@ export default {
         "light-green": "#97ce4c",
         cyan: "#4ade80",
       },
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: "1rem",
-          sm: "2rem",
-          lg: "4rem",
-          xl: "5rem",
-          "2xl": "6rem",
-        },
-      },
       animation: {
         scaling: "scaling 1.5s linear",
         "infinite-scaling": "scaling 3s linear infinite",
