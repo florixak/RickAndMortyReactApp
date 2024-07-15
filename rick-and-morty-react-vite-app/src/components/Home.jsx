@@ -1,6 +1,7 @@
 import RickAndMortyTVImage from "../assets/RickAndMortyTV.jpg";
 import { motion } from "framer-motion";
 import { MainCharacters } from "../utils";
+import { ShowIn } from "../motions";
 
 const Link = ({ href, children }) => (
   <a
@@ -15,9 +16,9 @@ const Link = ({ href, children }) => (
 const AnimatedSectionInView = ({ className, children, delay }) => {
   return (
     <motion.section
-      initial={{ opacity: 0 /*, scale: 0*/ }}
-      whileInView={{ opacity: 1 /*, scale: 1*/ }}
-      transition={{ duration: 0.8, delay: delay || 0 }}
+      variants={ShowIn(0.5, 0.3)}
+      initial="hidden"
+      whileInView="show"
       className={className}
     >
       {children}
@@ -28,9 +29,9 @@ const AnimatedSectionInView = ({ className, children, delay }) => {
 const MainCharacterInfo = ({ name, image, description }) => {
   return (
     <motion.section
-      initial={{ opacity: 0 /*, scale: 0*/ }}
-      whileInView={{ opacity: 1 /*, scale: 1*/ }}
-      transition={{ duration: 1, delay: 0.3 }}
+      variants={ShowIn(1, 0.3)}
+      initial="hidden"
+      whileInView="show"
       className="flex flex-col md:flex-row gap-5 p-10 m-3 sm:m-0 items-center justify-center md:even:flex-row-reverse"
     >
       <div className="bg-dark-slate w-auto p-1 rounded-3xl">
@@ -137,7 +138,6 @@ export default function Home() {
         {/* Conclusion */}
         <AnimatedSectionInView
           className="flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg"
-          delay={0.3}
         >
           <h1 className="text-[25px] font-bold">Conclusion</h1>
           <Paragraph>
@@ -152,7 +152,6 @@ export default function Home() {
         {/* Watch now and Read more buttons */}
         <AnimatedSectionInView
           className="w-full flex justify-center gap-10"
-          delay={0.3}
         >
           <Link href="/">WATCH NOW</Link>
           <Link href="https://en.wikipedia.org/wiki/Rick_and_Morty">

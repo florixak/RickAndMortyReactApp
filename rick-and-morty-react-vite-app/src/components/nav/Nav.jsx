@@ -22,7 +22,7 @@ const navLinks = [
 const Logo = () => {
   return (
     <motion.img
-      variants={ShowIn(0.5)}
+      variants={ShowIn(0.8, 0.5)}
       initial="hidden"
       whileInView="show"
       src={LogoImage}
@@ -62,7 +62,7 @@ export default function Nav() {
   const NavLinkPackage = ({ children }) => {
     return (
       <motion.div
-        variants={ScaleIn(0.5)}
+        variants={ScaleIn(0.8, 0.5)}
         initial="hidden"
         whileInView="show"
         className="hidden lg:flex text-center flex-col xl:flex-row gap-10"
