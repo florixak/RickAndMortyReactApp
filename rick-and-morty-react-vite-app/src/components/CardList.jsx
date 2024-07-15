@@ -122,7 +122,10 @@ export default function CardList({ title, url, type }) {
       transition={{ duration: 0.8, delay: 0.1 }}
       className="w-full h-full flex justify-center items-center gap-5 flex-col"
     >
+      {/* Page title */}
       <h1 className="font-bold">{title}</h1>
+
+      {/* Search form */}
       <form onSubmit={handleFormSubmit}>
         <input
           className="text-center rounded-lg p-2 text-black w-[250px]"
@@ -134,6 +137,8 @@ export default function CardList({ title, url, type }) {
           onChange={handleInputValue}
         />
       </form>
+
+      {/* Cards with paging buttons */}
       <PagingButtons />
       <div className={cardListStyle}>
         {filteredData.map((card) =>

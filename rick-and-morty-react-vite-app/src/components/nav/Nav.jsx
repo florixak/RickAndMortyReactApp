@@ -10,6 +10,7 @@ import {
 import LogoImage from "../../assets/RickAndMortyLogo.png";
 import MobileNav from "./MobileNav.jsx";
 import Link from "./Link.jsx";
+import { ShowIn, ScaleIn } from "../../motions.js";
 
 const navLinks = [
   { to: "/", label: "HOME" },
@@ -21,21 +22,13 @@ const navLinks = [
 const Logo = () => {
   return (
     <motion.img
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.5 }}
+      variants={ShowIn(0.5)}
+      initial="hidden"
+      whileInView="show"
       src={LogoImage}
       alt="Rick And Morty Logo"
       className="animate-infinite-scaling w-[240px] md:w-[460px]"
     />
-    /*<motion.h1
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.5 }}
-      className="animate-infinite-scaling font-bold text-[60px]"
-    >
-      Rick And Morty
-    </motion.h1>*/
   );
 };
 
@@ -69,9 +62,9 @@ export default function Nav() {
   const NavLinkPackage = ({ children }) => {
     return (
       <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
+        variants={ScaleIn(0.5)}
+        initial="hidden"
+        whileInView="show"
         className="hidden lg:flex text-center flex-col xl:flex-row gap-10"
       >
         {children}

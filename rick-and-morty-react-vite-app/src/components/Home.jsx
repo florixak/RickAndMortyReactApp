@@ -51,15 +51,18 @@ const MainCharacterInfo = ({ name, image, description }) => {
 };
 
 const Paragraph = ({ children }) => {
-  return <p className="text-[17px] bg-dark-slate p-5 rounded-3xl">{children}</p>;
+  return (
+    <p className="text-[17px] bg-dark-slate p-5 rounded-3xl">{children}</p>
+  );
 };
 
 export default function Home() {
   return (
     <main className="w-full mt-[50px] md:h-[100%] flex flex-col justify-center items-center gap-16 text-primary">
       <section className="max-w-[1050px] flex flex-col gap-5 md:gap-36 mb-16 items-center justify-center">
+        {/* Container of About and Image */}
         <section className="flex flex-col lg:flex-row gap-5 h-auto">
-          {/* About story */}
+          {/* About Rick and Morty */}
           <AnimatedSectionInView
             className="lg:max-w-[75vh] flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg"
             delay={0.3}
@@ -114,7 +117,9 @@ export default function Home() {
           className="flex flex-col bg-light-slate rounded-3xl shadow-black shadow-lg"
           delay={0.3}
         >
-          <h1 className="text-[25px] font-bold text-right mt-10 mr-10">Main Characters</h1>
+          <h1 className="text-[25px] font-bold text-right mt-10 mr-10">
+            Main Characters
+          </h1>
           <section className="flex flex-wrap items-center justify-center">
             {MainCharacters.map((character) => {
               return (
@@ -144,7 +149,7 @@ export default function Home() {
           </Paragraph>
         </AnimatedSectionInView>
 
-        {/* Additional Buttons */}
+        {/* Watch now and Read more buttons */}
         <AnimatedSectionInView
           className="w-full flex justify-center gap-10"
           delay={0.3}
