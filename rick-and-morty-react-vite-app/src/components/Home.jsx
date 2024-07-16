@@ -1,7 +1,10 @@
-import RickAndMortyTVImage from "../assets/RickAndMortyTV.jpg";
 import { motion } from "framer-motion";
+import RickAndMortyTVImage from "../assets/RickAndMortyTV.jpg";
+import AnimatedSection from "./motion/AnimatedSection";
 import { MainCharacters } from "../utils";
-import { ScaleIn, ShowIn, SlideFromLeft, SlideFromRight } from "../motions";
+import { SlideFromLeft, SlideFromRight } from "../motions";
+import AnimatedTitle from "./motion/AnimatedTitle";
+import AnimatedParagraph from "./motion/AnimatedParagraph";
 
 const AdditionalButtons = [
   {
@@ -31,41 +34,10 @@ const ButtonLink = ({ link, children, delay }) => (
   </motion.a>
 );
 
-const AnimatedSectionInView = ({ className, children }) => {
-  return (
-    <motion.section
-      variants={ShowIn(0.5, 0.3)}
-      initial="hidden"
-      whileInView="show"
-      className={className}
-    >
-      {children}
-    </motion.section>
-  );
-};
-
-const AnimatedSlideTitle = ({ className, children, slideDirection }) => {
-  const variant =
-    slideDirection === "toLeft"
-      ? SlideFromRight(1, 0.3)
-      : SlideFromLeft(1, 0.3);
-  return (
-    <motion.h1
-      variants={variant}
-      initial="hidden"
-      whileInView="show"
-      className={className}
-    >
-      {children}
-    </motion.h1>
-  );
-};
-
 const MainCharacterInfo = ({ id, name, image, description }) => {
   const isEven = id % 2 === 1;
-  console.log(isEven);
   return (
-    <motion.section
+    <motion.div
       variants={isEven ? SlideFromRight(1, 0.3) : SlideFromLeft(1, 0.3)}
       initial="hidden"
       whileInView="show"
@@ -84,20 +56,7 @@ const MainCharacterInfo = ({ id, name, image, description }) => {
         <h2 className="text-[20px] font-bold">{name}</h2>
         <p className="text-[17px] text-secondary-text">{description}</p>
       </div>
-    </motion.section>
-  );
-};
-
-const Paragraph = ({ children }) => {
-  return (
-    <motion.p
-      variants={SlideFromRight(0.5, 0.3)}
-      initial="hidden"
-      whileInView="show"
-      className="text-[17px] bg-dark-slate p-5 rounded-3xl"
-    >
-      {children}
-    </motion.p>
+    </motion.div>
   );
 };
 
@@ -108,18 +67,18 @@ export default function Home() {
         {/* Container of About and Image */}
         <section className="flex flex-col lg:flex-row gap-5 h-auto">
           {/* About Rick and Morty */}
-          <AnimatedSectionInView
+          <AnimatedSection
             className="lg:max-w-[75vh] flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg"
             delay={0.3}
           >
-            <AnimatedSlideTitle
+            <AnimatedTitle
               className="text-[25px] font-bold"
               slideDirection="toLeft"
             >
               About show
-            </AnimatedSlideTitle>
+            </AnimatedTitle>
             <section className="flex flex-col gap-5">
-              <Paragraph>
+              <AnimatedParagraph>
                 "Rick and Morty" is a popular American animated series for
                 adults created by Dan Harmon and Justin Roiland. The first
                 episode aired on Adult Swim, the nighttime programming block of
@@ -127,20 +86,20 @@ export default function Home() {
                 of sci-fi, dark comedy, and family drama, quickly gaining a
                 large fan base thanks to its unique style of humor, complex
                 storylines, and deep philosophical questions.
-              </Paragraph>
-              <Paragraph>
+              </AnimatedParagraph>
+              <AnimatedParagraph>
                 Follows the adventures of Rick and Morty as they travel across
                 different dimensions and timelines. The series is known for its
                 intricate plots, often exploring deep philosophical questions
                 such as the meaning of existence, free will, and the relativity
                 of morality. The humor is often dark, sarcastic, and based on
                 absurd situations and characters.
-              </Paragraph>
+              </AnimatedParagraph>
             </section>
-          </AnimatedSectionInView>
+          </AnimatedSection>
 
           {/* Image of Rick and Morty */}
-          <AnimatedSectionInView
+          <AnimatedSection
             className="lg:w-[40vh] flex flex-col gap-3 items-center justify-center p-5 bg-light-slate rounded-3xl shadow-black shadow-lg"
             delay={0.3}
           >
@@ -159,20 +118,20 @@ export default function Home() {
             >
               Image from IMDb
             </a>
-          </AnimatedSectionInView>
+          </AnimatedSection>
         </section>
 
         {/* Main Characters */}
-        <AnimatedSectionInView
+        <AnimatedSection
           className="flex flex-col bg-light-slate rounded-3xl shadow-black shadow-lg"
           delay={0.3}
         >
-          <AnimatedSlideTitle
+          <AnimatedTitle
             className="text-[25px] font-bold text-right mt-10 mr-10"
             slideDirection="toRight"
           >
             Main Characters
-          </AnimatedSlideTitle>
+          </AnimatedTitle>
           <section className="flex flex-wrap items-center justify-center">
             {MainCharacters.map((character) => {
               return (
@@ -186,27 +145,27 @@ export default function Home() {
               );
             })}
           </section>
-        </AnimatedSectionInView>
+        </AnimatedSection>
 
         {/* Conclusion */}
-        <AnimatedSectionInView className="flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg">
-          <AnimatedSlideTitle
+        <AnimatedSection className="flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg">
+          <AnimatedTitle
             className="text-[25px] font-bold"
             slideDirection="toLeft"
           >
             Conclusion
-          </AnimatedSlideTitle>
-          <Paragraph>
+          </AnimatedTitle>
+          <AnimatedParagraph>
             It is more than just an animated series, it is a phenomenon that
             brings viewers incredible adventures and deep thoughts, all wrapped
             in a unique mix of humor and dramatic moments. It is a series that
             makes viewers think and laugh at the same time, which is why it has
             gained such dedicated fans worldwide.
-          </Paragraph>
-        </AnimatedSectionInView>
+          </AnimatedParagraph>
+        </AnimatedSection>
 
         {/* Watch now and Read more buttons */}
-        <AnimatedSectionInView className="w-full flex justify-center gap-10">
+        <AnimatedSection className="w-full flex justify-center gap-10">
           {AdditionalButtons.map((button) => {
             return (
               <ButtonLink
@@ -218,7 +177,7 @@ export default function Home() {
               </ButtonLink>
             );
           })}
-        </AnimatedSectionInView>
+        </AnimatedSection>
       </section>
     </main>
   );
