@@ -34,7 +34,10 @@ export const SlideFromLeft = (duration, delay) => ({
 });
 
 export const SlideFromRight = (duration, delay) => ({
-  hidden: { opacity: 0, x: "5%" },
+  hidden: { 
+    opacity: 0, 
+    x: "5%" 
+  },
   show: {
     opacity: 1,
     x: 0,

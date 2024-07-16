@@ -5,6 +5,7 @@ import { MainCharacters } from "../utils";
 import { SlideFromLeft, SlideFromRight } from "../motions";
 import AnimatedTitle from "./motion/AnimatedTitle";
 import AnimatedParagraph from "./motion/AnimatedParagraph";
+import AnimatedImage from "./motion/AnimatedImage";
 
 const AdditionalButtons = [
   {
@@ -104,11 +105,7 @@ export default function Home() {
             delay={0.3}
           >
             <div className="w-auto bg-dark-background p-1 rounded-3xl">
-              <img
-                className="rounded-3xl shadow-black shadow-lg m-auto"
-                src={RickAndMortyTVImage}
-                alt=""
-              />
+              <AnimatedImage image={RickAndMortyTVImage} alt="Rick And Morty Image" />
             </div>
 
             <a
