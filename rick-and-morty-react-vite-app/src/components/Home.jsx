@@ -70,7 +70,6 @@ export default function Home() {
           {/* About Rick and Morty */}
           <AnimatedSection
             className="lg:max-w-[75vh] flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg"
-            delay={0.3}
           >
             <AnimatedTitle
               className="text-[25px] font-bold"
@@ -102,7 +101,6 @@ export default function Home() {
           {/* Image of Rick and Morty */}
           <AnimatedSection
             className="lg:w-[40vh] flex flex-col gap-3 items-center justify-center p-5 bg-light-slate rounded-3xl shadow-black shadow-lg"
-            delay={0.3}
           >
             <div className="w-auto bg-dark-background p-1 rounded-3xl">
               <AnimatedImage image={RickAndMortyTVImage} alt="Rick And Morty Image" />
@@ -113,7 +111,7 @@ export default function Home() {
               href="https://www.imdb.com/title/tt2861424/mediaviewer/rm209331968/?ref_=ext_shr_lnk"
               target="_blank"
             >
-              Image from IMDb
+              Rick a Morty (2013)
             </a>
           </AnimatedSection>
         </section>
@@ -121,7 +119,6 @@ export default function Home() {
         {/* Main Characters */}
         <AnimatedSection
           className="flex flex-col bg-light-slate rounded-3xl shadow-black shadow-lg"
-          delay={0.3}
         >
           <AnimatedTitle
             className="text-[25px] font-bold text-right mt-10 mr-10"
