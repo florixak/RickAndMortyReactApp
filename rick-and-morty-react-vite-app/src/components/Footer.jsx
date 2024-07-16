@@ -25,7 +25,7 @@ const FooterList = [
 export default function Footer() {
   return (
     <motion.footer
-      variants={ShowIn(0.8, 0.5)}
+      variants={ShowIn(0.8, 0.3)}
       initial="hidden"
       whileInView="show"
       className="absolute w-full bottom-0 h-[2.5rem] flex flex-col md:flex-row justify-center md:justify-evenly items-center md:items-start p-10 md:p-10 md:pt-[10px] bg-dark-slate border-light-green border-t-2 rounded-t-[60px] md:rounded-t-[80px]"

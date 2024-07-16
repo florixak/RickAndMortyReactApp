@@ -11,7 +11,7 @@ export default function CharacterCard({ data }) {
   const { image, name, id, status, species, gender, origin, location } = data;
 
   return (
-    <Card type={"characters"} id={id}>
+    <Card type="characters" id={id}>
       <CharacterImage image={image} name={name} />
       <CharacterTitle name={name} gender={gender} />
       <div className="max-w-[250px] flex flex-col items-start justify-start text-secondary">

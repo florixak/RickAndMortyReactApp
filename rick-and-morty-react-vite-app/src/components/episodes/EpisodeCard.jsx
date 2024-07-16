@@ -9,7 +9,7 @@ export default function EpisodeCard({ data }) {
   const { id, name, air_date, episode } = data;
 
   return (
-    <Card type={"episodes"} id={id || 0}>
+    <Card type="episodes" id={id || 0}>
       <EpisodeName name={name} />
       <div className="flex flex-col items-start justify-start text-secondary">
         <EpisodeID id={id} />
