@@ -105,9 +105,7 @@ export default function Home() {
         {/* Container of About and Image */}
         <section className="flex flex-col lg:flex-row gap-5 h-auto">
           {/* About Rick and Morty */}
-          <AnimatedSection
-            className="lg:max-w-[75vh] flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg"
-          >
+          <AnimatedSection className="lg:max-w-[75vh] flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg">
             <AnimatedTitle
               className="text-[25px] font-bold"
               slideDirection="toLeft"
@@ -116,7 +114,7 @@ export default function Home() {
             </AnimatedTitle>
             <section className="flex flex-col gap-5">
               <AnimatedParagraph>
-                "Rick and Morty" is a popular American animated series for
+                Rick and Morty is a popular American animated series for
                 adults created by Dan Harmon and Justin Roiland. The first
                 episode aired on Adult Swim, the nighttime programming block of
                 Cartoon Network, in December 2013. The series combines elements
@@ -136,11 +134,12 @@ export default function Home() {
           </AnimatedSection>
 
           {/* Image of Rick and Morty */}
-          <AnimatedSection
-            className="lg:w-[40vh] flex flex-col gap-3 items-center justify-center p-5 bg-light-slate rounded-3xl shadow-black shadow-lg"
-          >
+          <AnimatedSection className="lg:w-[40vh] flex flex-col gap-3 items-center justify-center p-5 bg-light-slate rounded-3xl shadow-black shadow-lg">
             <div className="w-auto bg-dark-background p-1 rounded-3xl">
-              <AnimatedImage image={RickAndMortyTVImage} alt="Rick And Morty Image" />
+              <AnimatedImage
+                image={RickAndMortyTVImage}
+                alt="Rick And Morty Image"
+              />
             </div>
 
             <a
@@ -154,9 +153,7 @@ export default function Home() {
         </section>
 
         {/* Main Characters */}
-        <AnimatedSection
-          className="flex flex-col bg-light-slate rounded-3xl shadow-black shadow-lg"
-        >
+        <AnimatedSection className="flex flex-col bg-light-slate rounded-3xl shadow-black shadow-lg">
           <AnimatedTitle
             className="text-[25px] font-bold text-right mt-10 mr-10"
             slideDirection="toRight"
