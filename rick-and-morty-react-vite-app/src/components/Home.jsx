@@ -1,26 +1,26 @@
 import RickAndMortyTVImage from "../assets/RickAndMortyTV.jpg";
 import { motion } from "framer-motion";
 import { MainCharacters } from "../utils";
-import { ScaleIn, ShowIn } from "../motions";
+import { ScaleIn, ShowIn, SlideFromLeft, SlideFromRight } from "../motions";
 
 const AdditionalButtons = [
   {
     id: 1,
     link: "https://www.adultswim.com/videos/rick-and-morty",
     text: "WATCH NOW",
-    delay: 0.6,
+    delay: 0.5,
   },
   {
     id: 2,
     link: "https://en.wikipedia.org/wiki/Rick_and_Morty",
     text: "READ MORE",
-    delay: 0.8,
+    delay: 1,
   },
 ];
 
 const ButtonLink = ({ link, children, delay }) => (
   <motion.a
-    variants={ScaleIn(0.5, delay)}
+    variants={SlideFromLeft(0.5, delay)}
     initial="hidden"
     whileInView="show"
     className="p-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
@@ -44,10 +44,29 @@ const AnimatedSectionInView = ({ className, children }) => {
   );
 };
 
-const MainCharacterInfo = ({ name, image, description }) => {
+const AnimatedSlideTitle = ({ className, children, slideDirection }) => {
+  const variant =
+    slideDirection === "toLeft"
+      ? SlideFromRight(1, 0.3)
+      : SlideFromLeft(1, 0.3);
+  return (
+    <motion.h1
+      variants={variant}
+      initial="hidden"
+      whileInView="show"
+      className={className}
+    >
+      {children}
+    </motion.h1>
+  );
+};
+
+const MainCharacterInfo = ({ id, name, image, description }) => {
+  const isEven = id % 2 === 1;
+  console.log(isEven);
   return (
     <motion.section
-      variants={ShowIn(1, 0.3)}
+      variants={isEven ? SlideFromRight(1, 0.3) : SlideFromLeft(1, 0.3)}
       initial="hidden"
       whileInView="show"
       className="flex flex-col md:flex-row gap-5 p-10 m-3 sm:m-0 items-center justify-center md:even:flex-row-reverse"
@@ -71,7 +90,14 @@ const MainCharacterInfo = ({ name, image, description }) => {
 
 const Paragraph = ({ children }) => {
   return (
-    <p className="text-[17px] bg-dark-slate p-5 rounded-3xl">{children}</p>
+    <motion.p
+      variants={SlideFromRight(0.5, 0.3)}
+      initial="hidden"
+      whileInView="show"
+      className="text-[17px] bg-dark-slate p-5 rounded-3xl"
+    >
+      {children}
+    </motion.p>
   );
 };
 
@@ -86,7 +112,12 @@ export default function Home() {
             className="lg:max-w-[75vh] flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg"
             delay={0.3}
           >
-            <h1 className="text-[25px] font-bold">About show</h1>
+            <AnimatedSlideTitle
+              className="text-[25px] font-bold"
+              slideDirection="toLeft"
+            >
+              About show
+            </AnimatedSlideTitle>
             <section className="flex flex-col gap-5">
               <Paragraph>
                 "Rick and Morty" is a popular American animated series for
@@ -136,14 +167,18 @@ export default function Home() {
           className="flex flex-col bg-light-slate rounded-3xl shadow-black shadow-lg"
           delay={0.3}
         >
-          <h1 className="text-[25px] font-bold text-right mt-10 mr-10">
+          <AnimatedSlideTitle
+            className="text-[25px] font-bold text-right mt-10 mr-10"
+            slideDirection="toRight"
+          >
             Main Characters
-          </h1>
+          </AnimatedSlideTitle>
           <section className="flex flex-wrap items-center justify-center">
             {MainCharacters.map((character) => {
               return (
                 <MainCharacterInfo
                   key={character.name}
+                  id={character.id}
                   name={character.name}
                   image={character.image}
                   description={character.description}
@@ -155,7 +190,12 @@ export default function Home() {
 
         {/* Conclusion */}
         <AnimatedSectionInView className="flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg">
-          <h1 className="text-[25px] font-bold">Conclusion</h1>
+          <AnimatedSlideTitle
+            className="text-[25px] font-bold"
+            slideDirection="toLeft"
+          >
+            Conclusion
+          </AnimatedSlideTitle>
           <Paragraph>
             It is more than just an animated series, it is a phenomenon that
             brings viewers incredible adventures and deep thoughts, all wrapped
@@ -169,7 +209,11 @@ export default function Home() {
         <AnimatedSectionInView className="w-full flex justify-center gap-10">
           {AdditionalButtons.map((button) => {
             return (
-              <ButtonLink key={button.id} link={button.link} delay={button.delay}>
+              <ButtonLink
+                key={button.id}
+                link={button.link}
+                delay={button.delay}
+              >
                 {button.text}
               </ButtonLink>
             );

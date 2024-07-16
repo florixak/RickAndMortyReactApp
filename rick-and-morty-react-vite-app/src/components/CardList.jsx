@@ -21,7 +21,7 @@ export default function CardList({ title, url, type }) {
   const id = searchParams.get("id");
   const navigate = useNavigate();
 
-  const { isLoading, error, data, info } = useFetch({ id, page, url }, [])
+  const { isLoading, error, data, info } = useFetch({ id, page, url }, []);
 
   const handleInputValue = (e) => {
     setSearchParams(
@@ -48,6 +48,10 @@ export default function CardList({ title, url, type }) {
           newPage = prevPage === info.pages ? 1 : prevPage + 1;
         } else if (direction === "previous") {
           newPage = prevPage === 1 ? info.pages : prevPage - 1;
+        } else if (direction === "first") {
+          newPage = 1;
+        } else if (direction === "last") {
+          newPage = info.pages;
         } else {
           newPage = prevPage;
         }
@@ -96,6 +100,11 @@ export default function CardList({ title, url, type }) {
       id === "all" && (
         <div className="w-[50%] md:w-[30%] lg:w-[20%] flex justify-evenly items-center">
           <PagingButton
+            type="first"
+            handleClick={() => handlePageChange("first")}
+            isDisabled={isLoading}
+          />
+          <PagingButton
             type="previous"
             handleClick={() => handlePageChange("previous")}
             isDisabled={isLoading}
@@ -104,6 +113,11 @@ export default function CardList({ title, url, type }) {
           <PagingButton
             type="next"
             handleClick={() => handlePageChange("next")}
+            isDisabled={isLoading}
+          />
+          <PagingButton
+            type="last"
+            handleClick={() => handlePageChange("last")}
             isDisabled={isLoading}
           />
         </div>

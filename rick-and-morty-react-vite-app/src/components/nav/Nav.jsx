@@ -65,7 +65,7 @@ export default function Nav() {
         variants={ScaleIn(0.8, 0.5)}
         initial="hidden"
         whileInView="show"
-        className="hidden lg:flex text-center flex-col xl:flex-row gap-10"
+        className="hidden lg:flex text-center flex-col xl:flex-row gap-20"
       >
         {children}
       </motion.div>
@@ -76,7 +76,7 @@ export default function Nav() {
     <nav>
       <MobileNavButton className="absolute z-50" />
       {isOpen && <MobileNav navLinks={navLinks} toggleNav={handleNavOpen} />}
-      <div className="w-full h-full flex flex-row items-center justify-center gap-20">
+      <div className="w-full h-full flex flex-row items-center justify-center gap-36">
         <NavLinkPackage>
           <Link to={navLinks[0].to}>{navLinks[0].label}</Link>
           <Link to={navLinks[1].to}>{navLinks[1].label}</Link>
