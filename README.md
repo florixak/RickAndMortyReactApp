@@ -65,4 +65,3 @@ Check out live preview.
 ## Links
 
 - [Rick and Morty API](https://rickandmortyapi.com/)
-- [Rick and Morty Logo](https://en.m.wikipedia.org/wiki/File:Rick_and_Morty.svg)
