@@ -1,5 +1,6 @@
 # Rick And Morty Web Using API
 - Still in development
+- Live Preview: [Rick And Morty](https://rick-and-morty-op.netlify.app/)
 
 ## Description
 
@@ -46,7 +47,7 @@ Feel free to explore these features and enjoy the world of Rick and Morty!
 
 ## Sample of work
 (Warning) Images can be different through the development!
-- Live Preview: [Rick And Morty](https://rick-and-morty-op.netlify.app/)
+Check out live preview.
 
 - Home page:
 ![Screenshot of main page](./screenshots/home-page.png)
