@@ -5,9 +5,6 @@ import PagingButton from "./PagingButton";
 import CharacterCard from "./characters/CharacterCard";
 import LocationCard from "./locations/LocationCard";
 import EpisodeCard from "./episodes/EpisodeCard";
-import CharacterCardSkeleton from "./characters/skeleton/CharacterCardSkeleton";
-import LocationCardSkeleton from "./locations/skeleton/LocationCardSkeleton";
-import EpisodeCardSkeleton from "./episodes/skeleton/EpisodeCardSkeleton";
 import Error from "./errors/Error";
 import { useFetch } from "../hooks/useFetch";
 
@@ -69,27 +66,14 @@ export default function CardList({ title, url, type }) {
       ? "flex justify-center items-center"
       : "grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4";
 
-  const renderCardSkeleton = (card) => {
-    switch (type) {
-      case "characters":
-        return <CharacterCardSkeleton key={card.id} />;
-      case "locations":
-        return <LocationCardSkeleton key={card.id} />;
-      case "episodes":
-        return <EpisodeCardSkeleton key={card.id} />;
-      default:
-        return null;
-    }
-  };
-
   const renderCard = (card) => {
     switch (type) {
       case "characters":
-        return <CharacterCard key={card.id} data={card} />;
+        return <CharacterCard key={card.id} data={card} isLoading={isLoading} />;
       case "locations":
-        return <LocationCard key={card.id} data={card} />;
+        return <LocationCard key={card.id} data={card} isLoading={isLoading} />;
       case "episodes":
-        return <EpisodeCard key={card.id} data={card} />;
+        return <EpisodeCard key={card.id} data={card} isLoading={isLoading} />;
       default:
         return null;
     }
@@ -98,7 +82,7 @@ export default function CardList({ title, url, type }) {
   const PagingButtons = () => {
     return (
       id === "all" && (
-        <div className="w-[50%] md:w-[30%] lg:w-[20%] flex justify-evenly items-center">
+        <div className="w-[50%] md:w-[30%] min-w-[300px] lg:w-[20%] flex justify-evenly items-center flex-nowrap">
           <PagingButton
             type="first"
             handleClick={() => handlePageChange("first")}
@@ -156,7 +140,7 @@ export default function CardList({ title, url, type }) {
       <PagingButtons />
       <div className={cardListStyle}>
         {filteredData.map((card) =>
-          isLoading ? renderCardSkeleton(card) : renderCard(card)
+          renderCard(card)
         )}
       </div>
       <PagingButtons />

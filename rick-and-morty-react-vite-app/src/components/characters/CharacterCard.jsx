@@ -6,9 +6,14 @@ import CharacterOrigin from "./information/CharacterOrigin";
 import CharacterSpecies from "./information/CharacterSpecies";
 import CharacterLocation from "./information/CharacterLocation";
 import CharacterID from "./information/CharacterID";
+import CharacterCardSkeleton from "./skeleton/CharacterCardSkeleton";
 
-export default function CharacterCard({ data }) {
+export default function CharacterCard({ data, isLoading }) {
   const { image, name, id, status, species, gender, origin, location } = data;
+
+  if (isLoading || !data) {
+    return <CharacterCardSkeleton />;
+  }
 
   return (
     <Card type="characters" id={id}>

@@ -4,7 +4,7 @@ import { ShowIn } from "../../motions";
 export default function AnimatedSection({ className, children }) {
   return (
     <motion.section
-      variants={ShowIn(0.5, 0.3)}
+      variants={ShowIn(0.3)}
       initial="hidden"
       whileInView="show"
       className={className}

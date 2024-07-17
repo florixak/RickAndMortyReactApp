@@ -1,4 +1,4 @@
-import { EPISODES_URL } from "../../utils.js";
+import { EPISODES_URL } from "../../data.js";
 import CardList from "../CardList";
 
 export default function EpisodeList() {

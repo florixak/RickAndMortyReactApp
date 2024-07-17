@@ -6,7 +6,7 @@ import {
   CHARACTERS_NAV_URL,
   LOCATIONS_NAV_URL,
   EPISODES_NAV_URL,
-} from "../../utils.js";
+} from "../../data.js";
 import LogoImage from "../../assets/RickAndMortyLogo.png";
 import MobileNav from "./MobileNav.jsx";
 import Link from "./Link.jsx";
@@ -22,7 +22,7 @@ const navLinks = [
 const Logo = () => {
   return (
     <motion.img
-      variants={ShowIn(0.8, 0.5)}
+      variants={ShowIn(0.5)}
       initial="hidden"
       whileInView="show"
       src={LogoImage}

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { EPISODES_URL as url } from "../../utils.js";
+import { EPISODES_URL as url } from "../../data.js";
 import { useFetch } from "../../hooks/useFetch.js";
 
 import EpisodeDetailsSkeleton from "./skeleton/EpisodeDetailsSkeleton";

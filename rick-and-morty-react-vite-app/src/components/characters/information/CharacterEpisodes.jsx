@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { getEpisodeURL } from "../../../utils.js";
+import { getEpisodeURL } from "../../../data.js";
 
 export default function CharacterEpisodes({ episode }) {
   const navigate = useNavigate();

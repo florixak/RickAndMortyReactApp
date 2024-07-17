@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { SlideFromRight, SlideFromLeft } from "../../motions";
+import { SlideToLeft, SlideToRight } from "../../motions";
 
 export default function AnimatedTitle({ className, children, slideDirection }) {
   const variant =
     slideDirection === "toLeft"
-      ? SlideFromRight(0.5, 0.3)
-      : SlideFromLeft(0.5, 0.3);
+      ? SlideToLeft(0.3)
+      : SlideToRight(0.3);
   return (
     <motion.h1
       variants={variant}

@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import RickAndMortyTVImage from "../assets/RickAndMortyTV.jpg";
 import AnimatedSection from "./motion/AnimatedSection";
-import { SlideFromLeft, SlideFromRight } from "../motions";
+import { SlideToRight, SlideToLeft } from "../motions";
 import AnimatedTitle from "./motion/AnimatedTitle";
 import AnimatedParagraph from "./motion/AnimatedParagraph";
 import AnimatedImage from "./motion/AnimatedImage";
+import { MainCharacters } from "../data";
 
 const AdditionalButtons = [
   {
@@ -21,47 +22,9 @@ const AdditionalButtons = [
   },
 ];
 
-const MainCharacters = [
-  {
-    id: 1,
-    name: "Rick Sanchez",
-    image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-    description:
-      "Rick is a brilliant but extremely irresponsible scientist who often drinks alcohol and has a cynical outlook on life. His behavior is impulsive and frequently puts himself and others in danger due to his experiments and adventures. Despite having a close relationship with his grandson Morty, his egocentrism and recklessness often complicate their lives.",
-  },
-  {
-    id: 2,
-    name: "Morty Smith",
-    image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-    description:
-      "Morty is Rick's fourteen-year-old grandson who is often reluctantly dragged into his grandfather's crazy adventures. He is much more emotional and compassionate than Rick, which often leads to conflicts between them. Morty is also frequently the victim of Rick's experiments and dangerous missions, making him a often stressed and confused teenager.",
-  },
-  {
-    id: 3,
-    name: "Summer Smith",
-    image: "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
-    description:
-      "Summer is Morty's seventeen-year-old sister who is much more confident and assertive than her brother. She often tries to get involved in Rick's adventures and prove her worth. She has a complicated relationship with her family but is loyal and willing to help when needed.",
-  },
-  {
-    id: 4,
-    name: "Beth Smith",
-    image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
-    description:
-      "Beth is Rick's daughter and the mother of Morty and Summer. She works as a veterinarian and often tries to cope with Rick's presence in her household. She is very ambitious and has a complex of inferiority, partly due to her father. Her marriage to Jerry is often strained, but she tries to keep the family together.",
-  },
-  {
-    id: 5,
-    name: "Jerry Smith",
-    image: "https://rickandmortyapi.com/api/character/avatar/5.jpeg",
-    description:
-      "Jerry is Beth's husband and the father of Morty and Summer. He is unemployed and often insecure about his role in the family. He tends to be naive and easily manipulated, which often makes him the target of Rick's mockery. Despite this, he tries to be a good father and husband, even though it doesn't always work out.",
-  },
-];
-
 const ButtonLink = ({ link, children, delay }) => (
   <motion.a
-    variants={SlideFromLeft(0.5, delay)}
+    variants={SlideToRight(delay)}
     initial="hidden"
     whileInView="show"
     className="p-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
@@ -76,7 +39,7 @@ const MainCharacterInfo = ({ id, name, image, description }) => {
   const isEven = id % 2 === 1;
   return (
     <motion.div
-      variants={isEven ? SlideFromRight(1, 0.3) : SlideFromLeft(1, 0.3)}
+      variants={isEven ? SlideToLeft(0.3) : SlideToRight(0.3)}
       initial="hidden"
       whileInView="show"
       className="flex flex-col md:flex-row gap-5 p-10 m-3 sm:m-0 items-center justify-center md:even:flex-row-reverse"

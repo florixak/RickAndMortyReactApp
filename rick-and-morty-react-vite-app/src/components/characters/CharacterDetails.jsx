@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { CHARACTERS_URL as url } from "../../utils.js";
+import { CHARACTERS_URL as url } from "../../data.js";
 
 import CharacterTitle from "./information/CharacterTitle";
 import CharacterStatus from "./information/CharacterStatus";

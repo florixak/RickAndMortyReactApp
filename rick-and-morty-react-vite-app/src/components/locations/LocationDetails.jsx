@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { LOCATIONS_URL as url } from "../../utils.js";
+import { LOCATIONS_URL as url } from "../../data.js";
 import { useFetch } from "../../hooks/useFetch.js";
 
 import LocationDetailsSkeleton from "./skeleton/LocationDetailsSkeleton.jsx";

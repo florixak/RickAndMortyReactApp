@@ -3,9 +3,15 @@ import LocationID from "./information/LocationID";
 import LocationType from "./information/LocationType";
 import LocationDimension from "./information/LocationDimension";
 import LocationName from "./information/LocationName";
+import LocationCardSkeleton from "./skeleton/LocationCardSkeleton";
 
-export default function LocationCard({ data }) {
+export default function LocationCard({ data, isLoading }) {
   const { id, name, type, dimension } = data;
+
+  if (isLoading || !data) {
+    return <LocationCardSkeleton />;
+  }
+
   return (
     <Card type="locations" id={id || 0}>
       <LocationName name={name} />
