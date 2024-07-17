@@ -7,7 +7,7 @@ import {
   LOCATIONS_NAV_URL,
   EPISODES_NAV_URL,
 } from "../../data.js";
-import LogoImage from "../../assets/RickAndMortyLogo.png";
+import LogoImage from "../../assets/RickAndMortyLogo.svg";
 import MobileNav from "./MobileNav.jsx";
 import Link from "./Link.jsx";
 import { ShowIn, ScaleIn } from "../../motions.js";
