@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
-import RickAndMortyTVImage from "../assets/RickAndMortyTV.jpg";
 import AnimatedSection from "./motion/AnimatedSection";
 import { SlideToRight, SlideToLeft } from "../motions";
 import AnimatedTitle from "./motion/AnimatedTitle";
 import AnimatedParagraph from "./motion/AnimatedParagraph";
-import AnimatedImage from "./motion/AnimatedImage";
 import { MainCharacters } from "../data";
 
 const AdditionalButtons = [
@@ -64,56 +62,35 @@ const MainCharacterInfo = ({ id, name, image, description }) => {
 export default function Home() {
   return (
     <main className="w-full mt-[50px] md:h-[100%] flex flex-col justify-center items-center gap-16 text-primary">
-      <section className="max-w-[1050px] flex flex-col gap-5 md:gap-36 mb-16 items-center justify-center">
-        {/* Container of About and Image */}
-        <section className="flex flex-col lg:flex-row gap-5 h-auto">
-          {/* About Rick and Morty */}
-          <AnimatedSection className="lg:max-w-[75vh] flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg">
-            <AnimatedTitle
-              className="text-[25px] font-bold"
-              slideDirection="toLeft"
-            >
-              About show
-            </AnimatedTitle>
-            <section className="flex flex-col gap-5">
-              <AnimatedParagraph>
-                Rick and Morty is a popular American animated series for
-                adults created by Dan Harmon and Justin Roiland. The first
-                episode aired on Adult Swim, the nighttime programming block of
-                Cartoon Network, in December 2013. The series combines elements
-                of sci-fi, dark comedy, and family drama, quickly gaining a
-                large fan base thanks to its unique style of humor, complex
-                storylines, and deep philosophical questions.
-              </AnimatedParagraph>
-              <AnimatedParagraph>
-                Follows the adventures of Rick and Morty as they travel across
-                different dimensions and timelines. The series is known for its
-                intricate plots, often exploring deep philosophical questions
-                such as the meaning of existence, free will, and the relativity
-                of morality. The humor is often dark, sarcastic, and based on
-                absurd situations and characters.
-              </AnimatedParagraph>
-            </section>
-          </AnimatedSection>
-
-          {/* Image of Rick and Morty */}
-          <AnimatedSection className="lg:w-[40vh] flex flex-col gap-3 items-center justify-center p-5 bg-light-slate rounded-3xl shadow-black shadow-lg">
-            <div className="w-auto bg-dark-background p-1 rounded-3xl">
-              <AnimatedImage
-                image={RickAndMortyTVImage}
-                alt="Rick And Morty Image"
-              />
-            </div>
-
-            <a
-              className="text-[15px]"
-              href="https://www.imdb.com/title/tt2861424/mediaviewer/rm209331968/?ref_=ext_shr_lnk"
-              target="_blank"
-            >
-              Rick a Morty (2013)
-            </a>
-          </AnimatedSection>
-        </section>
+      <section className="max-w-[950px] flex flex-col gap-5 md:gap-36 mb-16 items-center justify-center">
+        {/* About Rick and Morty */}
+        <AnimatedSection className="w-auto flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg">
+          <AnimatedTitle
+            className="text-[25px] font-bold"
+            slideDirection="toLeft"
+          >
+            About show
+          </AnimatedTitle>
+          <section className="flex flex-col gap-5">
+            <AnimatedParagraph>
+              Rick and Morty is a popular American animated series for adults
+              created by Dan Harmon and Justin Roiland. The first episode aired
+              on Adult Swim, the nighttime programming block of Cartoon Network,
+              in December 2013. The series combines elements of sci-fi, dark
+              comedy, and family drama, quickly gaining a large fan base thanks
+              to its unique style of humor, complex storylines, and deep
+              philosophical questions.
+            </AnimatedParagraph>
+            <AnimatedParagraph>
+              Follows the adventures of Rick and Morty as they travel across
+              different dimensions and timelines. The series is known for its
+              intricate plots, often exploring deep philosophical questions such
+              as the meaning of existence, free will, and the relativity of
+              morality. The humor is often dark, sarcastic, and based on absurd
+              situations and characters.
+            </AnimatedParagraph>
+          </section>
+        </AnimatedSection>
 
         {/* Main Characters */}
         <AnimatedSection className="flex flex-col bg-light-slate rounded-3xl shadow-black shadow-lg">

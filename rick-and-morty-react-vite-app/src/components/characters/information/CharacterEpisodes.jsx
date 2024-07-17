@@ -4,7 +4,7 @@ import { getEpisodeURL } from "../../../data.js";
 export default function CharacterEpisodes({ episode }) {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-wrap gap-2 max-w-[300px]">
+    <div className="flex flex-wrap gap-2 max-w-[350px]">
       <span className="font-semibold">Episodes:</span>
       {episode &&
         episode.map((ep) => {
