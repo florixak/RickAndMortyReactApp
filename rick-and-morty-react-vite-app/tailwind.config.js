@@ -8,7 +8,7 @@ export default {
         secondary: "#cbd5e1",
         "light-slate": "#334155",
         "dark-slate": "#1e293b",
-        "light-green": "#97ce4c",
+        "light-green": "#97FB9B",
         cyan: "#4ade80",
       },
       animation: {

@@ -7,7 +7,7 @@ import {
   LOCATIONS_NAV_URL,
   EPISODES_NAV_URL,
 } from "../../data.js";
-import LogoImage from "../../assets/RickAndMortyLogo.svg";
+import LogoImage from "../../assets/RickAndMortyLogo2.png";
 import MobileNav from "./MobileNav.jsx";
 import Link from "./Link.jsx";
 import { ShowIn, ScaleIn } from "../../motions.js";
@@ -27,7 +27,7 @@ const Logo = () => {
       whileInView="show"
       src={LogoImage}
       alt="Rick And Morty Logo"
-      className="animate-infinite-scaling w-[240px] md:w-[460px]"
+      className="animate-infinite-scaling w-[280px] md:w-[520px]"
     />
   );
 };

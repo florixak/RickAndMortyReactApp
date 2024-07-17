@@ -7,7 +7,7 @@ export default function CharacterEpisodes({ episode }) {
     <div className="flex flex-wrap gap-2 max-w-[350px]">
       <span className="font-semibold">Episodes:</span>
       {episode &&
-        episode.map((ep) => {
+        episode.map((ep, index) => {
           const episodeNum = ep.match(/\/(\d+)$/)[1];
           return (
             <span
@@ -15,7 +15,7 @@ export default function CharacterEpisodes({ episode }) {
               key={ep}
               className="hover:cursor-pointer hover:underline"
             >
-              {episodeNum}{episodeNum === episode.length ? "" : ","}
+              {episodeNum}{index < episode.length - 1 ? "," : ""}
             </span>
           );
         })}
