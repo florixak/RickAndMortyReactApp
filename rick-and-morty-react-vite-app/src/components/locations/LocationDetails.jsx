@@ -29,9 +29,11 @@ export default function LocationDetails() {
 
   return (
     <Details>
-      <LocationName name={name} />
-      <div className="flex flex-col items-start justify-start gap-1">
+      <div className="flex flex-col">
+        <LocationName name={name} />
         <LocationID id={id} />
+      </div>
+      <div className="flex flex-col items-start justify-start gap-1">
         <LocationDimension dimension={dimension} />
         <LocationType type={type} />
         <LocationResidentsNo residents={residents} />

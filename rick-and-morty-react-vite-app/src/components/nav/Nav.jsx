@@ -39,7 +39,7 @@ export default function Nav() {
     setIsOpen((prev) => !prev);
   };
 
-  const mobileNavButtonStyle = `absolute z-50 left-[20px] top-[20px] ${
+  const mobileNavButtonStyle = `absolute z-50 left-[20px] top-[32px] ${
     !isOpen && "lg:hidden"
   } z-20 cursor-pointer`;
 
@@ -62,7 +62,7 @@ export default function Nav() {
   const NavLinkPackage = ({ children }) => {
     return (
       <motion.div
-        variants={ScaleIn(0.8, 0.5)}
+        variants={ScaleIn(0.5)}
         initial="hidden"
         whileInView="show"
         className="hidden lg:flex text-center flex-col xl:flex-row gap-20"

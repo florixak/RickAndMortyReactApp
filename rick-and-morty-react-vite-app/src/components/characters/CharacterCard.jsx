@@ -1,6 +1,5 @@
 import Card from "../Card";
 import CharacterTitle from "./information/CharacterTitle";
-import CharacterStatus from "./information/CharacterStatus";
 import CharacterImage from "./information/CharacterImage";
 import CharacterOrigin from "./information/CharacterOrigin";
 import CharacterSpecies from "./information/CharacterSpecies";
@@ -17,13 +16,15 @@ export default function CharacterCard({ data, isLoading }) {
 
   return (
     <Card type="characters" id={id}>
-      <CharacterImage image={image} name={name} />
-      <CharacterTitle name={name} gender={gender} />
-      <div className="max-w-[250px] flex flex-col items-start justify-start text-secondary">
-        <CharacterID id={id} />
-        <CharacterSpecies species={species} status={status} />
-        <CharacterOrigin origin={origin} />
-        <CharacterLocation location={location} />
+      <div className="flex flex-col gap-3">
+        <CharacterImage image={image} name={name} />
+        <CharacterTitle name={name} gender={gender} />
+        <div className="max-w-[250px] flex flex-col items-start justify-start text-secondary">
+          <CharacterID id={id} />
+          <CharacterSpecies species={species} status={status} />
+          <CharacterOrigin origin={origin} />
+          <CharacterLocation location={location} />
+        </div>
       </div>
     </Card>
   );

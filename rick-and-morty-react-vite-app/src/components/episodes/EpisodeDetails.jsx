@@ -29,9 +29,11 @@ export default function EpisodeDetails() {
 
   return (
     <Details>
-      <EpisodeName name={name} />
-      <div className="flex flex-col items-start justify-start gap-1">
+      <div className="flex flex-col">
+        <EpisodeName name={name} />
         <EpisodeID id={id} />
+      </div>
+      <div className="flex flex-col items-start justify-start gap-1">
         <EpisodeAirDate air_date={air_date} />
         <EpisodeOrder episode={episode} />
         <EpisodeCharactersNo characters={characters} />

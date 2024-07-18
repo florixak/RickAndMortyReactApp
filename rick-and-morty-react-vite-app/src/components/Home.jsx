@@ -4,6 +4,7 @@ import { SlideToRight, SlideToLeft } from "../motions";
 import AnimatedTitle from "./motion/AnimatedTitle";
 import AnimatedParagraph from "./motion/AnimatedParagraph";
 import { MainCharacters } from "../data";
+import { useNavigate } from "react-router-dom";
 
 const AdditionalButtons = [
   {
@@ -35,6 +36,12 @@ const ButtonLink = ({ link, children, delay }) => (
 
 const MainCharacterInfo = ({ id, name, image, description }) => {
   const isEven = id % 2 === 1;
+  const navigate = useNavigate();
+
+  const handleMainCharacterClick = () => {
+    navigate(`/characters/${id}`, { replace: true });
+  }
+
   return (
     <motion.div
       variants={isEven ? SlideToLeft(0.3) : SlideToRight(0.3)}
@@ -45,9 +52,10 @@ const MainCharacterInfo = ({ id, name, image, description }) => {
       <div className="bg-dark-slate w-auto p-1 rounded-3xl">
         <img
           width={320}
-          className="rounded-3xl shadow-black shadow-lg m-auto"
+          className="rounded-3xl shadow-black shadow-lg m-auto cursor-pointer"
           src={image}
           alt={name ? `${name}'s image` : "Character's image"}
+          onClick={handleMainCharacterClick}
         />
       </div>
 
@@ -60,6 +68,7 @@ const MainCharacterInfo = ({ id, name, image, description }) => {
 };
 
 export default function Home() {
+
   return (
     <main className="w-full mt-[50px] md:h-[100%] flex flex-col justify-center items-center gap-16 text-primary">
       <section className="max-w-[950px] flex flex-col gap-5 md:gap-36 mb-16 items-center justify-center">
