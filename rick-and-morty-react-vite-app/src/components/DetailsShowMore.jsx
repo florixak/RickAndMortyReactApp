@@ -11,7 +11,7 @@ export default function DetailsShowMore({ list, listName, getURL }) {
   const displayedList = showMore ? list : list && list.slice(0, 10);
 
   return (
-    <motion className="flex flex-wrap gap-2 max-w-[350px]">
+    <div className="flex flex-wrap max-w-[350px]">
       <span className="font-semibold">{listName}:</span>
       <AnimatePresence>
         {displayedList &&
@@ -24,10 +24,10 @@ export default function DetailsShowMore({ list, listName, getURL }) {
                 exit={{ opacity: 0, y: -20 }}
                 onClick={() => navigate(getURL(num))}
                 key={item}
-                className="hover:cursor-pointer hover:underline"
+                className={`hover:cursor-pointer hover:underline ${index !== 0 ? 'ml-2' : 'ml-1'}`}
               >
                 {num}
-                {index < displayedList.length - 1 ? "," : ""}
+                {index < list.length - 1 ? "," : ""}
               </motion.span>
             );
           })}
@@ -41,6 +41,6 @@ export default function DetailsShowMore({ list, listName, getURL }) {
           {showMore ? "Show Less" : "Show More"}
         </button>
       )}
-    </motion>
+    </div>
   );
 }

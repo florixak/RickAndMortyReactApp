@@ -22,7 +22,7 @@ export const ScaleIn = (delay) => ({
 });
 
 export const SlideToRight = (delay) => ({
-  hidden: { opacity: 0, x: "-4%" },
+  hidden: { opacity: 0, x: "-5%" },
   show: {
     opacity: 1,
     x: 0,
@@ -30,13 +30,17 @@ export const SlideToRight = (delay) => ({
       duration: 0.5,
       delay: delay,
     },
+  },
+  exit: {
+    opacity: 0,
+    x: "5%",
   },
 });
 
 export const SlideToLeft = (delay) => ({
-  hidden: { 
-    opacity: 0, 
-    x: "5%" 
+  hidden: {
+    opacity: 0,
+    x: "5%",
   },
   show: {
     opacity: 1,
@@ -45,5 +49,9 @@ export const SlideToLeft = (delay) => ({
       duration: 0.5,
       delay: delay,
     },
+  },
+  exit: {
+    opacity: 0,
+    x: "-5%",
   },
 });

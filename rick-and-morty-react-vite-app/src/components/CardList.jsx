@@ -7,6 +7,7 @@ import LocationCard from "./locations/LocationCard";
 import EpisodeCard from "./episodes/EpisodeCard";
 import Error from "./errors/Error";
 import { useFetch } from "../hooks/useFetch";
+import { SlideToLeft } from "../motions";
 
 export default function CardList({ title, url, type }) {
   const [searchParams, setSearchParams] = useSearchParams({
@@ -117,9 +118,9 @@ export default function CardList({ title, url, type }) {
 
   return (
     <motion.div
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ duration: 0.8, delay: 0.1 }}
+      variants={SlideToLeft(0.2)}
+      initial="hidden"
+      animate="show"
       className="w-full h-full flex justify-center items-center gap-5 flex-col"
     >
       {/* Page title */}
