@@ -8,9 +8,9 @@ import LocationID from "./information/LocationID.jsx";
 import LocationType from "./information/LocationType.jsx";
 import LocationDimension from "./information/LocationDimension.jsx";
 import LocationResidentsNo from "./information/LocationResidentsNo.jsx";
+import LocationResidents from "./information/LocationResidents.jsx";
 import Error from "../errors/Error.jsx";
 import Details from "../Details.jsx";
-import LocationResidents from "./information/LocationResidents.jsx";
 
 export default function LocationDetails() {
   const { id } = useParams();
