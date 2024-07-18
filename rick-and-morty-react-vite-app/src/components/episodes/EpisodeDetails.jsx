@@ -9,13 +9,15 @@ import EpisodeName from "./information/EpisodeName";
 import EpisodeOrder from "./information/EpisodeOrder";
 import Error from "../errors/Error.jsx";
 import Details from "../Details.jsx";
+import EpisodeCharacters from "./information/EpisodeCharacters.jsx";
+import EpisodeCharactersNo from "./information/EpisodeCharactersNo.jsx";
 
 export default function EpisodeDetails() {
   const { id } = useParams();
 
   const { isLoading, error, data } = useFetch({ id, url }, {});
 
-  const { name, air_date, episode } = data[0] || {};
+  const { name, air_date, episode, characters } = data[0] || {};
 
   if (isLoading) {
     return <EpisodeDetailsSkeleton />;
@@ -27,13 +29,13 @@ export default function EpisodeDetails() {
 
   return (
     <Details>
-      <div className="flex flex-col">
-        <EpisodeName name={name} />
-        <div className="flex flex-col items-start justify-start">
-          <EpisodeID id={id} />
-          <EpisodeAirDate air_date={air_date} />
-          <EpisodeOrder episode={episode} />
-        </div>
+      <EpisodeName name={name} />
+      <div className="flex flex-col items-start justify-start gap-1">
+        <EpisodeID id={id} />
+        <EpisodeAirDate air_date={air_date} />
+        <EpisodeOrder episode={episode} />
+        <EpisodeCharactersNo characters={characters} />
+        <EpisodeCharacters characters={characters} />
       </div>
     </Details>
   );

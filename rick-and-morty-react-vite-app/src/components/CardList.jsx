@@ -69,7 +69,9 @@ export default function CardList({ title, url, type }) {
   const renderCard = (card) => {
     switch (type) {
       case "characters":
-        return <CharacterCard key={card.id} data={card} isLoading={isLoading} />;
+        return (
+          <CharacterCard key={card.id} data={card} isLoading={isLoading} />
+        );
       case "locations":
         return <LocationCard key={card.id} data={card} isLoading={isLoading} />;
       case "episodes":
@@ -139,9 +141,7 @@ export default function CardList({ title, url, type }) {
       {/* Cards with paging buttons */}
       <PagingButtons />
       <div className={cardListStyle}>
-        {filteredData.map((card) =>
-          renderCard(card)
-        )}
+        {filteredData.map((card) => renderCard(card))}
       </div>
       <PagingButtons />
     </motion.div>

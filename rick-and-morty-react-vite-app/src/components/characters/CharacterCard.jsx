@@ -21,8 +21,7 @@ export default function CharacterCard({ data, isLoading }) {
       <CharacterTitle name={name} gender={gender} />
       <div className="max-w-[250px] flex flex-col items-start justify-start text-secondary">
         <CharacterID id={id} />
-        <CharacterStatus status={status} />
-        <CharacterSpecies species={species} />
+        <CharacterSpecies species={species} status={status} />
         <CharacterOrigin origin={origin} />
         <CharacterLocation location={location} />
       </div>

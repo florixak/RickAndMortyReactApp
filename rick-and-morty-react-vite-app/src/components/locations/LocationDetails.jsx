@@ -7,15 +7,17 @@ import LocationName from "./information/LocationName.jsx";
 import LocationID from "./information/LocationID.jsx";
 import LocationType from "./information/LocationType.jsx";
 import LocationDimension from "./information/LocationDimension.jsx";
+import LocationResidentsNo from "./information/LocationResidentsNo.jsx";
 import Error from "../errors/Error.jsx";
 import Details from "../Details.jsx";
+import LocationResidents from "./information/LocationResidents.jsx";
 
 export default function LocationDetails() {
   const { id } = useParams();
 
   const { isLoading, error, data } = useFetch({ id, url }, {});
 
-  const { name, type, dimension } = data[0] || {};
+  const { name, type, dimension, residents } = data[0] || {};
 
   if (isLoading) {
     return <LocationDetailsSkeleton />;
@@ -27,13 +29,13 @@ export default function LocationDetails() {
 
   return (
     <Details>
-      <div className="flex flex-col">
-        <LocationName name={name} />
-        <div className="flex flex-col items-start justify-start">
-          <LocationID id={id} />
-          <LocationType type={type} />
-          <LocationDimension dimension={dimension} />
-        </div>
+      <LocationName name={name} />
+      <div className="flex flex-col items-start justify-start gap-1">
+        <LocationID id={id} />
+        <LocationDimension dimension={dimension} />
+        <LocationType type={type} />
+        <LocationResidentsNo residents={residents} />
+        <LocationResidents residents={residents} />
       </div>
     </Details>
   );

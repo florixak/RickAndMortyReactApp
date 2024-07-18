@@ -8,11 +8,8 @@ export default function CharacterStatus({ status }) {
   };
   if (!status) return null;
   return (
-    <p className="flex justify-center items-center">
-      <span className="font-semibold">Status: </span>
-      <span className={`${statusStyle()} ml-1 font-bold text-xl`}>
-        <GoDotFill />
-      </span>
-    </p>
+    <span className={`${statusStyle()} ml-1 font-bold text-xl`}>
+      <GoDotFill />
+    </span>
   );
 }

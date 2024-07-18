@@ -33,11 +33,10 @@ export default function CharacterDetails() {
   return (
     <Details>
       <CharacterImage image={image} name={name} />
-      <div className="flex flex-col items-start justify-start">
+      <div className="flex flex-col items-start justify-start gap-1">
         <CharacterTitle name={name} gender={gender} />
         <CharacterID id={id} />
-        <CharacterStatus status={status} />
-        <CharacterSpecies species={species} />
+        <CharacterSpecies species={species} status={status} />
         <CharacterOrigin origin={origin} />
         <CharacterLocation location={location} />
         <CharacterEpisodes episode={episode} />
