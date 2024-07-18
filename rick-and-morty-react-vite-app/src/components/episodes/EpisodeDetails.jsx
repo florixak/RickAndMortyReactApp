@@ -1,16 +1,13 @@
 import { useParams } from "react-router-dom";
-import { EPISODES_URL as url } from "../../data.js";
+import { EPISODES_URL as url, getCharacterURL } from "../../data.js";
 import { useFetch } from "../../hooks/useFetch.js";
 
 import EpisodeDetailsSkeleton from "./skeleton/EpisodeDetailsSkeleton";
-import EpisodeAirDate from "./information/EpisodeAirDate";
-import EpisodeID from "./information/EpisodeID";
-import EpisodeName from "./information/EpisodeName";
-import EpisodeOrder from "./information/EpisodeOrder";
 import Error from "../errors/Error.jsx";
 import Details from "../Details.jsx";
-import EpisodeCharacters from "./information/EpisodeCharacters.jsx";
-import EpisodeCharactersNo from "./information/EpisodeCharactersNo.jsx";
+import Detail from "../details/Detail.jsx";
+import DetailsShowMore from "../details/DetailsShowMore.jsx";
+import DetailTitle from "../details/DetailTitle.jsx";
 
 export default function EpisodeDetails() {
   const { id } = useParams();
@@ -30,14 +27,21 @@ export default function EpisodeDetails() {
   return (
     <Details>
       <div className="flex flex-col">
-        <EpisodeName name={name} />
-        <EpisodeID id={id} />
+        <DetailTitle>{name || "Loading..."}</DetailTitle>
+        <Detail label="ID" value={id} />
       </div>
       <div className="flex flex-col items-start justify-start gap-1">
-        <EpisodeAirDate air_date={air_date} />
-        <EpisodeOrder episode={episode} />
-        <EpisodeCharactersNo characters={characters} />
-        <EpisodeCharacters characters={characters} />
+        <Detail label="Episode" value={episode} />
+        <Detail label="Air Date" value={air_date} />
+        <Detail
+          label="No of characters"
+          value={characters && characters.length}
+        />
+        <DetailsShowMore
+          list={characters}
+          listName="Characters"
+          getURL={getCharacterURL}
+        />
       </div>
     </Details>
   );

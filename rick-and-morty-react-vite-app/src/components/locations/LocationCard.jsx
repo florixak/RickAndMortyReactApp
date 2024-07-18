@@ -1,8 +1,6 @@
 import Card from "../Card";
-import LocationID from "./information/LocationID";
-import LocationType from "./information/LocationType";
-import LocationDimension from "./information/LocationDimension";
-import LocationName from "./information/LocationName";
+import Detail from "../details/Detail";
+import DetailTitle from "../details/DetailTitle";
 import LocationCardSkeleton from "./skeleton/LocationCardSkeleton";
 
 export default function LocationCard({ data, isLoading }) {
@@ -14,11 +12,11 @@ export default function LocationCard({ data, isLoading }) {
 
   return (
     <Card type="locations" id={id || 0}>
-      <LocationName name={name} />
+      <DetailTitle>{name || "Loading..."}</DetailTitle>
       <div className="flex flex-col items-start justify-start text-secondary">
-        <LocationID id={id} />
-        <LocationType type={type} />
-        <LocationDimension dimension={dimension} />
+        <Detail label="ID" value={id} />
+        <Detail label="Type" value={type} />
+        <Detail label="Dimension" value={dimension} />
       </div>
     </Card>
   );

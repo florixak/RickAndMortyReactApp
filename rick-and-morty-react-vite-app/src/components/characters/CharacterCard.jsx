@@ -1,11 +1,9 @@
 import Card from "../Card";
 import CharacterTitle from "./information/CharacterTitle";
 import CharacterImage from "./information/CharacterImage";
-import CharacterOrigin from "./information/CharacterOrigin";
 import CharacterSpecies from "./information/CharacterSpecies";
-import CharacterLocation from "./information/CharacterLocation";
-import CharacterID from "./information/CharacterID";
 import CharacterCardSkeleton from "./skeleton/CharacterCardSkeleton";
+import Detail from "../details/Detail";
 
 export default function CharacterCard({ data, isLoading }) {
   const { image, name, id, status, species, gender, origin, location } = data;
@@ -20,10 +18,10 @@ export default function CharacterCard({ data, isLoading }) {
         <CharacterImage image={image} name={name} />
         <CharacterTitle name={name} gender={gender} />
         <div className="max-w-[250px] flex flex-col items-start justify-start text-secondary">
-          <CharacterID id={id} />
+          <Detail label="ID" value={id}/>
           <CharacterSpecies species={species} status={status} />
-          <CharacterOrigin origin={origin} />
-          <CharacterLocation location={location} />
+          <Detail label="Origin" value={origin && origin.name} />
+          <Detail label="Last Known Location" value={location && location.name} />
         </div>
       </div>
     </Card>

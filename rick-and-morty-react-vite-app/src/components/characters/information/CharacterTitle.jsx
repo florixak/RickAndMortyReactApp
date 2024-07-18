@@ -1,11 +1,11 @@
-import CharacterName from "./CharacterName";
 import CharacterGender from "./CharacterGender";
+import DetailTitle from "../../details/DetailTitle";
 
 export default function CharacterTitle({ name, gender }) {
   return (
-    <h1 className="text-2xl font-bold flex flex-row">
-      <CharacterName name={name} />
+    <div className="flex flex-row">
+      <DetailTitle>{name || "Loading..."}</DetailTitle>
       <CharacterGender gender={gender} />
-    </h1>
+    </div>
   );
 }

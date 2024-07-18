@@ -1,16 +1,13 @@
 import { useParams } from "react-router-dom";
-import { LOCATIONS_URL as url } from "../../data.js";
+import { LOCATIONS_URL as url, getCharacterURL } from "../../data.js";
 import { useFetch } from "../../hooks/useFetch.js";
 
 import LocationDetailsSkeleton from "./skeleton/LocationDetailsSkeleton.jsx";
-import LocationName from "./information/LocationName.jsx";
-import LocationID from "./information/LocationID.jsx";
-import LocationType from "./information/LocationType.jsx";
-import LocationDimension from "./information/LocationDimension.jsx";
-import LocationResidentsNo from "./information/LocationResidentsNo.jsx";
-import LocationResidents from "./information/LocationResidents.jsx";
 import Error from "../errors/Error.jsx";
 import Details from "../Details.jsx";
+import Detail from "../details/Detail.jsx";
+import DetailsShowMore from "../details/DetailsShowMore.jsx";
+import DetailTitle from "../details/DetailTitle.jsx";
 
 export default function LocationDetails() {
   const { id } = useParams();
@@ -30,14 +27,18 @@ export default function LocationDetails() {
   return (
     <Details>
       <div className="flex flex-col">
-        <LocationName name={name} />
-        <LocationID id={id} />
+        <DetailTitle>{name || "Loading..."}</DetailTitle>
+        <Detail label="ID" value={id} />
       </div>
       <div className="flex flex-col items-start justify-start gap-1">
-        <LocationDimension dimension={dimension} />
-        <LocationType type={type} />
-        <LocationResidentsNo residents={residents} />
-        <LocationResidents residents={residents} />
+        <Detail label="Dimension" value={dimension} />
+        <Detail label="Type" value={type} />
+        <Detail label="No of residents" value={residents && residents.length} />
+        <DetailsShowMore
+          list={residents}
+          listName="Residents"
+          getURL={getCharacterURL}
+        />
       </div>
     </Details>
   );

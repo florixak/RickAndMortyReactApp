@@ -10,7 +10,7 @@ import {
 import LogoImage from "../../assets/RickAndMortyLogo2.png";
 import MobileNav from "./MobileNav.jsx";
 import Link from "./Link.jsx";
-import { ShowIn, ScaleIn } from "../../motions.js";
+import { ShowIn, SlideToLeft } from "../../motions.js";
 
 const navLinks = [
   { to: "/", label: "HOME" },
@@ -62,7 +62,7 @@ export default function Nav() {
   const NavLinkPackage = ({ children }) => {
     return (
       <motion.div
-        variants={ScaleIn(0.5)}
+        variants={SlideToLeft(0.3)}
         initial="hidden"
         whileInView="show"
         className="hidden lg:flex text-center flex-col xl:flex-row gap-20"
@@ -76,7 +76,7 @@ export default function Nav() {
     <nav>
       <MobileNavButton className="absolute z-50" />
       {isOpen && <MobileNav navLinks={navLinks} toggleNav={handleNavOpen} />}
-      <div className="w-full h-full flex flex-row items-center justify-center gap-36">
+      <div className="w-full h-full flex flex-row items-center justify-evenly gap-[4rem] desktop:gap-36">
         <NavLinkPackage>
           <Link to={navLinks[0].to}>{navLinks[0].label}</Link>
           <Link to={navLinks[1].to}>{navLinks[1].label}</Link>

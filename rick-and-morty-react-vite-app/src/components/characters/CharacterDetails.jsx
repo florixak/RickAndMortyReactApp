@@ -1,17 +1,15 @@
 import { useParams } from "react-router-dom";
-import { CHARACTERS_URL as url } from "../../data.js";
+import { CHARACTERS_URL as url, getEpisodeURL } from "../../data.js";
 
 import CharacterTitle from "./information/CharacterTitle";
 import CharacterImage from "./information/CharacterImage";
 import CharacterDetailsSkeleton from "./skeleton/CharacterDetailsSkeleton";
-import CharacterOrigin from "./information/CharacterOrigin";
 import CharacterSpecies from "./information/CharacterSpecies";
-import CharacterLocation from "./information/CharacterLocation";
-import CharacterID from "./information/CharacterID";
-import CharacterEpisodes from "./information/CharacterEpisodes";
 import Error from "../errors/Error.jsx";
 import Details from "../Details.jsx";
 import { useFetch } from "../../hooks/useFetch.js";
+import Detail from "../details/Detail.jsx";
+import DetailsShowMore from "../details/DetailsShowMore.jsx";
 
 export default function CharacterDetails() {
   const { id } = useParams();
@@ -34,11 +32,11 @@ export default function CharacterDetails() {
       <CharacterImage image={image} name={name} />
       <div className="flex flex-col items-start justify-start gap-1">
         <CharacterTitle name={name} gender={gender} />
-        <CharacterID id={id} />
+        <Detail label="ID" value={id} />
         <CharacterSpecies species={species} status={status} />
-        <CharacterOrigin origin={origin} />
-        <CharacterLocation location={location} />
-        <CharacterEpisodes episode={episode} />
+        <Detail label="Origin" value={origin && origin.name} />
+        <Detail label="Location" value={location && location.name} />
+        <DetailsShowMore list={episode} listName="Episodes" getURL={getEpisodeURL} />
       </div>
     </Details>
   );

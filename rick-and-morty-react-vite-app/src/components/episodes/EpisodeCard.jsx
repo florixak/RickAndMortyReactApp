@@ -1,8 +1,6 @@
 import Card from "../Card";
-import EpisodeAirDate from "./information/EpisodeAirDate";
-import EpisodeID from "./information/EpisodeID";
-import EpisodeName from "./information/EpisodeName";
-import EpisodeOrder from "./information/EpisodeOrder";
+import Detail from "../details/Detail";
+import DetailTitle from "../details/DetailTitle";
 import EpisodeCardSkeleton from "./skeleton/EpisodeCardSkeleton";
 
 export default function EpisodeCard({ data, isLoading }) {
@@ -14,11 +12,11 @@ export default function EpisodeCard({ data, isLoading }) {
 
   return (
     <Card type="episodes" id={id || 0}>
-      <EpisodeName name={name} />
+      <DetailTitle>{name || "Loading..."}</DetailTitle>
       <div className="flex flex-col items-start justify-start text-secondary">
-        <EpisodeID id={id} />
-        <EpisodeAirDate air_date={air_date} />
-        <EpisodeOrder episode={episode} />
+        <Detail label="ID" value={id} />
+        <Detail label="Air Date" value={air_date} />
+        <Detail label="Episode" value={episode} />
       </div>
     </Card>
   );

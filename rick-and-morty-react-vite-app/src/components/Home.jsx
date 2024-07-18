@@ -91,7 +91,7 @@ export default function Home() {
               philosophical questions.
             </AnimatedParagraph>
             <AnimatedParagraph>
-              Follows the adventures of Rick and Morty as they travel across
+              Story follows the adventures of Rick and Morty as they travel across
               different dimensions and timelines. The series is known for its
               intricate plots, often exploring deep philosophical questions such
               as the meaning of existence, free will, and the relativity of
