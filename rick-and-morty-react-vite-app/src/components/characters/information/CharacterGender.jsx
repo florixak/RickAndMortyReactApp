@@ -6,8 +6,8 @@ export default function CharacterGender({ gender }) {
   const getSymbol = () => (gender === "Male" ? <IoMdMale /> : <IoMdFemale />);
 
   return (
-    <p className="flex justify-center items-center">
-      <span className={`ml-1 font-bold text-xl ${getStyle()}`}>
+    <p className="flex items-center justify-center">
+      <span className={`ml-1 text-xl font-bold ${getStyle()}`}>
         {getSymbol()}
       </span>
     </p>

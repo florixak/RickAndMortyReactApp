@@ -24,7 +24,7 @@ export default function CardList({ title, url, type }) {
   const handleInputValue = (e) => {
     setSearchParams(
       { page: page, id: e.target.value || "all" },
-      { replace: true }
+      { replace: true },
     );
   };
 
@@ -55,7 +55,7 @@ export default function CardList({ title, url, type }) {
         }
         return { page: newPage, id: "all" };
       },
-      { replace: true }
+      { replace: true },
     );
   };
 
@@ -85,7 +85,7 @@ export default function CardList({ title, url, type }) {
   const PagingButtons = () => {
     return (
       id === "all" && (
-        <div className="w-[50%] md:w-[30%] min-w-[300px] lg:w-[20%] flex justify-evenly items-center flex-nowrap">
+        <div className="flex w-[50%] min-w-[300px] flex-nowrap items-center justify-evenly md:w-[30%] lg:w-[20%]">
           <PagingButton
             type="first"
             handleClick={() => handlePageChange("first")}
@@ -121,7 +121,7 @@ export default function CardList({ title, url, type }) {
       variants={SlideToLeft(0.2)}
       initial="hidden"
       animate="show"
-      className="w-full h-full flex justify-center items-center gap-5 flex-col"
+      className="flex h-full w-full flex-col items-center justify-center gap-5"
     >
       {/* Page title */}
       <h1 className="font-bold">{title}</h1>
@@ -129,7 +129,7 @@ export default function CardList({ title, url, type }) {
       {/* Search form */}
       <form onSubmit={handleFormSubmit}>
         <input
-          className="text-center rounded-lg p-2 text-black w-[250px]"
+          className="w-[250px] rounded-lg p-2 text-center text-black"
           type="number"
           min={1}
           max={info.count || 9999}

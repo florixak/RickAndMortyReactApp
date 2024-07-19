@@ -13,8 +13,8 @@ const slideRight = (delay) => ({
       duration: 0.4,
       delay: delay,
     },
-  }
-})
+  },
+});
 
 export default function MobileNav({ navLinks, toggleNav }) {
   return (
@@ -22,9 +22,9 @@ export default function MobileNav({ navLinks, toggleNav }) {
       variants={slideRight(0)}
       initial="hidden"
       animate="show"
-      className="w-full h-full absolute left-[0] top-[0] z-40 bg-dark-slate"
+      className="absolute left-[0] top-[0] z-40 h-full w-full bg-dark-slate"
     >
-      <ul className="flex flex-col justify-center items-center gap-4 mt-[30%] text-[30px]">
+      <ul className="mt-[30%] flex flex-col items-center justify-center gap-4 text-[30px]">
         {navLinks.map(({ to, label }) => (
           <motion.li
             initial={{ scale: 0 }}

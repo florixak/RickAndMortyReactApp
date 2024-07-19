@@ -3,14 +3,13 @@ import { SlideToLeft } from "../motions";
 // import { useNavigate } from "react-router-dom";
 
 export default function Details({ children /*, type, id, isLoading*/ }) {
-
   return (
     <motion.div
       variants={SlideToLeft(0.5)}
       initial="hidden"
       animate="show"
       exit="exit"
-      className="w-full sm:max-w-[75%] lg:max-w-[35%] flex flex-col xl:flex-row items-center justify-evenly m-auto p-5 gap-5 bg-light-slate text-primary rounded-3xl shadow-black shadow-md"
+      className="m-auto flex w-full flex-col items-center justify-evenly gap-5 rounded-3xl bg-light-slate p-5 text-primary shadow-md shadow-black sm:max-w-[75%] lg:max-w-[35%] xl:flex-row"
     >
       {/* <PagingButton
         type="previous"

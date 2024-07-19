@@ -17,11 +17,14 @@ export default function CharacterCard({ data, isLoading }) {
       <div className="flex flex-col gap-3">
         <CharacterImage image={image} name={name} />
         <CharacterTitle name={name} gender={gender} />
-        <div className="max-w-[250px] flex flex-col items-start justify-start text-secondary">
-          <Detail label="ID" value={id}/>
+        <div className="flex max-w-[250px] flex-col items-start justify-start text-secondary">
+          <Detail label="ID" value={id} />
           <CharacterSpecies species={species} status={status} />
           <Detail label="Origin" value={origin && origin.name} />
-          <Detail label="Last Known Location" value={location && location.name} />
+          <Detail
+            label="Last Known Location"
+            value={location && location.name}
+          />
         </div>
       </div>
     </Card>

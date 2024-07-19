@@ -7,7 +7,7 @@ export default function AnimatedImage({ image, alt }) {
       variants={SlideToLeft(0.3)}
       initial="hidden"
       whileInView="show"
-      className="rounded-3xl shadow-black shadow-lg m-auto"
+      className="m-auto rounded-3xl shadow-lg shadow-black"
       src={image}
       alt={alt}
     />

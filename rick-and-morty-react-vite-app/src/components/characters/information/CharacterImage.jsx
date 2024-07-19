@@ -3,7 +3,7 @@ import DefaultCharacterImage from "../../../assets/DefaultCharacterImage.png";
 export default function CharacterImage({ name, image }) {
   return (
     <img
-      className="rounded-3xl shadow-black shadow-md m-auto"
+      className="m-auto rounded-3xl shadow-md shadow-black"
       width={300}
       height={300}
       src={image ? image : DefaultCharacterImage}

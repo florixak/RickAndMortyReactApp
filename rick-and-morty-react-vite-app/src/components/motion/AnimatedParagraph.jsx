@@ -7,7 +7,7 @@ export default function AnimatedParagraph({ children }) {
       variants={SlideToLeft(0.3)}
       initial="hidden"
       whileInView="show"
-      className="text-[17px] bg-dark-slate p-5 rounded-3xl"
+      className="rounded-3xl bg-dark-slate p-5 text-[17px]"
     >
       {children}
     </motion.p>

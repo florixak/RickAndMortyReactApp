@@ -36,7 +36,11 @@ export default function CharacterDetails() {
         <CharacterSpecies species={species} status={status} />
         <Detail label="Origin" value={origin && origin.name} />
         <Detail label="Location" value={location && location.name} />
-        <DetailsShowMore list={episode} listName="Episodes" getURL={getEpisodeURL} />
+        <DetailsShowMore
+          list={episode}
+          listName="Episodes"
+          getURL={getEpisodeURL}
+        />
       </div>
     </Details>
   );

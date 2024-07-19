@@ -26,7 +26,7 @@ const ButtonLink = ({ link, children, delay }) => (
     variants={SlideToRight(delay)}
     initial="hidden"
     whileInView="show"
-    className="p-3 bg-slate-700 text-slate-50 rounded-3xl shadow-black shadow-md"
+    className="rounded-3xl bg-slate-700 p-3 text-slate-50 shadow-md shadow-black"
     href={link}
     target="_blank"
   >
@@ -40,40 +40,39 @@ const MainCharacterInfo = ({ id, name, image, description }) => {
 
   const handleMainCharacterClick = () => {
     navigate(`/characters/${id}`, { replace: true });
-  }
+  };
 
   return (
     <motion.div
       variants={isEven ? SlideToLeft(0.3) : SlideToRight(0.3)}
       initial="hidden"
       whileInView="show"
-      className="flex flex-col md:flex-row gap-5 p-10 m-3 sm:m-0 items-center justify-center md:even:flex-row-reverse"
+      className="m-3 flex flex-col items-center justify-center gap-5 p-10 sm:m-0 md:flex-row md:even:flex-row-reverse"
     >
-      <div className="bg-dark-slate w-auto p-1 rounded-3xl">
+      <div className="w-auto rounded-3xl bg-dark-slate p-1">
         <img
           width={320}
-          className="rounded-3xl shadow-black shadow-lg m-auto cursor-pointer"
+          className="m-auto cursor-pointer rounded-3xl shadow-lg shadow-black"
           src={image}
           alt={name ? `${name}'s image` : "Character's image"}
           onClick={handleMainCharacterClick}
         />
       </div>
 
-      <div className="flex flex-col w-[120%] md:w-full bg-dark-slate rounded-3xl p-4 md:p-5">
+      <div className="flex w-[120%] flex-col rounded-3xl bg-dark-slate p-4 md:w-full md:p-5">
         <h2 className="text-[20px] font-bold">{name}</h2>
-        <p className="text-[17px] text-secondary-text">{description}</p>
+        <p className="text-secondary-text text-[17px]">{description}</p>
       </div>
     </motion.div>
   );
 };
 
 export default function Home() {
-
   return (
-    <main className="w-full mt-[50px] md:h-[100%] flex flex-col justify-center items-center gap-16 text-primary">
-      <section className="max-w-[950px] flex flex-col gap-5 md:gap-36 mb-16 items-center justify-center">
+    <main className="mt-[50px] flex w-full flex-col items-center justify-center gap-16 text-primary md:h-[100%]">
+      <section className="mb-16 flex max-w-[950px] flex-col items-center justify-center gap-5 md:gap-36">
         {/* About Rick and Morty */}
-        <AnimatedSection className="w-auto flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg">
+        <AnimatedSection className="flex w-auto flex-col gap-5 rounded-3xl bg-light-slate p-10 shadow-lg shadow-black">
           <AnimatedTitle
             className="text-[25px] font-bold"
             slideDirection="toLeft"
@@ -91,10 +90,10 @@ export default function Home() {
               philosophical questions.
             </AnimatedParagraph>
             <AnimatedParagraph>
-              Story follows the adventures of Rick and Morty as they travel across
-              different dimensions and timelines. The series is known for its
-              intricate plots, often exploring deep philosophical questions such
-              as the meaning of existence, free will, and the relativity of
+              Story follows the adventures of Rick and Morty as they travel
+              across different dimensions and timelines. The series is known for
+              its intricate plots, often exploring deep philosophical questions
+              such as the meaning of existence, free will, and the relativity of
               morality. The humor is often dark, sarcastic, and based on absurd
               situations and characters.
             </AnimatedParagraph>
@@ -102,9 +101,9 @@ export default function Home() {
         </AnimatedSection>
 
         {/* Main Characters */}
-        <AnimatedSection className="flex flex-col bg-light-slate rounded-3xl shadow-black shadow-lg">
+        <AnimatedSection className="flex flex-col rounded-3xl bg-light-slate shadow-lg shadow-black">
           <AnimatedTitle
-            className="text-[25px] font-bold text-right mt-10 mr-10"
+            className="mr-10 mt-10 text-right text-[25px] font-bold"
             slideDirection="toRight"
           >
             Main Characters
@@ -125,7 +124,7 @@ export default function Home() {
         </AnimatedSection>
 
         {/* Conclusion */}
-        <AnimatedSection className="flex flex-col p-10 gap-5 bg-light-slate rounded-3xl shadow-black shadow-lg">
+        <AnimatedSection className="flex flex-col gap-5 rounded-3xl bg-light-slate p-10 shadow-lg shadow-black">
           <AnimatedTitle
             className="text-[25px] font-bold"
             slideDirection="toLeft"
@@ -142,7 +141,7 @@ export default function Home() {
         </AnimatedSection>
 
         {/* Watch now and Read more buttons */}
-        <AnimatedSection className="w-full flex justify-center gap-10">
+        <AnimatedSection className="flex w-full justify-center gap-10">
           {AdditionalButtons.map((button) => {
             return (
               <ButtonLink

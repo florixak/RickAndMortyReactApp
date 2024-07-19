@@ -28,7 +28,7 @@ export default function Footer() {
       variants={ShowIn(0.2)}
       initial="hidden"
       whileInView="show"
-      className="absolute w-full bottom-0 h-[2.5rem] flex flex-col md:flex-row justify-center md:justify-evenly items-center md:items-start p-10 md:p-10 md:pt-[10px] bg-dark-slate border-light-green border-t-2 rounded-t-[60px] md:rounded-t-[80px]"
+      className="absolute bottom-0 flex h-[2.5rem] w-full flex-col items-center justify-center rounded-t-[60px] border-t-2 border-light-green bg-dark-slate p-10 md:flex-row md:items-start md:justify-evenly md:rounded-t-[80px] md:p-10 md:pt-[10px]"
     >
       {FooterList.map((item) => {
         return (

@@ -8,7 +8,7 @@ export default function CharacterStatus({ status }) {
   };
   if (!status) return null;
   return (
-    <span className={`${statusStyle()} ml-1 font-bold text-xl`}>
+    <span className={`${statusStyle()} ml-1 text-xl font-bold`}>
       <GoDotFill />
     </span>
   );
