@@ -22,7 +22,6 @@ export default function CardList({ title, url, type }) {
   const { isLoading, error, data, info } = useFetch({ id, page, url }, []);
 
   const handleInputValue = (e) => {
-
     setSearchParams(
       { page: page, id: e.target.value || "all" },
       { replace: true },
@@ -31,11 +30,9 @@ export default function CardList({ title, url, type }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (id && id !== "all") {
-      navigate(`/${type}?page=${page}&id=${id}`, { replace: true });
-    } else {
-      navigate(`/${type}?page=1&id=all`, { replace: true });
-    }
+    const newPath = `/${type}?page=${page || 1}&id=${id || "all"}`;
+    navigate(newPath, { replace: true });
+    
   };
 
   const handlePageChange = (direction) => {
