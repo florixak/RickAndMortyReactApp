@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ShowIn, ScaleIn } from "../motions";
+import { ShowIn, SlideToLeft } from "../motions";
 
 const FooterList = [
   {
@@ -33,7 +33,7 @@ export default function Footer() {
       {FooterList.map((item) => {
         return (
           <motion.p
-            variants={ScaleIn(0.5)}
+            variants={SlideToLeft(0.5)}
             initial="hidden"
             whileInView="show"
             key={item.id}
