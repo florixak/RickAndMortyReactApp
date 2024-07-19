@@ -22,6 +22,7 @@ export default function CardList({ title, url, type }) {
   const { isLoading, error, data, info } = useFetch({ id, page, url }, []);
 
   const handleInputValue = (e) => {
+
     setSearchParams(
       { page: page, id: e.target.value || "all" },
       { replace: true },

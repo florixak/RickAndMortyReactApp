@@ -26,7 +26,7 @@ export default function EpisodeDetails() {
 
   return (
     <Details>
-      <div className="flex flex-col">
+      <div className="flex flex-col text-center desktop:text-left">
         <DetailTitle>{name || "Loading..."}</DetailTitle>
         <Detail label="ID" value={id} />
       </div>

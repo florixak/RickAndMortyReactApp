@@ -34,6 +34,10 @@ export const SlideToRight = (delay) => ({
   exit: {
     opacity: 0,
     x: "5%",
+    transition: {
+      duration: 0.5,
+      delay: 0,
+    },
   },
 });
 
@@ -52,6 +56,10 @@ export const SlideToLeft = (delay) => ({
   },
   exit: {
     opacity: 0,
-    x: "-5%",
+    x: "5%",
+    transition: {
+      duration: 0.5,
+      delay: 0,
+    },
   },
 });

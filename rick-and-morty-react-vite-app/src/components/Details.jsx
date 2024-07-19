@@ -9,7 +9,7 @@ export default function Details({ children /*, type, id, isLoading*/ }) {
       initial="hidden"
       animate="show"
       exit="exit"
-      className="m-auto flex w-full flex-col items-center justify-evenly gap-5 rounded-3xl bg-light-slate p-5 text-primary shadow-md shadow-black sm:max-w-[75%] lg:max-w-[35%] xl:flex-row"
+      className="m-auto flex h-full w-full flex-col items-center justify-evenly gap-5 rounded-3xl bg-light-slate p-5 text-primary shadow-md shadow-black tablet:max-w-[75%] desktop:max-w-[35%] desktop:flex-row"
     >
       {/* <PagingButton
         type="previous"

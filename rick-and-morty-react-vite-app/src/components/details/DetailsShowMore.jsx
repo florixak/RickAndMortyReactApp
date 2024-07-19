@@ -2,13 +2,15 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
+const maxShowCount = 6;
+
 export default function DetailsShowMore({ list, listName, getURL }) {
   const [showMore, setShowMore] = useState(false);
   const navigate = useNavigate();
 
   const toggleShowMore = () => setShowMore(!showMore);
 
-  const displayedList = showMore ? list : list && list.slice(0, 10);
+  const displayedList = showMore ? list : list && list.slice(0, maxShowCount);
 
   return (
     <div className="flex max-w-[350px]">
@@ -34,7 +36,7 @@ export default function DetailsShowMore({ list, listName, getURL }) {
                 );
               })}
           </AnimatePresence>
-          {list && list.length > 10 && (
+          {list && list.length > maxShowCount && (
             <button
               onClick={toggleShowMore}
               className="ml-2 text-sm text-secondary"
