@@ -1,6 +1,6 @@
 # Rick And Morty Web Using API
 - Still in development
-- Live Preview: [Rick And Morty](https://rick-and-morty-op.netlify.app/)
+- Live Preview: [Rick And Morty](https://rickandmorty-op.netlify.app/)
 
 ## Description
 
