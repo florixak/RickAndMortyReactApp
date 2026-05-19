@@ -1,5 +1,4 @@
 # Rick And Morty Web Using API
-- Still in development
 
 ## Description
 
